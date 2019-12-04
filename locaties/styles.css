@@ -1,0 +1,19 @@
+
+@media only screen and (max-width: 900px) {
+  	#bigmap {
+		width: 100%;
+		height: 400px;
+	}
+}
+@media only screen and (min-width: 900px) {
+  	#bigmap {
+  		height: 600px;
+  		width: 100%;
+	}
+}
+
+.mapcol{
+	padding-right: 0;
+	padding-left: 0;
+}
+

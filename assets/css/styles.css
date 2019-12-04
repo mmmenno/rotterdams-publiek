@@ -18,28 +18,37 @@ blockquote{
 	color: #950305;
 }
 .abt-actors{
-	background-color: #E6FFE3;
-	color: #1E7C01;
+	background-color: #FFF9E3;
+	color: #937805;
 }
 .abt-events{
 	background-color: #EDE3FF;
 	color: #6900A1;
 }
 .abt-interviews{
-	background-color: #FFF9E3;
-	color: #937805;
+	background-color: #E6FFE3;
+	color: #1E7C01;
 }
 .abt-timemachine{
 	background-color: #E3EFFF;
 	color: #09409C;
 }
-.abt-us{
+.black{
 	background-color: #2F2F2F;
 	color: #E4E4E4;
+}
+.white{
+	background-color: #fff;
+	color: #000;
 }
 
 h2{
 	font-size: 28px;
+	margin-top: 16px;
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+h3{
+	font-size: 22px;
 	margin-top: 16px;
 	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }

@@ -20,7 +20,7 @@
 			<div class="col-md abt-locations">
 				<h2>Plaatsen van vertier</h2>
 				<p>
-					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het (straks) allemaal bekijken <a href="">op de locatieskaart</a>.
+					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het (straks) allemaal bekijken op <a href="locaties/">de kaart met locaties</a>.
 				</p>
 			</div>
 			<div class="col-md quote">
@@ -28,6 +28,9 @@
 			</div>
 			<div class="col-md abt-interviews">
 				<h2>Interviews</h2>
+
+				<p>
+					We vroegen Rotterdammers naar hun uitgaansverleden. Lees en bekijk hun verhalen in het <a href="">interview overzicht</a>.
 			</div>
 		</div>
 		<div class="row">
@@ -92,11 +95,11 @@
 				</form>
 				<p>... en bekijk het culturele landschap van dat moment.</p>
 			</div>
-			<div class="col-md abt-us">
+			<div class="col-md black">
 				<h2>Rotterdams Publiek</h2>
 
 				<p>
-					Binnen dit project proberen we het rijke uitgaansverleden van Rotterdam met behulp van interviews en beeldmateriaal uit het Stadsarchief weer tot leven te wekken.
+					Binnen dit project proberen we het rijke uitgaansverleden van Rotterdammers met behulp van interviews en beeldmateriaal uit het Stadsarchief weer tot leven te wekken.
 				</p>
 
 				<p>
