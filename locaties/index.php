@@ -1,5 +1,8 @@
 <?php
 
+if(!file_exists(__DIR__ . "/locaties.geojson") || isset($_GET['uncache'])){
+  include("geojson.php");
+}
 
 ?><!DOCTYPE html>
 <html>
@@ -36,13 +39,13 @@
       <div class="col-md black">
         <h3 id="itemtitle">Locaties</h3>
 
-        <p id="itemtimes">times</p>
+        <p id="itemtimes"></p>
 
-        <p id="itemtypes">types</p>
+        <p id="itemtypes"></p>
 
-        <p id="itemnames">names</p>
+        <p id="itemnames"></p>
 
-        <p id="itemimage">image</p>
+        <p id="itemimage"></p>
 
       </div>
     </div>

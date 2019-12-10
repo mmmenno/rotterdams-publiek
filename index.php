@@ -20,7 +20,10 @@
 			<div class="col-md abt-locations">
 				<h2>Plaatsen van vertier</h2>
 				<p>
-					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het (straks) allemaal bekijken op <a href="locaties/">de kaart met locaties</a>.
+					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het allemaal bekijken op <a href="locaties/">de kaart met locaties</a>.
+				</p>
+				<p>
+					Als je dat fijner vindt, er is ook <a href="locaties/lijst.php">een lijstweergave</a>.
 				</p>
 			</div>
 			<div class="col-md quote">
@@ -111,6 +114,21 @@
 				</p>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md abt-war">
+				<h2>Oorlog</h2>
+				<p>
+					Het bombardement verwoestte een groot deel van de stad, en daarmee ook veel uitgaansgelegenheden. Desondanks ging het culturele leven in de oorlogsjaren daarna gewoon door - mensen gingen naar de bioscoop, Boijmans stelde "het Duitsche boek van heden" tentoon, maar ook "de prentkunst rondom Rubens". Op <a href="">ons oorlogsoverzicht</a> krijg je een beeld.
+				</p>
+			</div>
+			<div class="col-md quote">
+				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
+			</div>
+			<div class="col-md quote">
+				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
+			</div>
+		</div>
+		
 	</div>
 
 </body>
