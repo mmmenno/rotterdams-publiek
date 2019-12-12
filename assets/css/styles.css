@@ -54,7 +54,14 @@ h3{
 }
 a{
 	color: inherit;
+	text-decoration: none;
+	color: #000;
+}
+a:hover{
 	text-decoration: underline;
+}
+.black a{
+	color: #FFE7E3;
 }
 #timemachineform{
 	margin-bottom: 24px;

@@ -17,13 +17,19 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md abt-locations">
-				<h2>Plaatsen van vertier</h2>
+			<div class="col-md black">
+				<h2>Rotterdams Publiek</h2>
+
 				<p>
-					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het allemaal bekijken op <a href="locaties/">de kaart met locaties</a>.
+					maakt het uitgaansverleden van Rotterdammers inzichtelijk.
 				</p>
+
 				<p>
-					Als je dat fijner vindt, er is ook <a href="locaties/lijst.php">een lijstweergave</a>.
+					We doen dit vooral door <a href="">data</a> te verbeteren en verbinden. Het project bevindt zich in de opbouwfase.
+				</p>
+
+				<p>
+					Dit project is mede mogelijk gemaakt door <a href="https://stimuleringsfonds.nl/">het Stimuleringsfonds</a>.
 				</p>
 			</div>
 			<div class="col-md quote">
@@ -37,10 +43,13 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md abt-actors">
-				<h2>Wie is wie?</h2>
+			<div class="col-md abt-locations">
+				<h2>Plaatsen van vertier</h2>
 				<p>
-					Ray Charles in De Doelen, Jayne Mansfield op de middenstip van het Kasteel en Salvador Dali in Museum Boijmans. Wie drukte zijn of haar stempel op het culturele landschap? Of was toevallig in de buurt? Check onze <a href="">wie-is-wie pagina</a>.
+					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het allemaal bekijken op <a href="locaties/">de kaart met locaties</a>.
+				</p>
+				<p>
+					Als je dat fijner vindt, er is ook <a href="locaties/lijst.php">een lijstweergave</a>.
 				</p>
 			</div>
 			<div class="col-md abt-events">
@@ -50,7 +59,7 @@
 				</p>
 			</div>
 			<div class="col-md quote">
-				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
+				<blockquote>&ldquo;Werk in uitvoering! Dit is een prototype dat de mogelijkheden en beschikbaarheid van data verkent.&bdquo;</blockquote>
 			</div>
 		</div>
 		<div class="row">
@@ -98,19 +107,10 @@
 				</form>
 				<p>... en bekijk het culturele landschap van dat moment.</p>
 			</div>
-			<div class="col-md black">
-				<h2>Rotterdams Publiek</h2>
-
+			<div class="col-md abt-actors">
+				<h2>Wie is wie?</h2>
 				<p>
-					Binnen dit project proberen we het rijke uitgaansverleden van Rotterdammers met behulp van interviews en beeldmateriaal uit het Stadsarchief weer tot leven te wekken.
-				</p>
-
-				<p>
-					We doen dit vooral door <a href="">data</a> te verbeteren en verbinden.
-				</p>
-
-				<p>
-					Dit project is mede mogelijk gemaakt door het Stimuleringsfonds.
+					Ray Charles in De Doelen, Jayne Mansfield op de middenstip van het Kasteel en Salvador Dali in Museum Boijmans. Wie drukte zijn of haar stempel op het culturele landschap? Of was toevallig in de buurt? Check onze <a href="">wie-is-wie pagina</a>.
 				</p>
 			</div>
 		</div>
