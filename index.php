@@ -59,7 +59,7 @@
 				</p>
 			</div>
 			<div class="col-md quote">
-				<blockquote>&ldquo;Werk in uitvoering! Dit is een prototype dat de mogelijkheden en beschikbaarheid van data verkent.&bdquo;</blockquote>
+				<blockquote>&ldquo;Werk in uitvoering! Dit is nog maar het prototype!&bdquo;</blockquote>
 			</div>
 		</div>
 		<div class="row">
