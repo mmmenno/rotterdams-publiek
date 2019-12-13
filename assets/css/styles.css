@@ -41,7 +41,6 @@ blockquote{
 	background-color: #fff;
 	color: #000;
 }
-
 h2{
 	font-size: 28px;
 	margin-top: 16px;
@@ -49,8 +48,26 @@ h2{
 }
 h3{
 	font-size: 22px;
-	margin-top: 16px;
+	margin-top: 36px;
 	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+h4{
+	font-size: 16px;
+	margin-top: 12px;
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+.listing h3{
+	border-bottom: 2px solid #000;
+	padding-bottom: 7px;
+}
+.imagebar img{
+	height: 60px;
+}
+.locationsheader{
+	background-image: url(https://commons.wikimedia.org/wiki/Special:FilePath/Gebouw%20Rotterdamsche%20Kunstkring%201933.jpg?width=1000);
+	background-size: cover;
+	padding-bottom: 100px;
+	background-position: left center;
 }
 a{
 	color: inherit;
@@ -61,8 +78,9 @@ a:hover{
 	color: inherit;
 	text-decoration: underline;
 }
-.black a{
-	color: #FFE7E3;
+.abt-locations .white a{
+	color: #950305;
+	font-weight: normal;
 }
 #timemachineform{
 	margin-bottom: 24px;

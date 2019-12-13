@@ -37,36 +37,73 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
     }
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
-ORDER BY ?typeLabel
+ORDER BY ?typeLabel ?itemLabel
 LIMIT 1000";
 
-/*
-$postdata = http_build_query(
-    array(
-        'query' => urlencode($sparql),
-        'name' => 'locationlist',
-        'endpoint' => 'https://query.wikidata.org/sparql'
-    )
-);
 
-$opts = array('http' =>
-    array(
-        'method'  => 'POST',
-        'header'  => 'Content-Type: application/x-www-form-urlencoded',
-        'content' => $postdata
-    )
-);
+$endpoint = 'https://query.wikidata.org/sparql';
+$url = "https://rotterdamspubliek.nl/querydata/?name=locationlist&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
-$context  = stream_context_create($opts);
+if(isset($_GET['uncache'])){
+   $url .= "&uncache=1";
+}
 
-$result = file_get_contents('http://localhost:3333/querydata/index.php');
-*/
+$result = file_get_contents($url);
 
+$data = json_decode($result,true);
 
-$result = file_get_contents('http://localhost:3333/querydata/?name=lijstjen&endpoint=https://query.wikidata.org/sparql&query=%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.opengis.net%2Font%2Fgeosparql%23%3E%0APREFIX+bag%3A+%3Chttp%3A%2F%2Fbag.basisregistraties.overheid.nl%2Fdef%2Fbag%23%3E%0ASELECT+%3Fitem+%3FitemLabel+%3FtypeLabel+%3Fbouwjaar+%3Fsloopjaar+%3Fstarttype+%3Feindtype+%3Fnaamstring+%3Fstartnaam+%3Feindnaam+%3Fimage+%3Fcoords+%3Fbagid+WHERE+%7B%0A++%0A++++VALUES+%3Ftype+%7B+wd%3AQ57660343+wd%3AQ41253+wd%3AQ24354+wd%3AQ24699794+wd%3AQ207694+wd%3AQ856584+wd%3AQ57659484+wd%3AQ1060829+wd%3AQ18674739+wd%3AQ15206070+%7D%0A++++%3Fitem+wdt%3AP131+wd%3AQ2680952+.%0A++++%3Fitem+wdt%3AP31+%3Ftype+.%0A++++OPTIONAL%7B%0A++++++%3Fitem+wdt%3AP625+%3Fcoords+.%0A++++%7D%0A++++OPTIONAL%7B%0A++++++%3Fitem+wdt%3AP5208+%3Fbagid+.%0A++++%7D%0A++OPTIONAL%7B%0A++++++%3Fitem+wdt%3AP18+%3Fimage+.%0A++++%7D%0A++OPTIONAL%7B%0A++++++%3Fitem+wdt%3AP571+%3Fbouwjaar+.%0A++++%7D%0A++OPTIONAL%7B%0A++++++%3Fitem+wdt%3AP576+%3Fsloopjaar+.%0A++++%7D%0A++OPTIONAL%7B%0A++++++%3Fitem+p%3AP31+%3Fiseen+.%0A++++++%3Fiseen+pq%3AP580+%3Fstarttype+.%0A++++++%3Fiseen+pq%3AP582+%3Feindtype+.%0A++++%7D%0A++OPTIONAL%7B%0A++++++%3Fitem+p%3AP2561+%3Fnaam+.%0A++++++%3Fnaam+ps%3AP2561+%3Fnaamstring+.%0A++++++%3Fnaam+pq%3AP580+%3Fstartnaam+.%0A++++++%3Fnaam+pq%3AP582+%3Feindnaam+.%0A++++%7D%0A++SERVICE+wikibase%3Alabel+%7B+bd%3AserviceParam+wikibase%3Alanguage+%22nl%2Cen%22.+%7D%0A%7D%0AORDER+BY+%3FtypeLabel%0ALIMIT+1000');
-echo($result);
+$venues = array();
+// eerst even platslaan
 
-die;
+//print_r($data);
+$venuecount = 0;
+$images = array();
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+   $wdid = str_replace("http://www.wikidata.org/entity/", "", $v['item']['value']);
+   $images[$wdid] = $v['image']['value'];
+   $type = $v['typeLabel']['value'];
+
+   if(isset($venues[$type][$wdid])){
+
+      if(strlen($v['naamstring']['value'])){
+         $venues[$type][$wdid]['names'][] = $v['naamstring']['value']; 
+      }
+
+      continue;
+   }
+
+   $venuecount++;
+
+   $venues[$type][$wdid]["wdid"] = $wdid;
+   $venues[$type][$wdid]["label"] = $v['itemLabel']['value'];
+   $venues[$type][$wdid]["bagid"] = $v['bagid']['value'];
+   $venues[$type][$wdid]["bstart"] = $v['bouwjaar']['value'];
+   $venues[$type][$wdid]["bend"] = $v['sloopjaar']['value'];
+
+   if(isset($v['starttype']['value'])){
+      $venues[$type][$wdid]["starttype"] = $v['starttype']['value'];
+   }
+   if(isset($v['eindtype']['value'])){
+      $venues[$type][$wdid]["eindtype"] = $v['eindtype']['value'];
+   }
+
+   if(strlen($v['naamstring']['value'])){
+      $venues[$type][$wdid]['names'][] = $v['naamstring']['value'];
+   }
+   
+
+}
+
+$quarter = round($venuecount/4);
+$half = $quarter*2;
+$threequarters = $venuecount-$quarter;
+$breaks = array($quarter,$half,$threequarters);
+
+$third = round($venuecount/3);
+$twothirds = $third*2;
+$breaks = array($third,$twothirds);
 
 ?><!DOCTYPE html>
 <html>
@@ -96,18 +133,52 @@ die;
 <body class="abt-locations">
 
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        1
+   <div class="row black locationsheader">
+      <div class="col-md">
+         <h2><a href="../">Rotterdams Publiek</a> | locaties</h2>
       </div>
-      <div class="col-md-3">
-        2
-      </div>
-      <div class="col-md-3">
-        3
-      </div>
-      <div class="col-md-3">
-        4
+      
+   </div>
+    <div class="row white listing">
+      <div class="col-md-4">
+         <? 
+         $i = 0;
+         foreach ($venues as $typelabel => $venuesintype) { 
+            echo "<h3>" . $typelabel . "</h3>";
+            foreach ($venuesintype as $venue) { 
+               $i++;
+
+               if(in_array($i,$breaks)){
+                  echo '</div><div class="col-md-4">';
+                  if($typelabel == $lasttype){
+                     echo "<h3>" . $typelabel . " - vervolg</h3>";
+                  }
+               }
+
+               echo '<h4><a href="locatie.php?wdid=' . $venue['wdid'] . '">' . $venue['label'] . '</a></h4>';
+
+               if(isset($venue['names'])){
+                  $othernames = array();
+
+                  foreach ($venue['names'] as $name) { 
+                     if($name != $venue['label'] && !in_array($name, $othernames)){
+                        $othernames[] = $name;
+                     }
+                  }
+                  if(count($othernames)){
+                     $aka = implode(", ", $othernames);
+                     echo '<p class="small">a.k.a. ' . $aka . '</p>';
+                  }
+               }
+
+               $lasttype = $typelabel;
+               
+            }
+         }
+         ?>
+         <br />
+         <br />
+         <br />
       </div>
     </div>
   </div>
