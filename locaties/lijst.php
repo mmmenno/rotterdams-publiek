@@ -141,7 +141,7 @@ $breaks = array($third,$twothirds);
    </div>
     <div class="row white listing">
       <div class="col-md-4">
-         <? 
+         <?php 
          $i = 0;
          foreach ($venues as $typelabel => $venuesintype) { 
             echo "<h3>" . $typelabel . "</h3>";

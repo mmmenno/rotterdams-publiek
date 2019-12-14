@@ -20,8 +20,7 @@ $endpointUrl = $_GET['endpoint'];
 
 $url = $endpointUrl . '?query=' . urlencode($sparqlQueryString) . "&format=json";
 $jsonfile = 'queryresults/' . $_GET['name'] . ".json";
-
-if(file_exists($jsonfile) && !isset($_GET['uncache'])){
+if(file_exists($jsonfile) && !isset($_GET['uncache']) ){
 	$response = file_get_contents($jsonfile);
 }else{
 	$ch = curl_init();
