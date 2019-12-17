@@ -43,6 +43,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
       ?naam pq:P580 ?startnaam .
       ?naam pq:P582 ?eindnaam .
     }
+  	MINUS  { ?item wdt:P361 ?up .}
 	SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 LIMIT 1000
