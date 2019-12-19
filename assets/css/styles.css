@@ -60,8 +60,21 @@ h4{
 	border-bottom: 2px solid #000;
 	padding-bottom: 7px;
 }
-.imagebar img{
-	height: 60px;
+.imgbar{
+	padding: 0;
+}
+.imgbar img{
+	width: 100%;
+}
+.imgbar .imginfo{
+	position: absolute;
+	background: rgba(9, 64, 156, .3);
+	padding: 15px;
+	width: 100%;
+	display: none;
+}
+.imgbar .imginfo h2{
+	margin-top: 0;
 }
 .locationsheader{
 	background-image: url(https://commons.wikimedia.org/wiki/Special:FilePath/Gebouw%20Rotterdamsche%20Kunstkring%201933.jpg?width=1000);
