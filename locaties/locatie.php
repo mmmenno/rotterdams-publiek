@@ -59,9 +59,9 @@ if(isset($_GET['uncache'])){
 }
 
 $result = file_get_contents($url);
-//include("../querydata/queryfunctions.php");
+include("functions.php");
 
-//$result = sparql_results_as_json($endpoint,$name,$sparql);
+$result = get_sparql_data($endpoint,$name,$sparql);
 
 
 
