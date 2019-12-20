@@ -48,17 +48,20 @@ LIMIT 1000";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';
+$name = "loc-" . $qid;
 
 
-$url = "https://rotterdamspubliek.nl/querydata/?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
-//$url = "http://localhost:3333/querydata/index.php?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+$url = "https://rotterdamspubliek.nl/querydata/?name=" . $name . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+//$url = "http://localhost:3333/querydata/index.php?name=" . $name . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
    $url .= "&uncache=1";
 }
 
 $result = file_get_contents($url);
+//include("../querydata/queryfunctions.php");
 
+//$result = sparql_results_as_json($endpoint,$name,$sparql);
 
 
 
