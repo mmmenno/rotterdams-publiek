@@ -10,7 +10,7 @@ if(!isset($_GET['qid'])){
 $sparql = "
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
-SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?bagid WHERE {
+SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?bagid WHERE {
   
   VALUES ?item { wd:" . $qid . " }
   ?item wdt:P31 ?type .
@@ -31,6 +31,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
     }
   OPTIONAL{
       ?item p:P31 ?iseen .
+      ?iseen ps:P31 ?iseentype .
       ?iseen pq:P580 ?starttype .
       ?iseen pq:P582 ?eindtype .
     }
@@ -48,6 +49,7 @@ LIMIT 1000";
 
 $endpoint = 'https://query.wikidata.org/sparql';
 $url = "https://rotterdamspubliek.nl/querydata/?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+$url = "/querydata/?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
    $url .= "&uncache=1";
@@ -67,7 +69,6 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
    $venue = array();
    $image = $v['image']['value'];
-   $type = $v['typeLabel']['value'];
 
 
    $venue["wdid"] = $wdid;
@@ -76,9 +77,15 @@ foreach ($data['results']['bindings'] as $k => $v) {
    $venue["bstart"] = $v['bouwjaar']['value'];
    $venue["bend"] = $v['sloopjaar']['value'];
 
-   $types[$type]['type'] = $type;
-   $types[$type]["starttype"] = $v['starttype']['value'];
-   $types[$type]["eindtype"] = $v['eindtype']['value'];
+   if(strlen($v['iseentypeLabel']['value'])){
+      $type = $v['iseentypeLabel']['value'];
+      $types[$type]['type'] = $type;
+      $types[$type]["starttype"] = $v['starttype']['value'];
+      $types[$type]["eindtype"] = $v['eindtype']['value'];
+   }
+   if(!array_key_exists($v['typeLabel']['value'], $types)){
+      $types[$v['typeLabel']['value']]['type'] = $v['typeLabel']['value'];
+   }
 
    if(strlen($v['naamstring']['value'])){
       $names[$v['naamstring']['value']]['name'] = $v['naamstring']['value'];
