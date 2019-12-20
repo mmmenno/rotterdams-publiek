@@ -52,6 +52,7 @@ $endpoint = 'https://query.wikidata.org/sparql';
 $context = stream_context_create(array('http' => array('header'=>'Connection: close\r\n')));
 
 $url = "https://rotterdamspubliek.nl/querydata/?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+$url = "../querydata/index.php?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
    $url .= "&uncache=1";
