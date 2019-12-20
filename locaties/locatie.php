@@ -49,24 +49,23 @@ LIMIT 1000";
 
 $endpoint = 'https://query.wikidata.org/sparql';
 
-$context = stream_context_create(array('http' => array('header'=>'Connection: close\r\n')));
 
 $url = "https://rotterdamspubliek.nl/querydata/?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
-$url = "../querydata/index.php?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+//$url = "http://localhost:3333/querydata/index.php?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
    $url .= "&uncache=1";
 }
 
-$result = file_get_contents($url,false,$context);
+$result = file_get_contents($url);
+
+
+
 
 $data = json_decode($result,true);
 
 $types = array();
 $names = array();
-// eerst even platslaan
-
-//print_r($data);
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
