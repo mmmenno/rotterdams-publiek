@@ -13,6 +13,10 @@
         "type" : "literal",
         "value" : "Point(4.48911 51.92106)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000701864"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -31,10 +35,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bibliotheekgebouw"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000701864"
       }
     }, {
       "item" : {
@@ -45,6 +45,10 @@
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.487491 51.922851)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000702259"
       },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -60,10 +64,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bibliotheekgebouw"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000702259"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -85,6 +85,11 @@
         "type" : "literal",
         "value" : "Point(4.480132 51.918395)"
       },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1979-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -94,6 +99,91 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1995-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161107"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.492233 51.922442)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Américain"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1924-01-01T00:00:00Z"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Deca"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1923-12-31T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1923-04-20T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161107"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.492233 51.922442)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Américain"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1924-01-01T00:00:00Z"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Américain"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1923-04-13T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1911-01-08T00:00:00Z"
       }
     }, {
       "item" : {
@@ -114,6 +204,21 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1915-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1909-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-01-01T00:00:00Z"
       }
     }, {
       "item" : {
@@ -235,6 +340,10 @@
         "type" : "literal",
         "value" : "Point(4.476196 51.917788)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000759823"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -249,10 +358,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000759823"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -409,6 +514,10 @@
         "type" : "literal",
         "value" : "Point(4.4788016 51.9170374)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000701423"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -462,12 +571,46 @@
     }, {
       "item" : {
         "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q78861313"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.492656111 51.922471944)"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1928-01-01T00:00:00Z"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q76161123"
       },
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.51109 51.89701)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000606927"
       },
       "itemLabel" : {
         "xml:lang" : "nl",
@@ -737,76 +880,6 @@
     }, {
       "item" : {
         "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161107"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.492233 51.922442)"
-      },
-      "itemLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Deca"
-      },
-      "typeLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "bioscoop"
-      },
-      "naamstring" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Deca"
-      },
-      "eindnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1923-12-31T00:00:00Z"
-      },
-      "startnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1923-04-20T00:00:00Z"
-      }
-    }, {
-      "item" : {
-        "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161107"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.492233 51.922442)"
-      },
-      "itemLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Deca"
-      },
-      "typeLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "bioscoop"
-      },
-      "naamstring" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Américain"
-      },
-      "eindnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1923-04-13T00:00:00Z"
-      },
-      "startnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1911-01-08T00:00:00Z"
-      }
-    }, {
-      "item" : {
-        "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q76161156"
       },
       "coords" : {
@@ -877,12 +950,94 @@
     }, {
       "item" : {
         "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161129"
+        "value" : "http://www.wikidata.org/entity/Q76161095"
       },
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Feijenoord"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Maas Theater"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1925-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1924-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161095"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Feijenoord"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Flora"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1935-12-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1935-10-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161095"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
       },
       "itemLabel" : {
         "xml:lang" : "nl",
@@ -912,12 +1067,16 @@
     }, {
       "item" : {
         "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161129"
+        "value" : "http://www.wikidata.org/entity/Q76161095"
       },
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
       },
       "itemLabel" : {
         "xml:lang" : "nl",
@@ -967,26 +1126,6 @@
     }, {
       "item" : {
         "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161104"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.495937 51.919877)"
-      },
-      "itemLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Gemeentelijke Schoolbioscoop"
-      },
-      "typeLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "bioscoop"
-      }
-    }, {
-      "item" : {
-        "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q15875871"
       },
       "coords" : {
@@ -1008,6 +1147,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1023,11 +1167,6 @@
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
         "value" : "1932-10-21T00:00:00Z"
-      },
-      "sloopjaar" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1940-05-14T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1053,6 +1192,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1068,11 +1212,6 @@
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
         "value" : "1922-12-07T00:00:00Z"
-      },
-      "sloopjaar" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1940-05-14T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1099,6 +1238,11 @@
         "type" : "literal",
         "value" : "bioscoop"
       },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      },
       "naamstring" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -1113,11 +1257,6 @@
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
         "value" : "1923-12-21T00:00:00Z"
-      },
-      "sloopjaar" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1940-05-14T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1138,6 +1277,86 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1931-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2000-01-01T00:00:00Z"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Harmonie Jeugdbioscoop"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1936-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1931-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161133"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.48788 51.89497)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Harmonie"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1931-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2000-01-01T00:00:00Z"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Harmonie"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1936-01-01T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1178,6 +1397,21 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1912-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1910-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-01-01T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1187,7 +1421,16 @@
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
-        "value" : "Point(4.482269 51.913826)"
+        "value" : "Point(4.48244 51.913393)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000702481"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-01-01T00:00:00Z"
       },
       "itemLabel" : {
         "xml:lang" : "nl",
@@ -1198,6 +1441,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2001-03-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-05-11T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1219,75 +1472,10 @@
         "type" : "literal",
         "value" : "bioscoop"
       },
-      "naamstring" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "City"
-      },
-      "eindnaam" : {
+      "sloopjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
-        "value" : "1940-05-14T00:00:00Z"
-      },
-      "startnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1928-10-26T00:00:00Z"
-      }
-    }, {
-      "item" : {
-        "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161122"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.492656 51.922472)"
-      },
-      "itemLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Imperial Bioscope"
-      },
-      "typeLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "bioscoop"
-      },
-      "naamstring" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Imperial Bioscope"
-      },
-      "eindnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1928-06-15T00:00:00Z"
-      },
-      "startnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1912-12-24T00:00:00Z"
-      }
-    }, {
-      "item" : {
-        "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161139"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.48093 51.923587)"
-      },
-      "itemLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Imperial Vio"
-      },
-      "typeLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "bioscoop"
+        "value" : "1928-01-01T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1308,6 +1496,21 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1920-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1911-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-01-01T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1388,6 +1591,10 @@
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.487233 51.904919)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000753300"
       },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -1491,76 +1698,6 @@
     }, {
       "item" : {
         "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161095"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.50858 51.90697)"
-      },
-      "itemLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Maas Theater"
-      },
-      "typeLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "bioscoop"
-      },
-      "naamstring" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Maas Theater"
-      },
-      "eindnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1925-01-01T00:00:00Z"
-      },
-      "startnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1924-01-01T00:00:00Z"
-      }
-    }, {
-      "item" : {
-        "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q76161095"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.50858 51.90697)"
-      },
-      "itemLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Maas Theater"
-      },
-      "typeLabel" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "bioscoop"
-      },
-      "naamstring" : {
-        "xml:lang" : "nl",
-        "type" : "literal",
-        "value" : "Flora"
-      },
-      "eindnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1935-12-01T00:00:00Z"
-      },
-      "startnaam" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1935-10-01T00:00:00Z"
-      }
-    }, {
-      "item" : {
-        "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q76161130"
       },
       "coords" : {
@@ -1577,6 +1714,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1613,6 +1755,11 @@
         "type" : "literal",
         "value" : "bioscoop"
       },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-01-01T00:00:00Z"
+      },
       "naamstring" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -1638,6 +1785,15 @@
         "type" : "literal",
         "value" : "Point(4.475265 51.890897)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000692070"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1955-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -1647,6 +1803,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1955-01-01T00:00:00Z"
       }
     }, {
       "item" : {
@@ -1678,6 +1844,10 @@
         "type" : "literal",
         "value" : "Point(4.4926203 51.9070581)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000702518"
+      },
       "image" : {
         "type" : "uri",
         "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Luxorbynight2002.jpg"
@@ -1702,6 +1872,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -1720,10 +1894,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1750,6 +1920,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -1768,10 +1942,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1798,6 +1968,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -1816,10 +1990,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1846,6 +2016,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -1864,10 +2038,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1894,6 +2064,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -1912,10 +2086,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -1942,6 +2112,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -1960,10 +2134,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -2020,6 +2190,11 @@
         "type" : "literal",
         "value" : "bioscoop"
       },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      },
       "naamstring" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -2054,6 +2229,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -2100,6 +2280,10 @@
         "type" : "literal",
         "value" : "Point(4.4763511 51.9224746)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000644900"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -2118,10 +2302,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000644900"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -2263,6 +2443,10 @@
         "type" : "literal",
         "value" : "Point(4.5225 51.896666666)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000750010"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -2321,6 +2505,15 @@
         "type" : "literal",
         "value" : "Point(4.447502 51.909974)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000767277"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1897-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -2330,6 +2523,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1914-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -2356,6 +2559,15 @@
         "type" : "literal",
         "value" : "Point(4.447502 51.909974)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000767277"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1897-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -2365,6 +2577,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1914-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -2391,6 +2613,15 @@
         "type" : "literal",
         "value" : "Point(4.447502 51.909974)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000767277"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1897-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -2400,6 +2631,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1914-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -2566,6 +2807,10 @@
         "type" : "literal",
         "value" : "Point(4.4597 51.918606)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000700713"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -2580,10 +2825,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000700713"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -2620,6 +2861,10 @@
         "type" : "literal",
         "value" : "Point(4.4597 51.918606)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000700713"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -2634,10 +2879,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000700713"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -2842,12 +3083,66 @@
     }, {
       "item" : {
         "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161104"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.495937 51.919877)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Technisch Scheepvaartkundig Instituut en Museum"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1925-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1920-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Gemeentelijke Schoolbioscoop"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1925-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1920-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q2495837"
       },
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.47614 51.92296)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000644910"
       },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -2867,10 +3162,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000644910"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -2892,6 +3183,10 @@
         "type" : "literal",
         "value" : "Point(4.47614 51.92296)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000644910"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -2910,10 +3205,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000644910"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -3015,6 +3306,11 @@
         "type" : "literal",
         "value" : "bioscoop"
       },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      },
       "naamstring" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -3049,6 +3345,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3284,6 +3585,15 @@
         "type" : "literal",
         "value" : "Point(4.456938 51.912461)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761588"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -3293,6 +3603,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1980-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3319,6 +3639,15 @@
         "type" : "literal",
         "value" : "Point(4.456938 51.912461)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761588"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -3328,6 +3657,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1980-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3354,6 +3693,15 @@
         "type" : "literal",
         "value" : "Point(4.456938 51.912461)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761588"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -3363,6 +3711,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1980-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3389,6 +3747,15 @@
         "type" : "literal",
         "value" : "Point(4.456938 51.912461)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761588"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -3398,6 +3765,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "bioscoop"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1980-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1919-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3424,6 +3801,10 @@
         "type" : "literal",
         "value" : "Point(4.473056 51.921667)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000700228"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3442,15 +3823,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "concertzaal"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000700228"
       }
     }, {
       "item" : {
         "type" : "uri",
-        "value" : "http://www.wikidata.org/entity/Q77823014"
+        "value" : "http://www.wikidata.org/entity/Q76161139"
       },
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
@@ -3510,12 +3887,172 @@
     }, {
       "item" : {
         "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161095"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Feijenoord"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "evenementenlocatie"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Maas Theater"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1925-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1924-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161095"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Feijenoord"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "evenementenlocatie"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Flora"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1935-12-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1935-10-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161095"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Feijenoord"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "evenementenlocatie"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Feijenoord"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1924-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1915-08-12T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161095"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.508673 51.906873)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000658988"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Feijenoord"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "evenementenlocatie"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Deca"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1926-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1924-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q18286247"
       },
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.493922222 51.897544444)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000257596"
       },
       "image" : {
         "type" : "uri",
@@ -3541,6 +4078,10 @@
         "type" : "literal",
         "value" : "Point(4.452425 51.925992)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100010037503"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3559,10 +4100,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "evenementenlocatie"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100010037503"
       }
     }, {
       "item" : {
@@ -3573,6 +4110,10 @@
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.488056 51.882778)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000232364"
       },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -3597,11 +4138,6 @@
       "item" : {
         "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q62088324"
-      },
-      "coords" : {
-        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
-        "type" : "literal",
-        "value" : "Point(4.47225 51.91469)"
       },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -3632,6 +4168,10 @@
         "type" : "literal",
         "value" : "Point(4.473544444 51.910536111)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000690180"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3650,10 +4190,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "kunstmuseum"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000690180"
       }
     }, {
       "item" : {
@@ -3673,12 +4209,132 @@
     }, {
       "item" : {
         "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2801130"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.481944 51.918889)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000702368"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1665-01-01T00:00:00Z"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Schielandshuis%20Rotterdam.jpg"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Schielandshuis"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "museumgebouw"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161104"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.495937 51.919877)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Technisch Scheepvaartkundig Instituut en Museum"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "museumgebouw"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1925-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1920-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Gemeentelijke Schoolbioscoop"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1925-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1920-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2676195"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.47222 51.91444)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000701935"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1938-01-01T00:00:00Z"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Rotterdam%20museumpark11.jpg"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Woonhuis Kraayeveld"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "museumgebouw"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
         "value" : "http://www.wikidata.org/entity/Q29569055"
       },
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.472736 51.914212)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000654571"
       },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -3698,10 +4354,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "museumgebouw"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000654571"
       }
     }, {
       "item" : {
@@ -3733,6 +4385,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3751,10 +4407,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "poppodium"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3781,6 +4433,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3799,10 +4455,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "poppodium"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3829,6 +4481,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3847,10 +4503,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "poppodium"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3877,6 +4529,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3895,10 +4551,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "poppodium"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3925,6 +4577,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3943,10 +4599,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "poppodium"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -3973,6 +4625,10 @@
         "type" : "literal",
         "value" : "Point(4.469722 51.920278)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000761231"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -3991,10 +4647,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "poppodium"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000761231"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -4114,6 +4766,10 @@
         "type" : "literal",
         "value" : "Point(4.4725 51.91917)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000123810"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -4143,6 +4799,10 @@
         "type" : "literal",
         "value" : "Point(4.473056 51.921667)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000700228"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -4161,10 +4821,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000700228"
       }
     }, {
       "item" : {
@@ -4190,6 +4846,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -4205,11 +4866,6 @@
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
         "value" : "1932-10-21T00:00:00Z"
-      },
-      "sloopjaar" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1940-05-14T00:00:00Z"
       }
     }, {
       "item" : {
@@ -4235,6 +4891,11 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -4250,11 +4911,6 @@
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
         "value" : "1922-12-07T00:00:00Z"
-      },
-      "sloopjaar" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1940-05-14T00:00:00Z"
       }
     }, {
       "item" : {
@@ -4281,6 +4937,11 @@
         "type" : "literal",
         "value" : "theatergebouw"
       },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      },
       "naamstring" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -4295,11 +4956,6 @@
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
         "value" : "1923-12-21T00:00:00Z"
-      },
-      "sloopjaar" : {
-        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-        "type" : "literal",
-        "value" : "1940-05-14T00:00:00Z"
       }
     }, {
       "item" : {
@@ -4355,6 +5011,10 @@
         "type" : "literal",
         "value" : "Point(4.487233 51.904919)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000753300"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -4382,7 +5042,11 @@
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
-        "value" : "Point(4.4622 51.9057)"
+        "value" : "Point(4.462155555 51.905680555)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000674088"
       },
       "image" : {
         "type" : "uri",
@@ -4406,7 +5070,11 @@
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
-        "value" : "Point(4.4622 51.9057)"
+        "value" : "Point(4.462155555 51.905680555)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000674088"
       },
       "image" : {
         "type" : "uri",
@@ -4432,6 +5100,10 @@
         "type" : "literal",
         "value" : "Point(4.4926203 51.9070581)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000702518"
+      },
       "image" : {
         "type" : "uri",
         "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Luxorbynight2002.jpg"
@@ -4456,6 +5128,10 @@
         "type" : "literal",
         "value" : "Point(4.4763511 51.9224746)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000644900"
+      },
       "bouwjaar" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
         "type" : "literal",
@@ -4474,10 +5150,6 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
-      },
-      "bagid" : {
-        "type" : "literal",
-        "value" : "0599100000644900"
       },
       "eindtype" : {
         "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -4499,6 +5171,15 @@
         "type" : "literal",
         "value" : "Point(4.447502 51.909974)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000767277"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1897-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -4508,6 +5189,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1914-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -4534,6 +5225,15 @@
         "type" : "literal",
         "value" : "Point(4.447502 51.909974)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000767277"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1897-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -4543,6 +5243,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1914-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -4569,6 +5279,15 @@
         "type" : "literal",
         "value" : "Point(4.447502 51.909974)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000767277"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1897-01-01T00:00:00Z"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -4578,6 +5297,16 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1914-01-01T00:00:00Z"
       },
       "naamstring" : {
         "xml:lang" : "nl",
@@ -4603,6 +5332,15 @@
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
         "value" : "Point(4.478975 51.915580555)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000691784"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1950-01-01T00:00:00Z"
       },
       "itemLabel" : {
         "xml:lang" : "nl",
@@ -4668,6 +5406,10 @@
         "type" : "literal",
         "value" : "Point(4.484202777 51.901330555)"
       },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000679043"
+      },
       "itemLabel" : {
         "xml:lang" : "nl",
         "type" : "literal",
@@ -4686,7 +5428,16 @@
       "coords" : {
         "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
         "type" : "literal",
-        "value" : "Point(4.4897 51.8884)"
+        "value" : "Point(4.48965 51.8884)"
+      },
+      "bagid" : {
+        "type" : "literal",
+        "value" : "0599100000766319"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1954-01-01T00:00:00Z"
       },
       "itemLabel" : {
         "xml:lang" : "nl",
@@ -4697,6 +5448,21 @@
         "xml:lang" : "nl",
         "type" : "literal",
         "value" : "theatergebouw"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Groote Schouwburg"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1978-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1954-01-01T00:00:00Z"
       }
     }, {
       "item" : {
