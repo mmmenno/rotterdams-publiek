@@ -48,14 +48,16 @@ LIMIT 1000";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';
+
+$context = stream_context_create(array('http' => array('header'=>'Connection: close\r\n')));
+
 $url = "https://rotterdamspubliek.nl/querydata/?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
-$url = "/querydata/?name=loc-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
    $url .= "&uncache=1";
 }
 
-$result = file_get_contents($url);
+$result = file_get_contents($url,false,$context);
 
 $data = json_decode($result,true);
 
