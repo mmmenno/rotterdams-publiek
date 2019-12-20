@@ -155,7 +155,7 @@ $breaks = array($third,$twothirds);
                   }
                }
 
-               echo '<h4><a href="locatie.php?wdid=' . $venue['wdid'] . '">' . $venue['label'] . '</a></h4>';
+               echo '<h4><a href="locatie.php?qid=' . $venue['wdid'] . '">' . $venue['label'] . '</a></h4>';
 
                if(isset($venue['names'])){
                   $othernames = array();

@@ -79,8 +79,15 @@ h4{
 .locationsheader{
 	background-image: url(https://commons.wikimedia.org/wiki/Special:FilePath/Gebouw%20Rotterdamsche%20Kunstkring%201933.jpg?width=1000);
 	background-size: cover;
-	padding-bottom: 100px;
 	background-position: left center;
+}
+body.abt-locations .locationsheader .col-md{
+	background: rgba(149, 3, 5, .6);
+	padding-bottom: 100px;
+}
+body.abt-timemachine .locationsheader .col-md{
+	background: rgba(9, 64, 156, .3);
+	padding-bottom: 100px;
 }
 a{
 	color: inherit;

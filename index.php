@@ -10,6 +10,13 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/styles.css">
+
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  
 	
 </head>
 
@@ -70,15 +77,15 @@
 				<h2>Tijdmachine</h2>
 				<p>Teleporteer jezelf naar R'dam in het jaar...</p>
 				<form id="timemachineform">
-					<select>
+					<select name="millenium">
 						<option>1</option>
 						<option>2</option>
 					</select>
-					<select>
+					<select name="century">
 						<option>9</option>
 						<option>0</option>
 					</select>
-					<select>
+					<select name="decade">
 						<option>0</option>
 						<option>1</option>
 						<option>2</option>
@@ -90,7 +97,7 @@
 						<option selected="selected">8</option>
 						<option>9</option>
 					</select>
-					<select>
+					<select name="year">
 						<option>0</option>
 						<option>1</option>
 						<option>2</option>
@@ -130,6 +137,26 @@
 		</div>
 		
 	</div>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+
+		$("#timemachineform button").click(function(){
+			var mil = $('select[name="millenium"]').val();
+			var cent = $('select[name="century"]').val();
+			var dec = $('select[name="decade"]').val();
+			var jaar = $('select[name="year"]').val();
+
+			var year = mil + cent + dec + jaar;
+			//console.log(year);
+
+			window.location.href = "/timemachine/?year=" + year;
+
+			return false;
+		});
+	});
+</script>
 
 </body>
 </html>
