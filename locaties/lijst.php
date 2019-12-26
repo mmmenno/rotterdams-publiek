@@ -42,7 +42,7 @@ LIMIT 1000";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';
-$url = "https://rotterdamspubliek.nl/querydata/?name=locationlist&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+$url = "http://128.199.33.115/querydata/?name=locationlist&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
    $url .= "&uncache=1";

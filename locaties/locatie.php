@@ -51,7 +51,7 @@ $endpoint = 'https://query.wikidata.org/sparql';
 $name = "loc-" . $qid;
 
 
-$url = "https://rotterdamspubliek.nl/querydata/?name=" . $name . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+$url = "http://128.199.33.115/querydata/?name=" . $name . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 //$url = "http://localhost:3333/querydata/index.php?name=" . $name . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
