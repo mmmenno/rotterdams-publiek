@@ -8,7 +8,12 @@ function get_sparql_data($endpointUrl,$name,$sparqlQueryString){
 	$jsonfile = 'queryresults/' . $name . ".json";
 
 	if(file_exists($jsonfile) && !isset($_GET['uncache']) ){
-		$json = file_get_contents($jsonfile);
+		//$fh = fopen($jsonfile, 'r');
+        //return fread($fh, filesize($jsonfile));
+
+        //fclose($fh);
+
+        $json = file_get_contents($jsonfile);
 		return $json;
 	}else{
 		$ch = curl_init();

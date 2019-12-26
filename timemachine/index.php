@@ -53,6 +53,7 @@ LIMIT 100
 
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
 $url = "https://rotterdamspubliek.nl/querydata/?name=" . $year . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+$url = "http://128.199.33.115/querydata/?name=" . $year . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
    $url .= "&uncache=1";
