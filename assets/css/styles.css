@@ -98,6 +98,9 @@ a:hover{
 	color: inherit;
 	text-decoration: underline;
 }
+.padding{
+	padding:5px 15px;
+}
 .abt-locations .white a{
 	color: #950305;
 	font-weight: normal;

@@ -8,6 +8,7 @@ if(!isset($_GET['year'])){
 
 $sparql = "
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -40,6 +41,12 @@ SELECT * WHERE {
   }
   OPTIONAL{
 	?cho dc:subject ?item .
+	MINUS { ?cho dc:type <http://vocab.getty.edu/aat/300263837> }
+  }
+  OPTIONAL{
+	?newsreel dc:subject ?item .
+	?newsreel dc:type <http://vocab.getty.edu/aat/300263837> .
+	?newsreel edm:isShownBy ?newsreelfile .
   }
   BIND(year(xsd:dateTime(?begin)) AS ?startyear)
   BIND(year(xsd:dateTime(?end)) AS ?endyear)
@@ -67,6 +74,7 @@ $exhibitions = array();
 $exhibitors = array();
 $otherevents = array();
 $actors = array();
+$videos = array();
 
 //print_r($data);
 $images = array();
@@ -113,9 +121,17 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 	}
 
+	if($v['newsreel']['value']!=""){
+		$videos[$v['newsreel']['value']] = array(
+			"fileurl" => $v['newsreelfile']['value'],
+			"label" => $v['newslabel']['value'],
+			"event" => $v['label']['value']
+		);
+	}
+
 }
 
-//print_r($exhibitions);
+//print_r($videos);
 function dutchdate($date){
 
 	$maanden = array("","jan","feb","maart","april","mei","juni","juli","aug","sept","okt","nov","dec");
@@ -164,7 +180,7 @@ function dutchdate($date){
 			}
 			?>
 		</div>
-		<div class="col-md-3 black imgbar">
+		<div class="col-md-2 black imgbar">
 			<?php 
 			foreach($exhibitors as $k => $v){
 			echo '<div class="imginfo"><h2>' . $v['label'] . '</h2>';
@@ -179,6 +195,22 @@ function dutchdate($date){
 
 		</div>
 		<div class="col-md white listing">
+
+			<div class="row">
+				<div class="col-md black imgbar">
+				<?php foreach($videos as $k => $v){ ?>
+					<div xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="oip_media" about="<?= $v['fileurl'] ?>">
+						<video width="100%" controls="controls">
+							<source type="video/mp4" src="<?= $v['fileurl'] ?>#t=2"/>
+						</video>
+						<div class="small padding">
+							<a href="<?= $k ?>" rel="cc:attributionURL" property="dct:title"><?= $v['event'] ?></a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/nl/" rel="license">CC-BY-SA</a>.
+						</div>
+					</div>
+				<?php } ?>
+				</div>
+			</div>
+
 			<h3>gebeurtenissen</h3>
 
 			<?php 
@@ -192,6 +224,7 @@ function dutchdate($date){
 			}
 			?>
 
+			
 			<div class="row">
 				<div class="col-md black imgbar">
 					<?php 
