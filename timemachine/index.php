@@ -59,7 +59,6 @@ LIMIT 100
 
 
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
-$url = "https://rotterdamspubliek.nl/querydata/?name=" . $year . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 $url = "http://128.199.33.115/querydata/?name=" . $year . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
@@ -131,15 +130,95 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 }
 
-//print_r($videos);
+// CONCERTEN
+$sparql = "
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+SELECT DISTINCT(?artist) ?artistname (SAMPLE(?bandimg) AS ?bandimg) ?rating ?wikipedia (MIN(?date) AS ?date) ?location ?locationname WHERE {
+  ?concert a schema:MusicEvent .
+  ?concert sem:hasTimeStamp ?date .
+  ?concert schema:performer [
+      owl:sameAs ?artist ;
+      rdfs:label ?artistname ;
+      schema:ratingValue ?rating ;
+  ] .
+  OPTIONAL{
+    ?concert schema:performer/schema:subjectOf ?wikipedia .
+  }
+	SERVICE <https://query.wikidata.org/sparql> {
+		OPTIONAL{
+			?artist wdt:P18 ?bandimg .
+		}
+	}
+  ?concert schema:location [
+     rdf:value ?location ;
+     rdfs:label ?locationname ;
+  ] .
+  BIND(year(xsd:dateTime(?date)) AS ?year)
+  FILTER(?year = " . $year . ")
+} 
+GROUP BY ?artist ?artistname ?rating ?wikipedia ?location ?locationname
+ORDER BY DESC(?rating)
+LIMIT 50
+";
+
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+$url = "http://128.199.33.115/querydata/?name=concerts-" . $year . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+
+if(isset($_GET['uncache'])){
+   $url .= "&uncache=1";
+}
+
+$result = file_get_contents($url);
+$data = json_decode($result,true);
+$concerts = array();
+$bandimgs = array();
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$concerts[] = array(
+		"artistname" => $v['artistname']['value'],
+		"locationname" => $v['locationname']['value'],
+		"location" => str_replace("http://www.wikidata.org/entity/","",$v['location']['value']),
+		"wiki" => $v['wikipedia']['value'],
+		"artist" => $v['artist']['value'],
+		"datum" => dutchdate($v['date']['value'])
+	);
+
+	if($v['bandimg']['value']==""){
+		continue;
+	}
+
+	$bandimgs[] = array(
+		"artistname" => $v['artistname']['value'],
+		"locationname" => $v['locationname']['value'],
+		"location" => str_replace("http://www.wikidata.org/entity/","",$v['location']['value']),
+		"wiki" => $v['wikipedia']['value'],
+		"artist" => $v['artist']['value'],
+		"img" => $v['bandimg']['value']
+	);
+
+}
+
+
 function dutchdate($date){
 
 	$maanden = array("","jan","feb","maart","april","mei","juni","juli","aug","sept","okt","nov","dec");
 	$dutch = date("j ",strtotime($date)) . $maanden[date("n",strtotime($date))] . date(" Y",strtotime($date));
-	//$dutch = $date;
 
 	return $dutch;
 }
+
+$prev = $year-1;
+$next = $year+1;
+$prev = "/timemachine/?year=" . $prev;
+$next = "/timemachine/?year=" . $next;
 
 ?><!DOCTYPE html>
 <html>
@@ -166,6 +245,9 @@ function dutchdate($date){
 <div class="container-fluid">
 	<div class="row black locationsheader">
 		<div class="col-md">
+			<span style="float: right;">
+				<h2><a href="<?= $prev ?>">&lt;</a> <a href="<?= $next ?>">&gt;</a></h2>
+			</span>
 			<h2><a href="../">Rotterdams Publiek</a> | <?= $year ?></h2>
 		</div>
 	</div>
@@ -211,8 +293,6 @@ function dutchdate($date){
 				</div>
 			</div>
 
-			<h3>gebeurtenissen</h3>
-
 			<?php 
 			foreach($otherevents as $k => $v){
 				echo '<h4>' . $v['label'] . '</h4>';
@@ -240,6 +320,34 @@ function dutchdate($date){
 					?>
 				</div>
 			</div>
+
+			<?php if(count($concerts)){ ?>
+			<div class="row">
+				<div class="col-md-8 white">
+
+					<h3>Concerten</h3>
+
+					<?php 
+					for($i=0; $i<30; $i++){
+						if(!isset($concerts[$i])){ break; }
+						echo '<h4>' . $concerts[$i]['artistname'] . '</h4>';
+						echo '<p class="small">' . $concerts[$i]['datum'] . ' | <a href="../locaties/locatie.php?qid=' . $concerts[$i]['location'] . '">' . $concerts[$i]['locationname'] . '</a></p>';
+					}
+					?>
+				</div>
+				<div class="col-md black imgbar">
+					<?php 
+					for($i=0; $i<8; $i++){
+						if(!isset($bandimgs[$i])){ break; }
+						echo '<img src="' . $bandimgs[$i]['img'] . '?width=200" >';
+						//print_r($bandimgs[$i]);
+					}
+					?>
+				</div>
+			</div>
+		<?php } ?>
+
+
 		</div>
 	</div>
 </div>
