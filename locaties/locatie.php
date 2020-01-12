@@ -81,7 +81,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	$image = $v['image']['value'];
 
 
-	$venue["wdid"] = $wdid;
+	$venue["wdid"] = $qid;
 	$venue["label"] = $v['itemLabel']['value'];
 	$venue["bagid"] = $v['bagid']['value'];
 	$venue["bstart"] = $v['bouwjaar']['value'];
@@ -113,6 +113,73 @@ foreach ($data['results']['bindings'] as $k => $v) {
 }
 
 //print_r($venue);
+
+
+// CONCERTEN
+$sparql = "
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+SELECT ?artist ?artistname ?rating ?wikipedia ?date ?locationname WHERE {
+  ?concert a schema:MusicEvent .
+  ?concert sem:hasTimeStamp ?date .
+  ?concert schema:performer [
+      owl:sameAs ?artist ;
+      rdfs:label ?artistname ;
+      schema:ratingValue ?rating ;
+  ] .
+  OPTIONAL{
+    ?concert schema:performer/schema:subjectOf ?wikipedia .
+  }
+  ?concert schema:location [
+     rdf:value wd:" . $qid . " ;
+     rdfs:label ?locationname ;
+  ] .
+} 
+ORDER BY ASC(?date)
+";
+
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+$url = "http://128.199.33.115/querydata/?name=loc-concerts-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+
+if(isset($_GET['uncache'])){
+   $url .= "&uncache=1";
+}
+
+$result = file_get_contents($url);
+$data = json_decode($result,true);
+$concerts = array();
+$bandimgs = array();
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$concerts[] = array(
+		"artistname" => $v['artistname']['value'],
+		"locationname" => $v['locationname']['value'],
+		"location" => str_replace("http://www.wikidata.org/entity/","",$v['location']['value']),
+		"wiki" => $v['wikipedia']['value'],
+		"artist" => $v['artist']['value'],
+		"datum" => dutchdate($v['date']['value'])
+	);
+
+}
+
+
+function dutchdate($date){
+
+	$maanden = array("","jan","feb","maart","april","mei","juni","juli","aug","sept","okt","nov","dec");
+	$dutch = date("j ",strtotime($date)) . $maanden[date("n",strtotime($date))] . date(" Y",strtotime($date));
+
+	return $dutch;
+}
+
+//print_r($concerts);
 
 ?><!DOCTYPE html>
 <html>
@@ -192,10 +259,26 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			?>
 			<br />
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3 white">
+
+			<?php if(count($concerts)){ ?>
+				
+
+				<h3>Concerten</h3>
+
+				<?php 
+				for($i=0; $i<250; $i++){
+					if(!isset($concerts[$i])){ break; }
+					echo '<h4>' . $concerts[$i]['artistname'] . '</h4>';
+					echo '<p class="small">' . $concerts[$i]['datum'] . ' | <a href="../locaties/locatie.php?qid=' . $concerts[$i]['location'] . '">' . $concerts[$i]['locationname'] . '</a></p>';
+				}
+				?>
+					
+			<?php } ?>
+
 
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-5">
 
 		</div>
 	</div>
