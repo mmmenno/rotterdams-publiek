@@ -6,41 +6,50 @@ if(!isset($_GET['qid'])){
   $qid = $_GET['qid'];
 }
 
+include("functions.php");
+
 
 $sparql = "
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
-SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?bagid WHERE {
+SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?bagid ?wkt WHERE {
   
   VALUES ?item { wd:" . $qid . " }
   ?item wdt:P31 ?type .
   OPTIONAL{
-    ?item wdt:P625 ?coords .
+	 ?item wdt:P625 ?coords .
   }
   OPTIONAL{
-    ?item wdt:P5208 ?bagid .
+		?item wdt:P5208 ?bagid .
+		BIND(uri(CONCAT('http://bag.basisregistraties.overheid.nl/bag/id/pand/',?bagid)) AS ?baguri) .
+      SERVICE <https://data.pdok.nl/sparql> {
+        graph ?pandVoorkomen {
+          ?baguri geo:hasGeometry/geo:asWKT ?wkt .
+        }
+        filter not exists { ?pandVoorkomen bag:eindGeldigheid [] } 
+      }
   }
   OPTIONAL{
-      ?item wdt:P18 ?image .
-    }
+		?item wdt:P18 ?image .
+	 }
   OPTIONAL{
-      ?item wdt:P571 ?bouwjaar .
-    }
+		?item wdt:P571 ?bouwjaar .
+	 }
   OPTIONAL{
-      ?item wdt:P576 ?sloopjaar .
-    }
+		?item wdt:P576 ?sloopjaar .
+	 }
   OPTIONAL{
-      ?item p:P31 ?iseen .
-      ?iseen ps:P31 ?iseentype .
-      ?iseen pq:P580 ?starttype .
-      ?iseen pq:P582 ?eindtype .
-    }
+		?item p:P31 ?iseen .
+		?iseen ps:P31 ?iseentype .
+		?iseen pq:P580 ?starttype .
+		?iseen pq:P582 ?eindtype .
+	 }
   OPTIONAL{
-      ?item p:P2561 ?naam .
-      ?naam ps:P2561 ?naamstring .
-      ?naam pq:P580 ?startnaam .
-      ?naam pq:P582 ?eindnaam .
-    }
+		?item p:P2561 ?naam .
+		?naam ps:P2561 ?naamstring .
+		?naam pq:P580 ?startnaam .
+		?naam pq:P582 ?eindnaam .
+	 }
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
@@ -52,54 +61,58 @@ $name = "loc-" . $qid;
 
 
 $url = "http://128.199.33.115/querydata/?name=" . $name . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
-//$url = "http://localhost:3333/querydata/index.php?name=" . $name . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
-   $url .= "&uncache=1";
+	$url .= "&uncache=1";
 }
 
 $result = file_get_contents($url);
-include("functions.php");
-
-$result = get_sparql_data($endpoint,$name,$sparql);
-
-
 
 $data = json_decode($result,true);
+
+//print_r($data);
 
 $types = array();
 $names = array();
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
-   $venue = array();
-   $image = $v['image']['value'];
+	$venue = array();
+	$image = $v['image']['value'];
 
 
-   $venue["wdid"] = $wdid;
-   $venue["label"] = $v['itemLabel']['value'];
-   $venue["bagid"] = $v['bagid']['value'];
-   $venue["bstart"] = $v['bouwjaar']['value'];
-   $venue["bend"] = $v['sloopjaar']['value'];
+	$venue["wdid"] = $wdid;
+	$venue["label"] = $v['itemLabel']['value'];
+	$venue["bagid"] = $v['bagid']['value'];
+	$venue["bstart"] = $v['bouwjaar']['value'];
+	$venue["bend"] = $v['sloopjaar']['value'];
 
-   if(strlen($v['iseentypeLabel']['value'])){
-      $type = $v['iseentypeLabel']['value'];
-      $types[$type]['type'] = $type;
-      $types[$type]["starttype"] = $v['starttype']['value'];
-      $types[$type]["eindtype"] = $v['eindtype']['value'];
-   }
-   if(!array_key_exists($v['typeLabel']['value'], $types)){
-      $types[$v['typeLabel']['value']]['type'] = $v['typeLabel']['value'];
-   }
+	if(strlen($v['iseentypeLabel']['value'])){
+		$type = $v['iseentypeLabel']['value'];
+		$types[$type]['type'] = $type;
+		$types[$type]["starttype"] = $v['starttype']['value'];
+		$types[$type]["eindtype"] = $v['eindtype']['value'];
+	}
+	if(!array_key_exists($v['typeLabel']['value'], $types)){
+		$types[$v['typeLabel']['value']]['type'] = $v['typeLabel']['value'];
+	}
 
-   if(strlen($v['naamstring']['value'])){
-      $names[$v['naamstring']['value']]['name'] = $v['naamstring']['value'];
-      $names[$v['naamstring']['value']]['start'] = $v['startnaam']['value'];
-      $names[$v['naamstring']['value']]['end'] = $v['eindnaam']['value'];
-   }
-   
+	if(strlen($v['naamstring']['value'])){
+		$names[$v['naamstring']['value']]['name'] = $v['naamstring']['value'];
+		$names[$v['naamstring']['value']]['start'] = $v['startnaam']['value'];
+		$names[$v['naamstring']['value']]['end'] = $v['eindnaam']['value'];
+	}
+
+	if(strlen($v['wkt']['value'])){
+		$venue['geojsonfeature'] = wkt2geojson($v['wkt']['value']);
+	}elseif(strlen($v['coords']['value'])){
+		$venue['geojsonfeature'] = wkt2geojson(strtoupper($v['coords']['value']));
+	}
+	
 
 }
+
+//print_r($venue);
 
 ?><!DOCTYPE html>
 <html>
@@ -129,66 +142,132 @@ foreach ($data['results']['bindings'] as $k => $v) {
 <body class="abt-locations">
 
 <div class="container-fluid">
-   <div class="row black locationsheader" <?php if(strlen($image)){ echo 'style="background-image: url(' . $image . '?width=800px);"'; } ?>>
-      <div class="col-md">
-         <h2><a href="../">Rotterdams Publiek</a> | <?= $venue['label'] ?></h2>
-      </div>
-   </div>
-   <div class="row">
-      <div class="col-md-4 black">
-         <h2><?= $venue['label'] ?></h2>
+	<div class="row black locationsheader" <?php if(strlen($image)){ echo 'style="background-image: url(' . $image . '?width=800px);"'; } ?>>
+		<div class="col-md">
+			<h2><a href="../">Rotterdams Publiek</a> | <?= $venue['label'] ?></h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 black">
 
-         <?php 
-         if(strlen($venue['bstart'])){ 
-            echo 'gebouwd in ' . date("Y",strtotime($venue['bstart'])) . '<br />';
-         }
+		  	<div id="map" style="height: 300px; margin-left: -15px; margin-right: -15px;"></div>
 
-         if(strlen($venue['bend'])){ 
-            echo 'verdwenen in ' . date("Y",strtotime($venue['bend'])) . '<br /><br />';
-         }
 
-         foreach ($types as $k => $v) {
-            echo '<strong>' . $k . '</strong> ';
-            if(strlen($v['starttype'])){
-               echo 'van ' . date("Y",strtotime($v['starttype']));
-            }
-            if(strlen($v['eindtype'])){
-               echo ' tot ' . date("Y",strtotime($v['eindtype']));
-            }
-            echo '<br />';
-         }
+			<h2><?= $venue['label'] ?></h2>
 
-         if(count($names)){
-            echo '<h3>a.k.a.:</h3>';
-         }
+			<?php 
+			if(strlen($venue['bstart'])){ 
+				echo 'gebouwd in ' . date("Y",strtotime($venue['bstart'])) . '<br />';
+			}
 
-         foreach ($names as $k => $v) {
-            echo '<strong>' . $k . '</strong> ';
-            if(strlen($v['start'])){
-               echo 'van ' . date("Y",strtotime($v['start']));
-            }
-            if(strlen($v['end'])){
-               echo ' tot ' . date("Y",strtotime($v['end']));
-            }
-            echo '<br />';
-         }
-         ?>
-         <br />
-      </div>
-      <div class="col-md-4">
+			if(strlen($venue['bend'])){ 
+				echo 'verdwenen in ' . date("Y",strtotime($venue['bend'])) . '<br /><br />';
+			}
 
-      </div>
-      <div class="col-md-4">
+			foreach ($types as $k => $v) {
+				echo '<strong>' . $k . '</strong> ';
+				if(strlen($v['starttype'])){
+					echo 'van ' . date("Y",strtotime($v['starttype']));
+				}
+				if(strlen($v['eindtype'])){
+					echo ' tot ' . date("Y",strtotime($v['eindtype']));
+				}
+				echo '<br />';
+			}
 
-      </div>
-   </div>
+			if(count($names)){
+				echo '<h3>a.k.a.:</h3>';
+			}
+
+			foreach ($names as $k => $v) {
+				echo '<strong>' . $k . '</strong> ';
+				if(strlen($v['start'])){
+					echo 'van ' . date("Y",strtotime($v['start']));
+				}
+				if(strlen($v['end'])){
+					echo ' tot ' . date("Y",strtotime($v['end']));
+				}
+				echo '<br />';
+			}
+			?>
+			<br />
+		</div>
+		<div class="col-md-4">
+
+		</div>
+		<div class="col-md-4">
+
+		</div>
+	</div>
 </div>
 
 
 
-
 <script>
-  
+  $(document).ready(function() {
+    createMap();
+    refreshMap();
+  });
+
+  function createMap(){
+    center = [51.916857, 4.476839];
+    zoomlevel = 14;
+    
+    map = L.map('map', {
+          center: center,
+          zoom: zoomlevel,
+          minZoom: 1,
+          maxZoom: 20,
+          scrollWheelZoom: true,
+          zoomControl: false
+      });
+
+    L.control.zoom({
+        position: 'bottomright'
+    }).addTo(map);
+
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20,
+      ext: 'png'
+    }).addTo(map);
+  }
+
+  function refreshMap(){
+  		var geojsonFeature = <?= json_encode($venue['geojsonfeature']) ?>;
+  		console.log(geojsonFeature);
+  		
+  		var myStyle = {
+			"color": "#950305",
+			"weight": 3,
+			"opacity": 0.8,
+			"fillOpacity": 0.3
+		};
+
+  		var myLayer = L.geoJSON(null, {
+              pointToLayer: function (feature, latlng) {                    
+                  return new L.CircleMarker(latlng, {
+							color: "#950305",
+							radius:8,
+							weight: 2,
+							opacity: 0.8,
+							fillOpacity: 0.3
+                  });
+              },
+              style: myStyle
+              }).addTo(map);
+		myLayer.addData(geojsonFeature);
+
+  		map.fitBounds(myLayer.getBounds());
+
+  		if(geojsonFeature['type']=="Point"){
+  			map.setZoom(16);
+  		}
+  }
+
+
 </script>
 
 

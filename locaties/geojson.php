@@ -2,12 +2,14 @@
 
 //ini_set('memory_limit', '1024M');
 
+include("functions.php");
+
 $sparqlQueryString = "
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
 SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?baguri ?wkt WHERE {
   
-    VALUES ?type { wd:Q57660343 wd:Q41253 wd:Q24354 wd:Q24699794 wd:Q207694 wd:Q856584 wd:Q57659484 wd:Q1060829 wd:Q18674739 }
+    VALUES ?type { wd:Q57660343 wd:Q41253 wd:Q24354 wd:Q24699794 wd:Q207694 wd:Q856584 wd:Q57659484 wd:Q1060829 wd:Q18674739 wd:Q15206070 }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
     OPTIONAL{
@@ -164,63 +166,7 @@ file_put_contents("locaties.geojson", $json);
 
 
 
-function wkt2geojson($wkt){
-	$coordsstart = strpos($wkt,"(");
-	$type = trim(substr($wkt,0,$coordsstart));
-	$coordstring = substr($wkt, $coordsstart);
 
-	switch ($type) {
-	    case "LINESTRING":
-	    	$geom = array("type"=>"LineString","coordinates"=>array());
-			$coordstring = str_replace(array("(",")"), "", $coordstring);
-	    	$pairs = explode(",", $coordstring);
-	    	foreach ($pairs as $k => $v) {
-	    		$coords = explode(" ", trim($v));
-	    		$geom['coordinates'][] = array((double)$coords[0],(double)$coords[1]);
-	    	}
-	    	return $geom;
-	    	break;
-	    case "POLYGON":
-	    	$geom = array("type"=>"Polygon","coordinates"=>array());
-			preg_match_all("/\([0-9. ,]+\)/",$coordstring,$matches);
-	    	//print_r($matches);
-	    	foreach ($matches[0] as $linestring) {
-	    		$linestring = str_replace(array("(",")"), "", $linestring);
-		    	$pairs = explode(",", $linestring);
-		    	$line = array();
-		    	foreach ($pairs as $k => $v) {
-		    		$coords = explode(" ", trim($v));
-		    		$line[] = array((double)$coords[0],(double)$coords[1]);
-		    	}
-		    	$geom['coordinates'][] = $line;
-	    	}
-	    	return $geom;
-	    	break;
-	    case "MULTILINESTRING":
-	    	$geom = array("type"=>"MultiLineString","coordinates"=>array());
-	    	preg_match_all("/\([0-9. ,]+\)/",$coordstring,$matches);
-	    	//print_r($matches);
-	    	foreach ($matches[0] as $linestring) {
-	    		$linestring = str_replace(array("(",")"), "", $linestring);
-		    	$pairs = explode(",", $linestring);
-		    	$line = array();
-		    	foreach ($pairs as $k => $v) {
-		    		$coords = explode(" ", trim($v));
-		    		$line[] = array((double)$coords[0],(double)$coords[1]);
-		    	}
-		    	$geom['coordinates'][] = $line;
-	    	}
-	    	return $geom;
-	    	break;
-	    case "POINT":
-			$coordstring = str_replace(array("(",")"), "", $coordstring);
-	    	$coords = explode(" ", $coordstring);
-	    	//print_r($coords);
-	    	$geom = array("type"=>"Point","coordinates"=>array((double)$coords[0],(double)$coords[1]));
-	    	return $geom;
-	        break;
-	}
-}
 
 
 

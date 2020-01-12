@@ -145,7 +145,7 @@ if(!file_exists(__DIR__ . "/locaties.geojson") || isset($_GET['uncache'])){
 
     var props = $(this)[0].feature.properties;
     console.log(props);
-    $("#itemtitle").html(props['label']);
+    $("#itemtitle").html('<a href="locatie.php?qid=' + props['wdid'] + '">' + props['label'] + '</a>');
 
     var years = '';
     if(props['bstart'] != null){
