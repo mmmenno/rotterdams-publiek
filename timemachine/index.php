@@ -7,6 +7,7 @@ if(!isset($_GET['year'])){
 }
 
 $sparql = "
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 PREFIX wd: <http://www.wikidata.org/entity/>
@@ -32,15 +33,19 @@ SELECT * WHERE {
 	OPTIONAL{
 	  ?actorwdid foaf:isPrimaryTopicOf ?artikel .
 	}
-	SERVICE <https://query.wikidata.org/sparql> {
-		?actorwdid wdt:P18 ?actorimg .
-	}
 	OPTIONAL{
 	 ?actor dbo:role ?rol . 
 	}
+	SERVICE <https://query.wikidata.org/sparql> {
+		OPTIONAL{
+			?actorwdid wdt:P18 ?actorimg .
+		}
+	}
   }
+
   OPTIONAL{
 	?cho dc:subject ?item .
+	?cho foaf:depiction ?imgurl .
 	MINUS { ?cho dc:type <http://vocab.getty.edu/aat/300263837> }
   }
   OPTIONAL{
@@ -100,21 +105,28 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			);
 		}
 	}else{
-		$otherevents[$v['item']['value']] = array(
-			"label" => $v['label']['value'],
-			"place" => $v['placelabel']['value'],
-			"placeid" => $wdidplace,
-			"from" => dutchdate($v['begin']['value']),
-			"to" => dutchdate($v['end']['value'])
-		);
+		if(!isset($otherevents[$v['item']['value']])){
+			$otherevents[$v['item']['value']] = array(
+				"label" => $v['label']['value'],
+				"place" => $v['placelabel']['value'],
+				"placeid" => $wdidplace,
+				"from" => dutchdate($v['begin']['value']),
+				"to" => dutchdate($v['end']['value'])
+			);
+		}
 
 
-		if($v['actorimg']['value']!=""){
-			$actors[$v['actorwdid']['value']] = array(
-				"img" => $v['actorimg']['value'],
+		if($v['actorlabel']['value']!=""){
+			$otherevents[$v['item']['value']]['actors'][$v['actorlabel']['value']] = array(
 				"label" => $v['actorlabel']['value'],
-				"wikipedia" => $v['artikel']['value'],
-				"event" => $v['label']['value']
+				"wikipedia" => $v['artikel']['value']
+			);
+		}
+
+		if($v['cho']['value']!=""){
+			$otherevents[$v['item']['value']]['images'][] = array(
+				"cho" => $v['cho']['value'],
+				"imgurl" => $v['imgurl']['value']
 			);
 		}
 
@@ -129,6 +141,10 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	}
 
 }
+
+//print_r($otherevents);
+
+
 
 // CONCERTEN
 $sparql = "
@@ -179,6 +195,8 @@ $result = file_get_contents($url);
 $data = json_decode($result,true);
 $concerts = array();
 $bandimgs = array();
+
+//print_r($data);
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
@@ -252,57 +270,89 @@ $next = "/timemachine/?year=" . $next;
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4 white listing">
-			<h3>tentoonstellingen</h3>
 
-			<?php 
-			foreach($exhibitions as $k => $v){
-			echo '<h4>' . $v['label'] . '</h4>';
-			echo '<p class="small">' . $v['from'] . ' - ' . $v['to'] . ' | <a href="../locaties/locatie.php?qid=' . $v['placeid'] . '">' . $v['place'] . '</a></p>';
-			}
-			?>
-		</div>
-		<div class="col-md-2 black imgbar">
-			<?php 
-			foreach($exhibitors as $k => $v){
-			echo '<div class="imginfo"><h2>' . $v['label'] . '</h2>';
-			echo '<p class="small">dit jaar te zien in de tentoonstelling "' . $v['exhibition'] . '"</p>';
-			if(strlen($v['wikipedia'])){
-			echo '<a href="' . $v['wikipedia'] . '">' . $v['label'] . ' op Wikipedia</a>';
-			}
-			echo '</div>';
-			echo '<img src="' . $v['img'] . '?width=200" >';
-			}
-			?>
+		<div class="col-md black imgbar">
+			
+				<?php foreach($videos as $k => $v){ ?>
+					<div xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="oip_media" about="<?= $v['fileurl'] ?>">
+						<div class="padding">
+							<h4><?= $v['event'] ?></h4>
+						</div>
+						<video width="100%" controls="controls">
+							<source type="video/mp4" src="<?= $v['fileurl'] ?>#t=2"/>
+						</video>
+					</div>
+				<?php } ?>
+			
+
+			<div class="row">
+				<div class="col-md-8 white listing">
+					<h3>tentoonstellingen</h3>
+
+					<?php 
+					foreach($exhibitions as $k => $v){
+					echo '<h4>' . $v['label'] . '</h4>';
+					echo '<p class="small">' . $v['from'] . ' - ' . $v['to'] . ' | <a href="../locaties/locatie.php?qid=' . $v['placeid'] . '">' . $v['place'] . '</a></p>';
+					}
+					?>
+				</div>
+				<div class="col-md black imgbar">
+					<?php 
+					foreach($exhibitors as $k => $v){
+					echo '<div class="imginfo"><h2>' . $v['label'] . '</h2>';
+					echo '<p class="small">dit jaar te zien in de tentoonstelling "' . $v['exhibition'] . '"</p>';
+					if(strlen($v['wikipedia'])){
+					echo '<a href="' . $v['wikipedia'] . '">' . $v['label'] . ' op Wikipedia</a>';
+					}
+					echo '</div>';
+					echo '<img src="' . $v['img'] . '?width=200" >';
+					}
+					?>
+
+				</div>
+			</div>
 
 		</div>
+
 		<div class="col-md white listing">
 
 			<div class="row">
 				<div class="col-md black imgbar">
-				<?php foreach($videos as $k => $v){ ?>
-					<div xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="oip_media" about="<?= $v['fileurl'] ?>">
-						<video width="100%" controls="controls">
-							<source type="video/mp4" src="<?= $v['fileurl'] ?>#t=2"/>
-						</video>
-						<div class="small padding">
-							<a href="<?= $k ?>" rel="cc:attributionURL" property="dct:title"><?= $v['event'] ?></a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/nl/" rel="license">CC-BY-SA</a>.
-						</div>
-					</div>
-				<?php } ?>
-				</div>
-			</div>
+				
+				
 
-			<?php 
-			foreach($otherevents as $k => $v){
-				echo '<h4>' . $v['label'] . '</h4>';
-				if($v['from']==$v['to']){
-					echo '<p class="small">' . $v['from'] . ' | <a href="../locaties/locatie.php?qid=' . $v['placeid'] . '">' . $v['place'] . '</a></p>';
-				}else{
-					echo '<p class="small">' . $v['from'] . ' - ' . $v['to'] . ' | ' . $v['place'] . '</p>';
+				<?php 
+				foreach($otherevents as $k => $v){
+
+					if($v['images'][0]['imgurl']==""){
+						continue;
+					}
+					echo '<div class="event">';
+					echo '<div class="imginfo"><h2>' . $v['label'] . '</h2>';
+					echo '<p class="small">' . $v['place'] . ' | ' . $v['from'];
+					if($v['from'] != $v['to']){
+						echo ' - ' . $v['to'];
+					}
+					if(isset($v['actors'])){
+						foreach($v['actors'] as $actor){
+							echo " | ";
+							if(strlen($actor['wikipedia'])){
+								echo '<a href="' . $actor['wikipedia'] . '">' . $actor['label'] . '</a>';
+							}else{
+								echo $actor['label'];
+							}
+						}
+					}
+					echo "</p></div>";
+					echo '<img style="width:100%;" src="' . $v['images'][0]['imgurl'] . '" >';
+					echo "</div>\n\n";
+					//echo '<h4>' . $v['label'] . '</h4>';
+					
 				}
-			}
-			?>
+				?>
+
+			</div>
+			</div>
 
 			
 			<div class="row">
@@ -360,6 +410,7 @@ $next = "/timemachine/?year=" . $next;
 
 		$(".imgbar img").click(function(){
 			$(this).prev('.imginfo').toggle();
+			//console.log($(this).prev('.imginfo'))
 		});
 
 		$(".imginfo").click(function(){

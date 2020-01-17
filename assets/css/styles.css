@@ -73,6 +73,9 @@ h4{
 	width: 100%;
 	display: none;
 }
+.imgbar .event .imginfo{
+	display: block;
+}
 .imgbar .imginfo h2{
 	margin-top: 0;
 }
