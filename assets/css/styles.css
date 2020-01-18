@@ -76,6 +76,9 @@ h4{
 .imgbar .event .imginfo{
 	display: block;
 }
+body.abt-locations .imgbar .imginfo{
+	background: rgba(149, 3, 5, .3);
+}
 .imgbar .imginfo h2{
 	margin-top: 0;
 }
@@ -111,3 +114,31 @@ a:hover{
 #timemachineform{
 	margin-bottom: 24px;
 }
+#legenda{
+	background-color: #fff;
+	padding: 15px;
+	color: #000;
+}
+#legenda div{
+	width: 40px;
+	height: 20px;
+	margin-right: 10px;
+	margin-top: 3px;
+	clear: both;
+	float: left;
+}
+#legenda #bestaand{
+	background-color: #EACCCD;
+	border: 3px solid #950305;
+}
+#legenda #verdwenen{
+	background-color: #D5DCE9;
+	border: 3px solid #738AB7;
+}
+
+
+
+
+
+
+

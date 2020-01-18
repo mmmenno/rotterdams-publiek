@@ -171,6 +171,186 @@ foreach ($data['results']['bindings'] as $k => $v) {
 }
 
 
+// EVENTS
+
+$sparql = "
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+SELECT * WHERE {
+	?item a sem:Event ;
+		sem:eventType ?eventtype ;
+		sem:hasPlace wd:" . $qid . " ;
+		rdfs:label ?label ;
+		sem:hasEarliestBeginTimeStamp ?begin;
+		sem:hasLatestEndTimeStamp ?end .
+	?eventtype rdfs:label ?typelabel .
+	OPTIONAL{
+		?item sem:hasActor ?actor .
+		?actor rdf:value ?actorwdid .
+		?actorwdid rdfs:label ?actorlabel .
+		OPTIONAL{
+			?actorwdid foaf:isPrimaryTopicOf ?artikel .
+		}
+		OPTIONAL{
+			?actor dbo:role ?rol . 
+		}
+	}
+
+	OPTIONAL{
+		?cho dc:subject ?item .
+		?cho foaf:depiction ?imgurl .
+		MINUS { ?cho dc:type <http://vocab.getty.edu/aat/300263837> }
+	}
+	OPTIONAL{
+		?newsreel dc:subject ?item .
+		?newsreel dc:type <http://vocab.getty.edu/aat/300263837> .
+		?newsreel edm:isShownBy ?newsreelfile .
+	}
+	BIND(year(xsd:dateTime(?begin)) AS ?startyear)
+	BIND(year(xsd:dateTime(?end)) AS ?endyear)
+} 
+ORDER BY ?begin ?item
+LIMIT 100
+";
+
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+$url = "http://128.199.33.115/querydata/?name=loc-events-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+
+if(isset($_GET['uncache'])){
+   $url .= "&uncache=1";
+}
+
+$result = file_get_contents($url);
+
+$data = json_decode($result,true);
+
+$exhibitions = array();
+$exhibitors = array();
+$otherevents = array();
+$actors = array();
+$videos = array();
+
+//print_r($data);
+$images = array();
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$wdidplace = str_replace("http://www.wikidata.org/entity/", "", $v['place']['value']);
+
+	if($v['typelabel']['value']=="tentoonstelling"){
+		$exhibitions[$v['item']['value']] = array(
+			"label" => $v['label']['value'],
+			"place" => $v['placelabel']['value'],
+			"placeid" => $wdidplace,
+			"from" => dutchdate($v['begin']['value']),
+			"to" => dutchdate($v['end']['value'])
+		);
+
+		if($v['actorimg']['value']!="" && $v['rol']['value']!="organisator"){
+			$exhibitors[$v['actorwdid']['value']] = array(
+				"img" => $v['actorimg']['value'],
+				"label" => $v['actorlabel']['value'],
+				"wikipedia" => $v['artikel']['value'],
+				"exhibition" => $v['label']['value']
+			);
+		}
+	}else{
+		if(!isset($otherevents[$v['item']['value']])){
+			$otherevents[$v['item']['value']] = array(
+				"label" => $v['label']['value'],
+				"place" => $v['placelabel']['value'],
+				"placeid" => $wdidplace,
+				"from" => dutchdate($v['begin']['value']),
+				"to" => dutchdate($v['end']['value'])
+			);
+		}
+
+
+		if($v['actorlabel']['value']!=""){
+			$otherevents[$v['item']['value']]['actors'][$v['actorlabel']['value']] = array(
+				"label" => $v['actorlabel']['value'],
+				"wikipedia" => $v['artikel']['value']
+			);
+		}
+
+		if($v['cho']['value']!=""){
+			$otherevents[$v['item']['value']]['images'][] = array(
+				"cho" => $v['cho']['value'],
+				"imgurl" => $v['imgurl']['value']
+			);
+		}
+
+	}
+
+	if($v['newsreel']['value']!=""){
+		$videos[$v['newsreel']['value']] = array(
+			"fileurl" => $v['newsreelfile']['value'],
+			"label" => $v['newslabel']['value'],
+			"event" => $v['label']['value']
+		);
+	}
+
+}
+
+//print_r($otherevents);
+
+
+// EVENTS
+
+$sparql = "
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT * WHERE {
+	?cho dct:spatial wd:" . $qid . " .
+	?cho foaf:depiction ?imgurl .
+	?cho dc:date ?chodate .
+	?cho dc:creator ?creator .
+	?cho edm:isShownAt ?isShownAt .
+	?cho dc:title ?chotitle .
+	MINUS { ?cho dc:type <http://vocab.getty.edu/aat/300263837> }
+} 
+ORDER BY ASC(?chodate)
+LIMIT 100
+";
+
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+$url = "http://128.199.33.115/querydata/?name=loc-illustrations-" . $qid . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
+
+if(isset($_GET['uncache'])){
+   $url .= "&uncache=1";
+}
+
+$result = file_get_contents($url);
+
+$data = json_decode($result,true);
+
+$illustrations = array();
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$illustrations[$v['cho']['value']] = array(
+		"label" => $v['chotitle']['value'],
+		"creator" => $v['creator']['value'],
+		"imgurl" => $v['imgurl']['value'],
+		"date" => dutchdate($v['chodate']['value']),
+		"isShownAt" => dutchdate($v['isShownAt']['value'])
+	);
+
+}
+
+//print_r($illustrations);
 function dutchdate($date){
 
 	$maanden = array("","jan","feb","maart","april","mei","juni","juli","aug","sept","okt","nov","dec");
@@ -278,8 +458,67 @@ function dutchdate($date){
 
 
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-5 black imgbar">
 
+			<?php foreach($videos as $k => $v){ ?>
+				<div xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="oip_media" about="<?= $v['fileurl'] ?>">
+					<div class="padding">
+						<h4><?= $v['event'] ?></h4>
+					</div>
+					<video width="100%" controls="controls">
+						<source type="video/mp4" src="<?= $v['fileurl'] ?>#t=2"/>
+					</video>
+				</div>
+			<?php } ?>
+
+
+			<?php 
+				foreach($otherevents as $k => $v){
+
+					if($v['images'][0]['imgurl']==""){
+						continue;
+					}
+					echo '<div class="event">';
+					echo '<div class="imginfo"><h2>' . $v['label'] . '</h2>';
+					echo '<p class="small">' . $v['from'];
+					if($v['from'] != $v['to']){
+						echo ' - ' . $v['to'];
+					}
+					if(isset($v['actors'])){
+						foreach($v['actors'] as $actor){
+							echo " | ";
+							if(strlen($actor['wikipedia'])){
+								echo '<a href="' . $actor['wikipedia'] . '">' . $actor['label'] . '</a>';
+							}else{
+								echo $actor['label'];
+							}
+						}
+					}
+					echo "</p></div>";
+					echo '<img style="width:100%;" src="' . $v['images'][0]['imgurl'] . '" >';
+					echo "</div>\n\n";
+					//echo '<h4>' . $v['label'] . '</h4>';
+					
+				}
+			?>
+
+			<?php 
+			//print_r($illustrations);
+				foreach($illustrations as $k => $v){
+
+					echo '<div class="event">';
+					echo '<div class="imginfo"><h2>' . $v['label'] . '</h2>';
+					echo '<p class="small">' . $v['date'];
+					if($v['creator'] != ""){
+						echo ' | ' . $v['creator'];
+					}
+					echo "</p></div>";
+					echo '<img style="width:100%;" src="' . $v['imgurl'] . '" >';
+					echo "</div>\n\n";
+					//echo '<h4>' . $v['label'] . '</h4>';
+					
+				}
+			?>
 		</div>
 	</div>
 </div>

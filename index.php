@@ -60,7 +60,11 @@
 				</p>
 			</div>
 			<div class="col-md abt-events">
-				<h2>Waargebeurd</h2>
+				<h2>
+					ROTTERDAM.<br />
+					MADE IT<br />
+					HAPPEN.
+				</h2>
 				<p>
 					Premières, festivals, koninklijk bezoek - op beeld vastgelegde gebeurtenissen uit het culturele leven van de stad tonen we in <a href="">ons gebeurtenissenoverzicht</a>.
 				</p>

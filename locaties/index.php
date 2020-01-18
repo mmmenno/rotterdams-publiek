@@ -39,6 +39,11 @@ if(!file_exists(__DIR__ . "/locaties.geojson") || isset($_GET['uncache'])){
       <div class="col-md black">
         <h3 id="itemtitle">Locaties</h3>
 
+        <div id="legenda">
+          <div id="bestaand"></div> bestaand gebouw<br />
+          <div id="verdwenen"></div> verdwenen gebouw
+        </div>
+
         <p id="itemtimes"></p>
 
         <p id="itemtypes"></p>
@@ -141,7 +146,7 @@ if(!file_exists(__DIR__ . "/locaties.geojson") || isset($_GET['uncache'])){
   }
 
   function whenClicked(){
-    $("#intro").hide();
+    $("#legenda").hide();
 
     var props = $(this)[0].feature.properties;
     console.log(props);
