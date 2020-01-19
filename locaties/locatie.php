@@ -12,7 +12,7 @@ include("functions.php");
 $sparql = "
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
-SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?bagid ?wkt WHERE {
+SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?bagid ?wkt ?next ?nextLabel ?prev ?prevLabel WHERE {
   
   VALUES ?item { wd:" . $qid . " }
   ?item wdt:P31 ?type .
@@ -45,11 +45,24 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?startty
 		?iseen pq:P582 ?eindtype .
 	 }
   OPTIONAL{
+		?item p:P31 ?iseen .
+		?iseen ps:P31 ?iseentype .
+		?iseen pq:P580 ?starttype .
+		?iseen pq:P582 ?eindtype .
+	 }
+  OPTIONAL{
 		?item p:P2561 ?naam .
 		?naam ps:P2561 ?naamstring .
 		?naam pq:P580 ?startnaam .
 		?naam pq:P582 ?eindnaam .
 	 }
+  
+  OPTIONAL{
+    ?item wdt:P1398 ?prev .
+  }
+  OPTIONAL{
+    ?item wdt:P167 ?next .
+  }
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
@@ -82,10 +95,15 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 
 	$venue["wdid"] = $qid;
+	$venue["uri"] = $v['item']['value'];
 	$venue["label"] = $v['itemLabel']['value'];
 	$venue["bagid"] = $v['bagid']['value'];
 	$venue["bstart"] = $v['bouwjaar']['value'];
 	$venue["bend"] = $v['sloopjaar']['value'];
+	$venue["next"] = $v['next']['value'];
+	$venue["nextLabel"] = $v['nextLabel']['value'];
+	$venue["prev"] = $v['prev']['value'];
+	$venue["prevLabel"] = $v['prevLabel']['value'];
 
 	if(strlen($v['iseentypeLabel']['value'])){
 		$type = $v['iseentypeLabel']['value'];
@@ -402,6 +420,8 @@ function dutchdate($date){
 
 			<h2><?= $venue['label'] ?></h2>
 
+			Wikidata: <a href="<?= $venue['uri'] ?>"><?= $venue['wdid'] ?></a><br /><br />
+
 			<?php 
 			if(strlen($venue['bstart'])){ 
 				echo 'gebouwd in ' . date("Y",strtotime($venue['bstart'])) . '<br />';
@@ -436,23 +456,41 @@ function dutchdate($date){
 				}
 				echo '<br />';
 			}
+
+			echo '<br />';
+
+			if(strlen($venue['prev'])){ 
+				echo 'vervangt <a href="locatie.php?qid=' . str_replace("http://www.wikidata.org/entity/","",$venue['prev']) . '">' . $venue['prevLabel'] . '</a><br />';
+			}
+
+			if(strlen($venue['next'])){ 
+				echo 'vervangen door <a href="locatie.php?qid=' . str_replace("http://www.wikidata.org/entity/","",$venue['next']) . '">' . $venue['nextLabel'] . '</a><br />';
+			}
+
 			?>
 			<br />
 		</div>
-		<div class="col-md-3 white">
+		<div class="col-md-3 imgbar white">
+			
+			<?php if($image != ""){ ?>
+				<img src="<?= $image ?>?width=800px" style="width: 100%;" />
+			<?php } ?>
 
 			<?php if(count($concerts)){ ?>
 				
+				<div class="padding">
+					
+						<h3>Concerten</h3>
 
-				<h3>Concerten</h3>
-
-				<?php 
-				for($i=0; $i<250; $i++){
-					if(!isset($concerts[$i])){ break; }
-					echo '<h4>' . $concerts[$i]['artistname'] . '</h4>';
-					echo '<p class="small">' . $concerts[$i]['datum'] . ' | <a href="../locaties/locatie.php?qid=' . $concerts[$i]['location'] . '">' . $concerts[$i]['locationname'] . '</a></p>';
-				}
-				?>
+						<?php 
+						for($i=0; $i<250; $i++){
+							if(!isset($concerts[$i])){ break; }
+							echo '<h4>' . $concerts[$i]['artistname'] . '</h4>';
+							echo '<p class="small">' . $concerts[$i]['datum'] . ' | <a href="../locaties/locatie.php?qid=' . $concerts[$i]['location'] . '">' . $concerts[$i]['locationname'] . '</a></p>';
+						}
+						?>
+					
+				</div>
 					
 			<?php } ?>
 
