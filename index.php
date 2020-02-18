@@ -51,7 +51,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md abt-locations">
-				<h2>Plaatsen van vertier</h2>
+				<h2>De Zalen</h2>
 				<p>
 					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het allemaal bekijken op <a href="locaties/">de kaart met locaties</a>.
 				</p>
@@ -66,7 +66,7 @@
 					HAPPEN.
 				</h2>
 				<p>
-					Premières, festivals, koninklijk bezoek - op beeld vastgelegde gebeurtenissen uit het culturele leven van de stad tonen we in <a href="">ons gebeurtenissenoverzicht</a>.
+					Premières, festivals, koninklijk bezoek - op beeld vastgelegde gebeurtenissen uit het culturele leven van de stad tonen we in <a href="events/index.php">ons gebeurtenissenoverzicht</a>.
 				</p>
 			</div>
 			<div class="col-md quote">
