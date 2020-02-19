@@ -52,6 +52,7 @@ $data = json_decode($result,true);
 
 //print_r($data);
 $events = array();
+$eventtypes = array();
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
@@ -66,15 +67,18 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		"end" => dutchdate($v['end']['value']),
 	);
 
+  $eventtypes[mb_strtolower($v['typelabel']['value'])]++;
+
 
 }
 
+ksort($eventtypes);
 
 ?><!DOCTYPE html>
 <html>
 <head>
   
-<title>Rotterdams Publiek - gebeurtenissen</title>
+<title>Rotterdams Publiek - R'dam. Made it Happen.</title>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -99,12 +103,24 @@ foreach ($data['results']['bindings'] as $k => $v) {
   <div class="container-fluid">
    <div class="row black eventsheader">
       <div class="col-md">
-         <h2><a href="../">Rotterdams Publiek</a> | gebeurtenissen</h2>
+         <h2><a href="../">Rotterdams Publiek</a> | R'dam. Made it happen.</h2>
       </div>
       
    </div>
+
+   <div class="row black">
+    <div class="col-md" style="padding:15px;">
+        <?php foreach ($eventtypes as $k => $v) { ?>
+
+          <input type="checkbox" checked="checked" disabled="disabled" name="" /> <?= $k ?> (<?= $v ?>)
+
+        <?php } ?>
+        <button class="btn btn-default" style="background-color: #CBAAFF; font-size: 10px; padding:1px;">TODO: FILTER BY TYPE</button>
+    </div>
+  </div>
+
    <?php 
-   	$i = 0;
+   	$i = 1;
    	foreach ($events as $k => $v) {
    		$i++;
    		if($v['begin']==$v['end']){
@@ -114,15 +130,23 @@ foreach ($data['results']['bindings'] as $k => $v) {
    		}
    ?>
     <div class="row <?php if($i%2==0){ ?>white<?php }else{ ?>black<?php } ?>">
+
     	<div class="col-md event" id="<?= $k ?>">
-         <h3><a style="font-weight: normal;"><?= $v['label'] ?></a></h3>
-         <p class="small"><?= $v['typelabel'] ?> | <?= $datum ?> | <a href="../locaties/locatie.php?qid=<?= $v['place'] ?>"><?= $v['placelabel'] ?></a></p>
+
          <div class="imgcount">
-         	<?php for($x=0; $x<$v['nrimgs']; $x++){ ?>
-         		<div></div>
-         	<?php } ?>
+          <?php for($x=0; $x<$v['nrimgs']; $x++){ ?>
+            <div></div>
+          <?php } ?>
          </div>
+
+         <h3><a href="" style="font-weight: normal;"><?= $v['label'] ?></a></h3>
+
+         <p class="small"><?= $v['typelabel'] ?> | <?= $datum ?> | <a href="../locaties/locatie.php?qid=<?= $v['place'] ?>"><?= $v['placelabel'] ?></a></p>
+
+         <div class="eventcontent"></div>
+
       </div>
+
     </div>
   <?php } ?>
   </div>
@@ -137,12 +161,17 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	$(document).ready(function() {
 
 		$(".event h3 a").click(function(){
-      var event = $(this).parent().parent().attr("id")
-			console.log(event);
+      var event = $(this).parent().parent().attr("id");
+      var infodiv = $(this).parent().siblings('.eventcontent');
+			console.log(infodiv);
 
+      infodiv.load("event.php?event=" + event);
+
+      infodiv.toggle();
+      
 			// get contents for event
-      $('#eventimgs').load("event.php?event=" + event);
-			$('#eventimgs').show();
+      //$('#eventimgs').load("event.php?event=" + event);
+			//$('#eventimgs').show();
 
 			return false;
 		});

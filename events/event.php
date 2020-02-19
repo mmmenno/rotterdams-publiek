@@ -26,14 +26,25 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
-SELECT DISTINCT ?item ?label ?place ?placelabel ?typelabel ?begin ?end ?cho ?imgurl ?title ?creator WHERE {
+SELECT DISTINCT ?item ?label ?place ?placelabel ?typelabel ?begin ?end ?cho ?imgurl ?title ?creator ?actor ?actorwdid ?actorlabel ?actorwiki ?actordescription WHERE {
 VALUES ?item {<https://watwaarwanneer.info/event/" . $eventnr . ">}
-  ?item a sem:Event ;
+?item a sem:Event ;
 	sem:eventType ?eventtype ;
 	sem:hasPlace ?place ;
 	rdfs:label ?label ;
 	sem:hasEarliestBeginTimeStamp ?begin;
 	sem:hasLatestEndTimeStamp ?end .
+OPTIONAL{
+	?item sem:hasActor ?actor .
+    ?actor rdf:value ?actorwdid .
+    ?actor rdfs:label ?actorlabel .
+    OPTIONAL{
+     	?actorwdid dc:description ?actordescription .
+    }
+    OPTIONAL{
+     	?actorwdid foaf:isPrimaryTopicOf ?actorwiki .
+    }
+}
 ?place wdt:P131 wd:Q2680952 ;
 	rdfs:label ?placelabel .
 ?eventtype rdfs:label ?typelabel .
@@ -64,25 +75,36 @@ $data = json_decode($result,true);
 
 //print_r($data);
 $imgs = array();
+$beenthereimgs = array();
+$actors = array();
+$beenthereactors = array();
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
-	$imgs[] = array(
-		"eventlabel" => $v['label']['value'],
-		"eventplace" => str_replace("http://www.wikidata.org/entity/","",$v['place']['value']),
-		"eventplacelabel" => $v['placelabel']['value'],
-		"eventtypelabel" => $v['typelabel']['value'],
-		"eventnrimgs" => $v['images']['value'],
-		"eventbegin" => dutchdate($v['begin']['value']),
-		"eventend" => dutchdate($v['end']['value']),
-		"imgurl" => $v['imgurl']['value'],
-		"imgtitle" => $v['title']['value'],
-		"imgcreator" => $v['creator']['value'],
-		"imglink" => $v['cho']['value']
-	);
+	if(!in_array($v['cho']['value'], $beenthereimgs)){
+		$imgs[] = array(
+			"imgurl" => $v['imgurl']['value'],
+			"imgtitle" => str_replace(array("\"","'"),"`",$v['title']['value']),
+			"imgcreator" => $v['creator']['value'],
+			"imglink" => $v['cho']['value']
+		);
+		$beenthereimgs[] = $v['cho']['value'];
+	}
+
+	if(!in_array($v['actorwdid']['value'], $beenthereactors) && strlen($v['actorwdid']['value'])){
+		$actors[] = array(
+			"actorwdid" => $v['actorwdid']['value'],
+			"actorlabel" => str_replace(array("\"","'"),"`",$v['actorlabel']['value']),
+			"actordescription" => $v['actordescription']['value'],
+			"actorwiki" => $v['actorwiki']['value']
+		);
+		$beenthereactors[] = $v['actorwdid']['value'];
+	}
 
 
 }
+
+$imgsjson = json_encode($imgs);
 
 if($imgs[0]['eventbegin'] == $imgs[0]['eventbegin']){
 	$eventdatum = $imgs[0]['eventbegin'];
@@ -90,83 +112,84 @@ if($imgs[0]['eventbegin'] == $imgs[0]['eventbegin']){
 	$eventdatum = $imgs[0]['eventbegin'] . " - " . $eventdatum = $imgs[0]['eventend'];;
 }
 
+
 ?>
 
 
 
-<div class="container-fluid">
-	<div id="close">X</div>
-
 	
-   <div class="row">
-  
-   	<div class="col-md-6">
-   		
-   		<a href="<?= $imgs[0]['imglink'] ?>"><img style="width: 100%" src="<?= $imgs[0]['imgurl'] ?>" /></a>
+<div class="row">
 
-   		<br /><br />
-
-   		<div id="imgtitle"><?= $imgs[0]['imgtitle'] ?></div>
-   		<div id="imgcreator"><?= $imgs[0]['imgcreator'] ?></div>
-   		<div id="imgdate"><?= $imgs[0]['imgdate'] ?></div>
-
-   	</div>
-  
-   	<div class="col-md-6">
-   		
-
-   		
-			<h2><?= $imgs[0]['eventlabel'] ?></h2>
-
-			<p class="small"><?= $imgs[0]['eventtypelabel'] ?> | <?= $eventdatum ?> | <a href="../locaties/locatie.php?qid=<?= $imgs[0]['eventplace'] ?>"><?= $imgs[0]['eventplacelabel'] ?></a></p>
+	<div class="col-md-6">
+		
+		<a id="<?= $eventnr ?>-imglink" href="<?= $imgs[0]['imglink'] ?>"><img id="<?= $eventnr ?>-img" style="width: 100%; margin-bottom: 15px;" src="<?= $imgs[0]['imgurl'] ?>" /></a>
 
 
-			<h3>Alle foto's van deze gebeurtenis</h3>
-			<?php 
+	</div>
+
+	<div class="col-md-6 thumbs">
+		
+
+		
+		<?php 
+		if(count($imgs)>1){
 			foreach ($imgs as $key => $img) { 
 
-				echo '<img style="height:100px; margin-right:20px; margin-bottom:20px;" src="' . $img['imgurl'] . '" />';
+				echo '<img id="' . $eventnr . '-' . $key . '" style="height:100px; margin-right:15px; margin-bottom:15px;" src="' . $img['imgurl'] . '" />';
+			}
+		}
+		?>
+
+		<?php if(count($actors)>0){ ?>
+
+			<h3>personen / organisaties</h3>
+			<?php 
+			foreach ($actors as $key => $actor) { 
+
+				echo '<strong>' . $actor['actorlabel'] . '</strong> | ';
+				echo $actor['actordescription'];
+				if(strlen($actor['actorwiki'])){
+					echo ' ... <a target="_blank" href="' . $actor['actorwiki'] . '">meer op wikipedia</a>';
+				}
+				echo '<br />';
+
 			}
 			?>
+		<?php } ?>
 
+		<h3>beschrijving foto</h3>
+		<div id="<?= $eventnr ?>-imgtitle"><?= $imgs[0]['imgtitle'] ?></div>
+		<div id="<?= $eventnr ?>-imgcreator"><?= $imgs[0]['imgcreator'] ?></div>
+		<div id="<?= $eventnr ?>-imgdate"><?= $imgs[0]['imgdate'] ?></div>
 
-   		
-   	</div>
-   </div>
+		
 
-  <? /*
-   <?php 
-   	$i = 0;
-   	foreach ($events as $k => $v) {
-   		$i++;
-   		if($v['begin']==$v['end']){
-   			$datum = $v['begin'];
-   		}else{
-   			$datum = $v['begin'] . " - " . $v['end'];
-   		}
-   ?>
-    <div class="row <?php if($i%2==0){ ?>white<?php }else{ ?>black<?php } ?>">
-    	<div class="col-md event" id="<?= $k ?>">
-         <h3><a style="font-weight: normal;"><?= $v['label'] ?></a></h3>
-         <p class="small"><?= $datum ?> | <a href="../locaties/locatie.php?qid=<?= $v['place'] ?>"><?= $v['placelabel'] ?></a></p>
-         <div class="imgcount">
-         	<?php for($x=0; $x<$v['nrimgs']; $x++){ ?>
-         		<div></div>
-         	<?php } ?>
-         </div>
-      </div>
-    </div>
-  <?php } ?>
-  </div>
-  */ ?>
-
+		<br /><br />
+		
+	</div>
 </div>
+
+
 
 <script>
 	$(document).ready(function() {
 
-		$("#close").click(function(){
-			$('#eventimgs').hide();
+
+		$('.thumbs img').click(function(){
+
+			var allimgs = JSON.parse('<?= $imgsjson ?>');
+
+			var splitted = $(this).attr('id').split('-');
+			var eventid = splitted[0];
+			var key = splitted[1];
+
+			$('#' + eventid + '-img').attr('src',allimgs[key]['imgurl']);
+			$('#' + eventid + '-imglink').attr('href',allimgs[key]['imglink']);
+			$('#' + eventid + '-imgtitle').html(allimgs[key]['imgtitle']);
+			$('#' + eventid + '-imgcreator').html(allimgs[key]['imgcreator']);
+
+			console.log(eventid + '-img');
+
 		});
 
 
