@@ -1,5 +1,8 @@
 <?php
 
+//echo "hello";
+
+
 function dutchdate($date){
 
 	$maanden = array("","jan","feb","maart","april","mei","juni","juli","aug","sept","okt","nov","dec");
@@ -8,10 +11,10 @@ function dutchdate($date){
 	return $dutch;
 }
 
-if(!isset($_GET['event'])){
+if(!isset($_GET['eventid'])){
 	$eventnr = "3593";
 }else{
-	$eventnr = str_replace("www-", "", $_GET['event']);
+	$eventnr = str_replace("www-", "", $_GET['eventid']);
 }
 
 

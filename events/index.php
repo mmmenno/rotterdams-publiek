@@ -160,19 +160,17 @@ ksort($eventtypes);
 <script>
 	$(document).ready(function() {
 
-		$(".event h3 a").click(function(){
+		$(".event h3 a").click(function(e){
+
+      e.preventDefault;
+
       var event = $(this).parent().parent().attr("id");
       var infodiv = $(this).parent().siblings('.eventcontent');
-			console.log(infodiv);
-
-      infodiv.load("event.php?event=" + event);
-
+			
+      //console.log(event);
+      infodiv.load("event.php?eventid=" + event);
       infodiv.toggle();
       
-			// get contents for event
-      //$('#eventimgs').load("event.php?event=" + event);
-			//$('#eventimgs').show();
-
 			return false;
 		});
 
