@@ -109,13 +109,13 @@ ksort($eventtypes);
    </div>
 
    <div class="row black">
-    <div class="col-md" style="padding:15px;">
+    <div class="col-md small" style="padding:15px; color: #A7ADAE;">
         <?php foreach ($eventtypes as $k => $v) { ?>
 
           <input type="checkbox" checked="checked" disabled="disabled" name="" /> <?= $k ?> (<?= $v ?>)
 
         <?php } ?>
-        <button class="btn btn-default" style="background-color: #CBAAFF; font-size: 10px; padding:1px;">TODO: FILTER BY TYPE</button>
+        <button class="btn btn-default" style="background-color: #A7ADAE; font-size: 10px; padding:1px;">TODO: FILTER BY TYPE</button>
     </div>
   </div>
 
