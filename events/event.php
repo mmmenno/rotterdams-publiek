@@ -121,7 +121,7 @@ if($imgs[0]['eventbegin'] == $imgs[0]['eventbegin']){
 
 
 	
-<div class="row">
+<div class="row" id="event<?= $eventnr ?>">
 
 	<div class="col-md-6">
 		
@@ -178,7 +178,7 @@ if($imgs[0]['eventbegin'] == $imgs[0]['eventbegin']){
 	$(document).ready(function() {
 
 
-		$('.thumbs img').click(function(){
+		$('#event<?= $eventnr ?> .thumbs img').click(function(){
 
 			var allimgs = JSON.parse('<?= $imgsjson ?>');
 

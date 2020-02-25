@@ -31,6 +31,16 @@ if(!file_exists(__DIR__ . "/locaties.geojson") || isset($_GET['uncache'])){
 </head>
 <body class="abt-locations">
 
+
+  <div class="container-fluid">
+   <div class="row black locationsheader">
+      <div class="col-md">
+         <h2><a href="../">Rotterdams Publiek</a> | locaties</h2>
+      </div>
+      
+   </div>
+ </div>
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-9 mapcol">

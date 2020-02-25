@@ -115,7 +115,7 @@ ksort($eventtypes);
           <input type="checkbox" checked="checked" disabled="disabled" name="" /> <?= $k ?> (<?= $v ?>)
 
         <?php } ?>
-        <button class="btn btn-default" style="background-color: #A7ADAE; font-size: 10px; padding:1px;">TODO: FILTER BY TYPE</button>
+        <button class="btn btn-default" style="background-color: #85888A; font-size: 10px; padding:1px;">TODO: FILTER BY TYPE and PERIOD</button>
     </div>
   </div>
 

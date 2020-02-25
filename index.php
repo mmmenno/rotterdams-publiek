@@ -28,52 +28,17 @@
 				<h2>Rotterdams Publiek</h2>
 
 				<p>
-					maakt het uitgaansverleden van Rotterdammers inzichtelijk.
+					Rotterdammers doen echt wel wat anders dan alleen maar werken.
 				</p>
 
 				<p>
-					We doen dit vooral door <a href="">data</a> te verbeteren en verbinden. Het project bevindt zich in de opbouwfase.
+					Hier brengen we de rijke uitgaanshistorie van de stad weer tot leven. Met beelden uit het Stadsarchief en opgetekende verhalen.
 				</p>
 
 				<p>
-					Dit project is mede mogelijk gemaakt door <a href="https://stimuleringsfonds.nl/">het Stimuleringsfonds</a>.
+					Ooit uitgegaan in R'dam? Dan ben je deel van die geschiedenis!
 				</p>
 			</div>
-			<div class="col-md quote">
-				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
-			</div>
-			<div class="col-md abt-interviews">
-				<h2>Interviews</h2>
-
-				<p>
-					We vroegen Rotterdammers naar hun uitgaansverleden. Lees en bekijk hun verhalen in het <a href="">interview overzicht</a>.
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md abt-locations">
-				<h2>De Zalen</h2>
-				<p>
-					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Je kan het allemaal bekijken op <a href="locaties/">de kaart met locaties</a>.
-				</p>
-				<p>
-					Als je dat fijner vindt, er is ook <a href="locaties/lijst.php">een lijstweergave</a>.
-				</p>
-			</div>
-			<div class="col-md abt-events">
-				<h2>
-					ROTTERDAM.<br />
-					MADE IT<br />
-					HAPPEN.
-				</h2>
-				<p>
-					Premières, festivals, koninklijk bezoek - op beeld vastgelegde gebeurtenissen uit het culturele leven van de stad tonen we in <a href="events/index.php">ons gebeurtenissenoverzicht</a>.
-				</p>
-			</div>
-			<div class="col-md quote">
-				<blockquote>&ldquo;Werk in uitvoering! Dit is nog maar het prototype!&bdquo;</blockquote>
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-md quote">
 				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
 			</div>
@@ -118,6 +83,41 @@
 				</form>
 				<p>... en bekijk het culturele landschap van dat moment.</p>
 			</div>
+		</div>
+		<div class="row">
+			<div class="col-md abt-locations">
+				<h2>De Zalen</h2>
+				<p>
+					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Bekijk het op <a href="locaties/">de zalenkaart</a>.
+				</p>
+				<p>
+					Als je dat fijner vindt, er is ook <a href="locaties/lijst.php">een lijstweergave</a>.
+				</p>
+			</div>
+			<div class="col-md abt-events">
+				<h2>
+					ROTTERDAM.<br />
+					MADE IT<br />
+					HAPPEN.
+				</h2>
+				<p>
+					Premières, festivals, koninklijk bezoek - op beeld vastgelegde gebeurtenissen uit het culturele leven van de stad tonen we in <a href="events/index.php">ons gebeurtenissenoverzicht</a>.
+				</p>
+			</div>
+			<div class="col-md quote">
+				<blockquote>&ldquo;Werk in uitvoering! Dit is nog maar het prototype!&bdquo;</blockquote>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md quote">
+				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
+			</div>
+			<div class="col-md abt-interviews">
+				<h2>Verhalen</h2>
+
+				<p>
+					We vroegen Rotterdammers naar hun uitgaansverleden. Lees en bekijk hun verhalen in het <a href="">interview overzicht</a>.
+			</div>
 			<div class="col-md abt-actors">
 				<h2>Wie is wie?</h2>
 				<p>
@@ -126,8 +126,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md abt-war">
-				<h2>Oorlog</h2>
+			<div class="col-md abt-timemachine">
+				<h2>Uit in de oorlog</h2>
 				<p>
 					Het bombardement verwoestte een groot deel van de stad, en daarmee ook veel uitgaansgelegenheden. Desondanks ging het culturele leven in de oorlogsjaren daarna gewoon door - mensen gingen naar de bioscoop, Boijmans stelde "het Duitsche boek van heden" tentoon, maar ook "de prentkunst rondom Rubens". Op <a href="">ons oorlogsoverzicht</a> krijg je een beeld.
 				</p>
@@ -136,7 +136,7 @@
 				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
 			</div>
 			<div class="col-md quote">
-				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
+				<blockquote>Dit project is mede mogelijk gemaakt door <a href="https://stimuleringsfonds.nl/">het Stimuleringsfonds</a>.</blockquote>
 			</div>
 		</div>
 		

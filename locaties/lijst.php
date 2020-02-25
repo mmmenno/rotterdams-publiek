@@ -4,19 +4,13 @@
 $sparql = "
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
-SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?bagid WHERE {
+SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?straat ?straatLabel WHERE {
   
     VALUES ?type { wd:Q57660343 wd:Q41253 wd:Q24354 wd:Q24699794 wd:Q207694 wd:Q856584 wd:Q57659484 wd:Q1060829 wd:Q18674739 wd:Q15206070 }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
     OPTIONAL{
-      ?item wdt:P625 ?coords .
-    }
-    OPTIONAL{
-      ?item wdt:P5208 ?bagid .
-    }
-  OPTIONAL{
-      ?item wdt:P18 ?image .
+      ?item wdt:P669 ?straat .
     }
   OPTIONAL{
       ?item wdt:P571 ?bouwjaar .
@@ -78,7 +72,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
    $venues[$type][$wdid]["wdid"] = $wdid;
    $venues[$type][$wdid]["label"] = $v['itemLabel']['value'];
-   $venues[$type][$wdid]["bagid"] = $v['bagid']['value'];
+   $venues[$type][$wdid]["straatlabel"] = $v['straatLabel']['value'];
    $venues[$type][$wdid]["bstart"] = $v['bouwjaar']['value'];
    $venues[$type][$wdid]["bend"] = $v['sloopjaar']['value'];
 
@@ -157,6 +151,9 @@ $breaks = array($third,$twothirds);
 
                echo '<h4><a href="locatie.php?qid=' . $venue['wdid'] . '">' . $venue['label'] . '</a></h4>';
 
+
+               echo '<p class="small">';
+               echo $venue['straatlabel'];
                if(isset($venue['names'])){
                   $othernames = array();
 
@@ -167,9 +164,10 @@ $breaks = array($third,$twothirds);
                   }
                   if(count($othernames)){
                      $aka = implode(", ", $othernames);
-                     echo '<p class="small">a.k.a. ' . $aka . '</p>';
+                     echo ' | a.k.a. ' . $aka;
                   }
                }
+               echo '</p>';
 
                $lasttype = $typelabel;
                
