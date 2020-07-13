@@ -103,6 +103,10 @@ foreach ($data['results']['bindings'] as $row) {
 		$to = " - " . $to;
 	}
 
+	if(date("Y",strtotime($row['end']['value'])) != $year){
+		$to .= " '" . substr(date("Y",strtotime($row['end']['value'])),2,2);
+	}
+
 	$exhibitions[$row['exh']['value']]['from'] = $from;
 	$exhibitions[$row['exh']['value']]['to'] = $to;
 	$exhibitions[$row['exh']['value']]['label'] = $row['label']['value'];
@@ -154,7 +158,7 @@ foreach ($exhibitions as $exh) {
 		<strong><?= $exh['label'] ?></strong>
 		<br />
 		<div class="evensmaller">
-			<?= $from ?><?= $to ?><br />
+			<?= $exh['from'] ?><?= $exh['to'] ?><br />
 			<?= implode(" | ",$actors) ?>
 		</div>
 	</td></tr>
