@@ -52,7 +52,7 @@ LIMIT 100
 ";
 
 
-echo $sparqlQueryString;
+//echo $sparqlQueryString;
 
 
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
@@ -109,6 +109,69 @@ foreach ($data['results']['bindings'] as $row) {
 
 }
 
-print_r($exhibitions);
-die;
+//print_r($exhibitions);
+
 ?>
+
+<table class="table">
+<?php
+
+foreach ($exhibitions as $exh) { 
+
+	$img = false;
+	$actors = array();
+	if(isset($exh['actors'])){
+		foreach ($exh['actors'] as $key => $value) {
+			if(strlen($value['img'])){
+				$img = $value['img'];
+			}
+			$actor = "";
+			if(strlen($value['article'])){
+				$actor .= '<a href="' . $value['article'] . '">';
+			}
+			if(strlen($value['label'])){
+				$actor .= $value['label'];
+			}
+			if(strlen($value['article'])){
+				$actor .= '</a>';
+			}
+			if(strlen($value['label'])){
+				$actors[] = $actor;
+			}
+		}
+	}
+	
+	?>
+	
+	<tr>
+		<td style="width: 60px;">
+		<?php if($img){ ?>
+			
+		<? }else{ ?>
+			<div style="width: 60px; height: 50px; background-color: #EBEBEB;"></div>
+		<? } ?>
+	</td><td>
+		<strong><?= $exh['label'] ?></strong>
+		<br />
+		<div class="evensmaller">
+			<?= $from ?><?= $to ?><br />
+			<?= implode(" | ",$actors) ?>
+		</div>
+	</td></tr>
+
+	<?php 
+} 
+?>
+</table>
+
+
+<?php if($year<1935){ ?>
+<p class="evensmaller">
+Tot aan 1935 was Museum Boijmans in het Schielandshuis gevestigd.
+</p>
+<?php } ?>
+
+<p class="evensmaller">
+Met dank aan <a href="https://www.boijmans.nl/">Museum Boijmans van Beuningen</a> voor het beschikbaar stellen van de data.
+</p>
+
