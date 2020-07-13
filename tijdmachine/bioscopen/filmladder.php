@@ -3,7 +3,11 @@
 
 $year = $_GET['year'];
 
-$json = @file_get_contents("http://rotterdamspubliek.nl/files/filmladders-per-jaar/" . $year . "/" . $year . ".json");
+if(substr($_SERVER['HTTP_HOST'],0,3) == "loc"){
+	$json = @file_get_contents("http://rotterdamspubliek.nl/files/filmladders-per-jaar/" . $year . "/" . $year . ".json");
+}else{
+	$json = @file_get_contents("/var/www/html/files/filmladders-per-jaar/" . $year . "/" . $year . ".json");
+}
 
 if($json === false){
 
