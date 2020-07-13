@@ -52,6 +52,9 @@ LIMIT 100
 ";
 
 
+echo $sparqlQueryString;
+die;
+
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
 
 $json = getSparqlResults($endpoint,$sparqlQueryString);
@@ -162,15 +165,6 @@ foreach ($exhibitions as $exh) {
 </table>
 
 
-<?php
-
-
-
-
-
-
-
-?>
 <?php if($year<1935){ ?>
 <p class="evensmaller">
 Tot aan 1935 was Museum Boijmans in het Schielandshuis gevestigd.
