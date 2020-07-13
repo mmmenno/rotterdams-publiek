@@ -60,6 +60,55 @@ $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/eve
 $json = getSparqlResults($endpoint,$sparqlQueryString);
 $data = json_decode($json,true);
 
-print_r($data);
+//print_r($data);
+
+$exhibitions = array();
+
+foreach ($data['results']['bindings'] as $row) { 
+
+	if(strlen($row['actorarticle']['value'])){
+		$actor = array(
+			"label" => $row['actorlabel']['value'],
+			"article" => $row['actorarticle']['value'],
+			"img" => $row['actorimg']['value']
+		);
+	}
+
+	if(isset($exhibitions[$row['exh']['value']]) && isset($actor)){
+		$exhibitions[$row['exh']['value']]['actors'][] = $actor;
+		unset($actor);
+		continue;
+	}elseif(isset($actor)){
+		$exhibitions[$row['exh']['value']]['actors'][] = $actor;
+		unset($actor);
+	}
+
+	
+
+
+	$monthfrom = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+    $monthto = array("januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december");
+    
+
+	$from = date("j M",strtotime($row['begin']['value']));
+	$from = str_replace($monthfrom, $monthto, $from);
+
+
+	$to = date("j M",strtotime($row['end']['value']));
+	$to = str_replace($monthfrom, $monthto, $to);
+
+	if($from==$to){
+		$to = "";
+	}else{
+		$to = " - " . $to;
+	}
+
+	$exhibitions[$row['exh']['value']]['from'] = $from;
+	$exhibitions[$row['exh']['value']]['to'] = $to;
+	$exhibitions[$row['exh']['value']]['label'] = $row['label']['value'];
+
+}
+
+print_r($exhibitions);
 die;
 ?>
