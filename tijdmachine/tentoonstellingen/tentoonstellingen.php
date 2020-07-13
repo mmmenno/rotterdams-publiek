@@ -53,5 +53,13 @@ LIMIT 100
 
 
 echo $sparqlQueryString;
+
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+
+$json = getSparqlResults($endpoint,$sparqlQueryString);
+$data = json_decode($json,true);
+
+print_r($data);
 die;
 ?>
