@@ -20,7 +20,7 @@ $next = $year + 1;
 
 	<link href="https://fonts.googleapis.com/css?family=Nunito:300,700" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<script
 	src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -38,49 +38,60 @@ $next = $year + 1;
 
 
 <div class="container-fluid">
-	<div class="col-md-12">
-		<div id="prevnextyear">
-			<a href="?year=<?= $prev ?>">&lt;</a> <a href="?year=<?= $next ?>">&gt;</a>
+	<div class="row">
+		<div class="col-md-12">
+			<h1><a href="/">Rotterdams Publiek</a> | <a href="?year=<?= $prev ?>">&laquo;</a> <?= $year ?> <a href="?year=<?= $next ?>">&raquo;</a></h1>
 		</div>
-		<h1>Rotterdams Publiek | <?= $year ?></h1>
 	</div>
 </div>
 
 <div class="container-fluid">
-	<div class="col-md-4">
+	<div class="row">
+		<div class="col-md-4">
 
 
-		<h2>Filmladder</h2>
-		<div class="content" id="filmladder"></div>
+			<h2>Filmladder deze week</h2>
+			<div class="content" id="filmladder"></div>
 
 
-		<h2>Meestgeprogrammeerde films</h2>
-		<div class="content" id="films"></div>
+			<h2>Meestgeprogrammeerde films</h2>
+			<div class="content" id="films"></div>
 
 
-		<h2>Alle bioscopen</h2>
-		<div class="content" id="bioscopen"></div>
+			<h2>Alle bioscopen</h2>
+			<div class="content" id="bioscopen"></div>
 
+			<h2>Concerten Ahoy en De Kuip</h2>
+			<div class="content" id="concerten"></div>
 
-	</div>
-	<div class="col-md-4">
+			
 
-		<h2>Tentoonstellingen in Boijmans</h2>
-		<div class="content" id="boijmans"></div>
+		</div>
+		<div class="col-md-4">
 
-		<h2>Vrouwen in de kunst</h2>
-		<div class="content" id="vrouwen"></div>
+			<h2>Op de poppodia</h2>
+			<div class="content" id="concerten"></div>
 
-		<h2>Nieuw in de R'dam kunstscene</h2>
-		<div class="content" id="kunstscene"></div>
+			<h2>Affiches</h2>
+			<div class="content" id="affiches"></div>
 
-	</div>
-	<div class="col-md-4">
+			<h2>Tentoonstellingen in Boijmans</h2>
+			<div class="content" id="boijmans"></div>
 
-		<h2>Gepubliceerde boeken</h2>
-		<div class="content" id="boeken"></div>
+			<h2>Vrouwen in de kunst</h2>
+			<div class="content" id="vrouwen"></div>
 
-		
+			<h2>Nieuw in de R'dam kunstscene</h2>
+			<div class="content" id="kunstscene"></div>
+
+		</div>
+		<div class="col-md-4">
+
+			<h2>Gebeurtenissen in beeld</h2>
+			<div class="content" id="gebeurtenissen"></div>
+
+			
+		</div>
 	</div>
 </div>
 
@@ -102,9 +113,7 @@ $next = $year + 1;
 
 				div.append('<div class="loader"></div>');
 
-				if(div.attr('id') == "boeken"){
-					$('#boeken').load('boeken/boeken.php?year=<?= $year ?>');
-				}else if(div.attr('id') == "boijmans"){
+				if(div.attr('id') == "boijmans"){
 					$('#boijmans').load('tentoonstellingen/tentoonstellingen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "films"){
 					$('#films').load('bioscopen/filmvoorstellingen.php?year=<?= $year ?>');
@@ -116,12 +125,6 @@ $next = $year + 1;
 					$('#vrouwen').load('rkd/vrouwen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "kunstscene"){
 					$('#kunstscene').load('rkd/kunstscene.php?year=<?= $year ?>');
-				}else if(div.attr('id') == "burgemeesters"){
-					$('#burgemeesters').load('burgemeesters/burgemeesters.php?year=<?= $year ?>');
-				}else if(div.attr('id') == "gebouwdverdwenen"){
-					$('#gebouwdverdwenen').load('gebouwdverdwenen/gebouwdverdwenen.php?year=<?= $year ?>',function(){
-						//setImgClick();
-					});
 				}
 			}
 
