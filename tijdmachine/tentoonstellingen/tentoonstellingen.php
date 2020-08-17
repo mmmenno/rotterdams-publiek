@@ -152,10 +152,10 @@ foreach ($exhibitions as $exh) {
 		<?php if($img){ ?>
 			<img style="width: 60px;" src="<?= $img ?>?width=100px" />
 		<?php }else{ ?>
-			<div style="width: 60px; height: 50px; background-color: #EBEBEB;"></div>
+			<div style="width: 60px; height: 50px; background-color: #929eda;"></div>
 		<?php } ?>
 	</td><td>
-		<strong><?= $exh['label'] ?></strong>
+		<?= $exh['label'] ?>
 		<br />
 		<div class="evensmaller">
 			<?= $exh['from'] ?><?= $exh['to'] ?><br />

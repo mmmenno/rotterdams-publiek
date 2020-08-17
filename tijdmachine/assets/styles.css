@@ -96,6 +96,7 @@ ol{
 }
 .table>tbody>tr>td{
 	border-top:none;
+	padding: 8px 12px 8px 0;
 	border-bottom: 1px solid #ccc;
 }
 .light{
@@ -103,11 +104,11 @@ ol{
 }
 .nrof{
 	width: 60px; 
-	color: #000; 
+	color: #fff; 
 	font-weight: bold;
 	height: 44px; 
 	padding-top: 6px;
-	background-color: #EBEBEB; 
+	background-color: #929eda; 
 	text-align: center; 
 	vertical-align: middle;
 }
