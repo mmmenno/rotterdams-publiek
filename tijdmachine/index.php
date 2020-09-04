@@ -61,8 +61,8 @@ $next = $year + 1;
 			<h2>Alle bioscopen</h2>
 			<div class="content" id="bioscopen"></div>
 
-			<h2>Concerten Ahoy en De Kuip</h2>
-			<div class="content" id="concerten"></div>
+			<h2>Megaconcerten</h2>
+			<div class="content" id="megaconcerten"></div>
 
 			
 
@@ -121,6 +121,10 @@ $next = $year + 1;
 					$('#bioscopen').load('bioscopen/bioscopen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "filmladder"){
 					$('#filmladder').load('bioscopen/filmladder.php?year=<?= $year ?>');
+				}else if(div.attr('id') == "megaconcerten"){
+					$('#megaconcerten').load('concerten/megaconcerts.php?year=<?= $year ?>');
+				}else if(div.attr('id') == "concerten"){
+					$('#concerten').load('concerten/poppodia.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "vrouwen"){
 					$('#vrouwen').load('rkd/vrouwen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "kunstscene"){
@@ -140,6 +144,8 @@ $next = $year + 1;
 			if(div.attr('id') == "films" && (<?= $year ?> < 1895 || <?= $year ?> > 1948)){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "bioscopen" && <?= $year ?> < 1912){
+				$(this).addClass('faded');
+			}else if(div.attr('id') == "concerten" && <?= $year ?> < 1967){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "boijmans" && <?= $year ?> < 1927){
 				$(this).addClass('faded');
