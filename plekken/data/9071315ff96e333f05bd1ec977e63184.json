@@ -1,0 +1,47 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "typeLabel", "bouwjaar", "sloopjaar", "iseentypeLabel", "starttype", "eindtype", "naamstring", "startnaam", "eindnaam", "image", "coords", "bagid", "wkt", "next", "nextLabel", "prev", "prevLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q78861313"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.492656111 51.922471944)"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1928-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1940-05-14T00:00:00Z"
+      },
+      "prev" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161122"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      },
+      "prevLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Imperial Bioscope"
+      }
+    } ]
+  }
+}

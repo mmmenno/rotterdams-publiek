@@ -1,0 +1,4 @@
+
+{ "head": { "link": [], "vars": ["text", "paper", "articledate", "articleurl"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "text": { "type": "literal", "value": "Bijgaande perspectiefteekeningen geven den gevel weer aan de\u00A0Hoogstraat\u00A0van het in de plaats van het Imperial Theater te bouwen City-Theater, alsmede den gevel aan het Groenendaal.\nHet theater is ontworpen door den architect Jac. van Gelderen.\nHet zal pl.m. 1000 zitplaatsen bevatten en in tegenstelling met het oude theater slechts \u00E9\u00E9n balcon krijgen, dat zoodanig is geconstrueerd, dat geen enkele kolom behoeft te worden aangebracht." }	, "paper": { "type": "literal", "value": "Rotterdamsch nieuwsblad" }	, "articledate": { "type": "typed-literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "1928-06-16" }	, "articleurl": { "type": "uri", "value": "https://resolver.kb.nl/resolve?urn=ddd:010514321:mpeg21:a0207" }} ] } }

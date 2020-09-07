@@ -1,0 +1,78 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "typeLabel", "bouwjaar", "sloopjaar", "iseentypeLabel", "starttype", "eindtype", "naamstring", "startnaam", "eindnaam", "image", "coords", "bagid", "wkt", "next", "nextLabel", "prev", "prevLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161156"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Deca Bioscope"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1924-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1923-10-01T00:00:00Z"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.482343 51.919226)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Deca Bioscope"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q76161156"
+      },
+      "naamstring" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Parisien"
+      },
+      "eindnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1922-01-01T00:00:00Z"
+      },
+      "startnaam" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1908-11-15T00:00:00Z"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.482343 51.919226)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Deca Bioscope"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "bioscoop"
+      }
+    } ]
+  }
+}

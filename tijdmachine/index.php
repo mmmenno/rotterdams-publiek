@@ -61,7 +61,7 @@ $next = $year + 1;
 			<h2>Alle bioscopen</h2>
 			<div class="content" id="bioscopen"></div>
 
-			<h2>Megaconcerten</h2>
+			<h2>Concerten in Ahoy en De Kuip</h2>
 			<div class="content" id="megaconcerten"></div>
 
 			

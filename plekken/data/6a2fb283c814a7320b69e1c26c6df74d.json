@@ -1,0 +1,68 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "typeLabel", "bouwjaar", "sloopjaar", "iseentypeLabel", "starttype", "eindtype", "naamstring", "startnaam", "eindnaam", "image", "coords", "bagid", "wkt", "next", "nextLabel", "prev", "prevLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q81940145"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1984-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1955-01-01T00:00:00Z"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Piccolo Theater"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "theatergebouw"
+      },
+      "iseentypeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "theatergebouw"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q81940145"
+      },
+      "eindtype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1984-01-01T00:00:00Z"
+      },
+      "starttype" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1955-01-01T00:00:00Z"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Piccolo Theater"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "voormalig bouwwerk"
+      },
+      "iseentypeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "theatergebouw"
+      }
+    } ]
+  }
+}
