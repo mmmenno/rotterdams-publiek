@@ -1,0 +1,68 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "typeLabel", "bouwjaar", "sloopjaar", "iseentypeLabel", "starttype", "eindtype", "naamstring", "startnaam", "eindnaam", "image", "coords", "bagid", "wkt", "next", "nextLabel", "prev", "prevLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q81610581"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.47646 51.9145)"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1981-10-31T00:00:00Z"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Eksit"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "jeugdcentrum"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q81610581"
+      },
+      "coords" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(4.47646 51.9145)"
+      },
+      "bouwjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-01-01T00:00:00Z"
+      },
+      "sloopjaar" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1981-10-31T00:00:00Z"
+      },
+      "itemLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "Eksit"
+      },
+      "typeLabel" : {
+        "xml:lang" : "nl",
+        "type" : "literal",
+        "value" : "poppodium"
+      }
+    } ]
+  }
+}

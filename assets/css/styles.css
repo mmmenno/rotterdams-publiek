@@ -1,178 +1,105 @@
 
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
 body{
+	margin:0;
+	padding: 0 20px 40px 20px;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 18px;
 	background-color: #fff;
-	padding: 40px;
-	font-family: sans-serif;
+	color: #464343;
+}
+.lead{
+	font-size: 24px;
+	font-family: 'Times New Roman', serif;
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+.smaller{
+	font-size: 16px;
 }
 
-blockquote{
-	font-style: italic;
-	padding-top: 8px;
-	padding-bottom: 30px;
-	font-size: 32px; 
-	font-family: serif;
-	background-color: #fff;
+.evensmaller{
+	font-size: 13px;
+	line-height: 1.3;
 }
-.abt-locations{
-	background-color: #FFE7E3;
-	color: #950305;
+.onderschrift{
+	font-size: 14px;
+	line-height: 1.3;
+	margin-top: -6px;
 }
-.abt-actors{
-	background-color: #FFF9E3;
-	color: #937805;
+.faded{
+	color: #ccc;
+	display: none;
 }
-.abt-events{
-	background-color: #EDE3FF;
-	color: #6900A1;
-}
-.abt-interviews, .abt-war{
-	background-color: #E6FFE3;
-	color: #1E7C01;
-}
-.abt-timemachine{
-	background-color: #E3EFFF;
-	color: #09409C;
-}
-.black{
-	background-color: #2F2F2F;
-	color: #E4E4E4;
-}
-.white{
-	background-color: #fff;
-	color: #000;
+h1{
+	margin-top: 40px;
+	padding-bottom: 12px;
+	font-size: 48px;
+	font-family: 'Times New Roman', serif;
+	border-bottom: 4px solid #464343;
 }
 h2{
+	margin-top: 30px;
+	padding-bottom: 6px;
 	font-size: 28px;
-	margin-top: 16px;
-	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+	font-family: 'Times New Roman', serif;
+	border-bottom: 4px solid #464343;
+}
+h2.buildings{
+	border-bottom: 4px solid #c2675d;
+}
+h2.timemachine{
+	border-bottom: 4px solid #929eda;
+}
+h2.interviews{
+	border-bottom: 4px solid #127b5c;
 }
 h3{
-	font-size: 22px;
-	margin-top: 16px;
-	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-}
-.abt-locations h3{
-	margin-top: 36px;
-}
-h4{
-	font-size: 16px;
-	margin-top: 12px;
-	margin-bottom: 2px;
-	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-}
-.listing h3{
-	border-bottom: 2px solid #000;
-	padding-bottom: 7px;
-}
-.imgbar{
-	padding: 0;
-}
-.imgbar img{
-	width: 100%;
-}
-.imgbar .imginfo{
-	position: absolute;
-	background: rgba(9, 64, 156, .3);
-	padding: 15px;
-	width: 100%;
-	display: none;
-}
-.imgbar .event .imginfo{
-	display: block;
-}
-body.abt-locations .imgbar .imginfo{
-	background: rgba(149, 3, 5, .3);
-}
-.imgbar .imginfo h2{
-	margin-top: 0;
-}
-.locationsheader{
-	background-image: url(https://commons.wikimedia.org/wiki/Special:FilePath/Gebouw%20Rotterdamsche%20Kunstkring%201933.jpg?width=1000);
-	background-size: cover;
-	background-position: left center;
-}
-.eventsheader{
-	background-image: url(https://upload.wikimedia.org/wikipedia/commons/4/42/Festival_bezoekers_in_Kralingse_Bos%2C_Bestanddeelnr_923-6260.jpg?width=1000);
-	background-size: cover;
-	background-position: left center;
-}
-body.abt-events .eventsheader .col-md{
-	background: rgba(105, 0, 161, .6);
-	padding-bottom: 100px;
-}
-body.abt-locations .locationsheader .col-md{
-	background: rgba(149, 3, 5, .6);
-	padding-bottom: 100px;
-}
-body.abt-timemachine .locationsheader .col-md{
-	background: rgba(9, 64, 156, .3);
-	padding-bottom: 100px;
+	margin-top: 30px;
+	padding-top: 0;
+	padding-bottom: 6px;
+	font-size: 24px;
+	font-family: 'Times New Roman', serif;
+	border-bottom: 4px solid #464343;
 }
 a{
-	color: inherit;
-	text-decoration: none;
-	font-weight: bold;
-}
-h2 a{
-	font-weight: normal;
+	color: #a749ac;
 }
 a:hover{
-	color: inherit;
-	text-decoration: underline;
+	text-decoration: none;
+	color: #a749ac;
 }
-.padding{
-	padding:5px 15px;
+.buildings a, .buildings a:hover{
+	color: #c2675d;
 }
-.abt-locations .white a{
-	color: #950305;
-	font-weight: normal;
+.timemachine a, .timemachine a:hover{
+	color: #929eda;
 }
-#timemachineform{
-	margin-bottom: 24px;
+.interviews a, .interviews a:hover{
+	color: #127b5c;
 }
-#legenda{
+img{
+	width: 100%;
+	margin-bottom: 16px;
+}
+.btn-primary{
+	margin-top: 20px;
 	background-color: #fff;
-	padding: 15px;
 	color: #000;
+	font-size: 20px;
+	border-color: #fff;
 }
-#legenda div{
-	width: 40px;
-	height: 20px;
-	margin-right: 10px;
-	margin-top: 3px;
-	clear: both;
-	float: left;
+.btn-primary:hover{
+	background-color: #BC000C;
+	color: #fff;
+	border-color: #fff;
 }
-#legenda #bestaand{
-	background-color: #EACCCD;
-	border: 3px solid #950305;
+button:focus, input:focus, .btn-primary:focus {
+	outline:0;
+	background-color: #fff;
+	color: #000;
+	border-color: #fff;
 }
-#legenda #verdwenen{
-	background-color: #D5DCE9;
-	border: 3px solid #738AB7;
-}
-body.abt-events .imgcount{
-	float: right;
-	margin-top: 24px;
-}
-body.abt-events .imgcount div{
-	width: 10px;
-	height: 10px;
-	border-radius: 5px;
-	background-color: #CBAAFF;
-	float: left;
-	margin-right: 10px;
-	margin-bottom: 20px;
-}
-body.abt-events .eventcontent{
-	display: none;
-}
-body.abt-events a{
-	font-weight: normal;
-}
-
-
-
-
 
 

@@ -1,166 +1,120 @@
-<!doctype html>
-<html lang="nl">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
+	
+	<title>Rotterdams Publiek | <?= $year ?></title>
 
-	<title>Rotterdams Publiek</title>
-	<meta name="description" content="Rotterdams Publiek - culturele geschiedenissen van Rotterdammers">
-	<meta name="author" content="Islands of Meaning">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,700" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="assets/css/styles.css">
 
 	<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+	src="https://code.jquery.com/jquery-3.2.1.min.js"
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	crossorigin="anonymous"></script>
 
-  
+	<link rel="stylesheet" href="assets/css/styles.css" />
+
+
+
 	
 </head>
-
 <body>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md black">
-				<h2>Rotterdams Publiek</h2>
 
-				<p>
-					Rotterdammers doen echt wel wat anders dan alleen maar werken.
-				</p>
 
-				<p>
-					Hier brengen we de rijke uitgaanshistorie van de stad weer tot leven. Met beelden uit het Stadsarchief en opgetekende verhalen.
-				</p>
-
-				<p>
-					Ooit uitgegaan in R'dam? Dan ben je deel van die geschiedenis!
-				</p>
-			</div>
-			<div class="col-md quote">
-				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
-			</div>
-			<div class="col-md abt-timemachine">
-				<h2>Tijdmachine</h2>
-				<p>Teleporteer jezelf naar R'dam in het jaar...</p>
-				<form id="timemachineform">
-					<select name="millenium">
-						<option>1</option>
-						<option>2</option>
-					</select>
-					<select name="century">
-						<option>9</option>
-						<option>0</option>
-					</select>
-					<select name="decade">
-						<option>0</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option selected="selected">8</option>
-						<option>9</option>
-					</select>
-					<select name="year">
-						<option>0</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option selected="selected">4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-					</select>
-
-					<button>🚀</button>
-				</form>
-				<p>... en bekijk het culturele landschap van dat moment.</p>
-			</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Rotterdams Publiek</h1>
 		</div>
-		<div class="row">
-			<div class="col-md abt-locations">
-				<h2>De Zalen</h2>
-				<p>
-					Bioscopen, theaters, concertzalen, clubs en musea - waar staan en stonden ze. Bekijk het op <a href="locaties/">de zalenkaart</a>.
-				</p>
-				<p>
-					Als je dat fijner vindt, er is ook <a href="locaties/lijst.php">een lijstweergave</a>.
-				</p>
-			</div>
-			<div class="col-md abt-events">
-				<h2>
-					ROTTERDAM.<br />
-					MADE IT<br />
-					HAPPEN.
-				</h2>
-				<p>
-					Premières, festivals, koninklijk bezoek - op beeld vastgelegde gebeurtenissen uit het culturele leven van de stad tonen we in <a href="events/index.php">ons gebeurtenissenoverzicht</a>.
-				</p>
-			</div>
-			<div class="col-md quote">
-				<blockquote>&ldquo;Werk in uitvoering! Dit is nog maar het prototype!&bdquo;</blockquote>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md quote">
-				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
-			</div>
-			<div class="col-md abt-interviews">
-				<h2>Verhalen</h2>
-
-				<p>
-					We vroegen Rotterdammers naar hun uitgaansverleden. Lees en bekijk hun verhalen in het <a href="">interview overzicht</a>.
-			</div>
-			<div class="col-md abt-actors">
-				<h2>Wie is wie?</h2>
-				<p>
-					Ray Charles in De Doelen, Jayne Mansfield op de middenstip van het Kasteel en Salvador Dali in Museum Boijmans. Wie drukte zijn of haar stempel op het culturele landschap? Of was toevallig in de buurt? Check onze <a href="">wie-is-wie pagina</a>.
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md abt-timemachine">
-				<h2>Uit in de oorlog</h2>
-				<p>
-					Het bombardement verwoestte een groot deel van de stad, en daarmee ook veel uitgaansgelegenheden. Desondanks ging het culturele leven in de oorlogsjaren daarna gewoon door - mensen gingen naar de bioscoop, Boijmans stelde "het Duitsche boek van heden" tentoon, maar ook "de prentkunst rondom Rubens". Op <a href="">ons oorlogsoverzicht</a> krijg je een beeld.
-				</p>
-			</div>
-			<div class="col-md quote">
-				<blockquote>&ldquo;Quote uit interview&bdquo;</blockquote>
-			</div>
-			<div class="col-md quote">
-				<blockquote>Dit project is mede mogelijk gemaakt door <a href="https://stimuleringsfonds.nl/">het Stimuleringsfonds</a>.</blockquote>
-			</div>
-		</div>
-		
 	</div>
+</div>
 
-<script type="text/javascript">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<p class="lead buildings" style="margin-top: 40px;">Theater in <a href="plekken/plek.php?qid=Q76161141">Casino Variété</a>, gabberfeesten in de <a href="plekken/plek.php?qid=Q2336130">Energiehal</a>, naar de film in <a href="plekken/plek.php?qid=Q76161140">Kriterion</a>, dansen bij <a href="plekken/plek.php?qid=Q93182833">Pschorr</a>, Tom Waits in <a href="plekken/plek.php?qid=Q81610581">Eksit</a>, Edith Piaf in <a href="plekken/plek.php?qid=Q4672497">Luxor</a> - Rotterdam heeft ook cultureel gezien een rijk verleden.</p>
+
+			<p class="lead">Hier willen we je eigen uitgaansverleden weer in herinnering roepen. En het vermaak van vorige generaties illustreren. Want ben je ooit uit geweest in Rotterdam, dan ben je deel van een lange geschiedenis.</p>
+
+			<div class="row">
+				<div class="col-md-6">
+
+
+					<h2 class="buildings">Gebouwen</h2>
+					<p class="buildings">
+						Bioscopen, danszalen, theathers, musea, etc. - <a href="/plekken/">hier vind je het overzicht</a>.
+					</p>
+
+					<img src="assets/img/amerikaansch-danspaviljoen.jpg" />
+
+					<p class="onderschrift buildings">
+						De danszaal van het <a href="plekken/plek.php?qid=Q76161121">Amerikaansch Danspaviljoen</a> aan het Stationsplein - een gebouw dat eerder Cirque Variété en later Circus Schouwburg huisvestte.
+					</p>
+
+					
+					<h2>Meehelpen? Graag!</h2>
+					<p>
+						In samenwerking met <a href="http://cinemacontext.nl/">Cinema Context</a> starten we binnenkort een crowdsourceproject, waarin we filmladders uit de jaren '80 in gaan voeren. Mooi om later snel te kunnen zien in welke bioscopen bijvoorbeeld Franse films draaiden, maar ook leuk om in te voeren - je ziet al die films en zalen die je zelf misschien wel hebt bezocht voorbij komen.
+					</p>
+					
+
+				</div>
+				<div class="col-md-6">
+
+					<h2 class="interviews">Verhalen</h2>
+					<p class="interviews">
+						Persoonlijke getuigenissen zijn soms ook vastgelegd op beeld en geluid. Het Stadsarchief verzamelt ook video en audio. We <a href="/verhalen/">laten hier een aantal van deze getuigenissen zien</a>, en proberen daarbij fragmenten aan locaties te verbinden.
+					</p>
+
+					<h2>Een woord van dank</h2>
+					<p>
+						Zonder onze partners, vooraleerst het <a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>, maar zeker ook <a href="https://digitup.nl/">DIG IT UP</a> en <a href="https://www.belvedererotterdam.nl/">Verhalenhuis Belvédère</a>, hadden we het niet voor elkaar gekregen. Dank!
+					</p>
+					<p>
+						Dank ook aan de <a href="https://www.kb.nl/">Koninklijke Bibliotheek</a>, <a href="https://www.boijmans.nl/">Boijmans</a>, <a href="https://rkd.nl/">RKD</a>, het <a href="https://www.create.humanities.uva.nl/">UvA CREATE</a> team, <a href="https://www.setlist.fm/">setlist.fm</a>, <a href="https://www.netwerkdigitaalerfgoed.nl/">NDE</a>, het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a> en andere erfgoedinstellingen voor het (open) beschikbaar maken van data, waardoor dit soort projecten gemaakt kunnen worden.
+					</p>
+					<p>
+						Dit project is mogelijk gemaakt door een subsidie van het <a href="https://stimuleringsfonds.nl/">Stimuleringsfonds Creatieve Industrie</a>.
+					</p>
+
+					<img src="assets/img/SCI.jpg" />
+
+					<h2>Over ons</h2>
+					<p>
+						Rotterdams Publiek is bedacht en gemaakt door Menno den Engelse (<a href="http://islandsofmeaning.nl/">Islands of Meaning</a>), Thunnis van Oort, <a href="https://bertspaan.nl/">Bert Spaan</a>, Carinda Strangio (<a href="https://bitman.nl/">Bitman</a>) en Marie-Claire Dangerfield (<a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>).
+					</p>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h2 class="timemachine">Tijdmachine</h2>
+			<p class="timemachine">
+				Hoe zag het culturele landschap eruit in <a href="tijdmachine/?year=1995">1995</a>? Of in <a href="tijdmachine/?year=1968">1968</a>? Of in <a href="tijdmachine/?year=1932">1932</a>? Welke tentoonstellingen, concerten en films kon je dat jaar zien? Onze <a href="tijdmachine/?year=1984">tijdmachine</a> dompelt je onder in de tijden van weleer.
+			</p>
+
+			<img src="assets/img/filmladder.jpg" />
+
+			<p class="onderschrift timemachine">
+				Nachtvoorstellingen in een filmladder uit <a href="tijdmachine/?year=1988">1988</a>. Calypso bestond nog tot in 1997, Lumière tot in 2003.
+			</p>
+
+			<h2>De data</h2>
+			<p>
+				Rotterdams Publiek kan bestaan dankzij 'linked open data'. De gebouwen bijvoorbeeld kunnen we rechtstreeks uit <a href="https://www.wikidata.org/">Wikidata</a> ophalen. Samen met andere 'Wikidatianen' hebben we ook een bijdrage geleverd aan het invoeren van die data.
+			</p>
+
+			<p>
+				De databestanden die we zelf gemaakt of verzameld hebben, zoals de quotes uit krantenbank Delpher en de 'culturele gebeurtenissen' en het beeld waarop ze zijn vastgelegd, delen we via onze data-repository op GitHub.
+			</p>
+
+
+		</div>
+	</div>
 	
-	$(document).ready(function() {
-
-		$("#timemachineform button").click(function(){
-			var mil = $('select[name="millenium"]').val();
-			var cent = $('select[name="century"]').val();
-			var dec = $('select[name="decade"]').val();
-			var jaar = $('select[name="year"]').val();
-
-			var year = mil + cent + dec + jaar;
-			//console.log(year);
-
-			window.location.href = "/timemachine/?year=" + year;
-
-			return false;
-		});
-	});
-</script>
-
-</body>
-</html>
+</div>

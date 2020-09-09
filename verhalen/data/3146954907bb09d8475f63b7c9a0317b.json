@@ -1,0 +1,4 @@
+
+{ "head": { "link": [], "vars": ["text", "paper", "articledate", "articleurl"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "text": { "type": "literal", "value": "Tweehonderd zitplaatsen biedt het\u00A0Bibliotheektheater, plus twintig stoelen op een heus balkon. Technisch is het theatertje perfect uitgerust: er is een ruim toneel, een lichtbrug, een prima geluidsinstallatie en een filmcabine. Een ruime expositieruimte, grenzend aan de foyer van het theater, is beschikbaar voor tentoonstellingen." }	, "paper": { "type": "literal", "value": "Het vr\u0133e volk" }	, "articledate": { "type": "typed-literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "1983-09-03" }	, "articleurl": { "type": "uri", "value": "https://resolver.kb.nl/resolve?urn=ddd:010961502:mpeg21:a0333" }} ] } }

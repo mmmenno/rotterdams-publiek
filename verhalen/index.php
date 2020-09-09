@@ -105,7 +105,7 @@ $breaks = array($third,$twothirds);
 <html>
 <head>
   
-<title>Rotterdams Publiek - gebouwen</title>
+<title>Rotterdams Publiek - verhalen</title>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -132,65 +132,11 @@ $breaks = array($third,$twothirds);
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-         <h1><a href="../">Rotterdams Publiek</a> | Gebouwen</h1>
+         <h1><a href="../">Rotterdams Publiek</a> | Verhalen</h1>
       </div> 
     </div>
 
-    <div class="row white listing">
-      <div class="col-md-4">
-         <?php 
-          $i = 0;
-          foreach ($venues as $typelabel => $venuesintype) { 
-            //echo "<h3>" . $typelabel . "</h3>";
-            foreach ($venuesintype as $venue) { 
-              $i++;
-
-              if(in_array($i,$breaks)){
-                echo '</div><div class="col-md-4">';
-                if($typelabel == $lasttype){
-                  echo "<h3>" . $typelabel . " - vervolg</h3>";
-                }
-              }
-
-              if($typelabel != $lasttype){
-                echo "<h3>" . $typelabel . "</h3>";
-              }
-
-              echo '<h4><a href="plek.php?qid=' . $venue['wdid'] . '">' . $venue['label'] . '</a></h4>';
-
-
-              echo '<p class="small">';
-              echo $venue['straatlabel'];
-              if(isset($venue['names'])){
-                $othernames = array();
-
-                foreach ($venue['names'] as $name) { 
-                  if($name != $venue['label'] && !in_array($name, $othernames)){
-                    $othernames[] = $name;
-                  }
-                }
-
-                if(count($othernames)){
-                  $aka = implode(", ", $othernames);
-                  echo ' | a.k.a. ' . $aka;
-                }
-              }
-              echo '</p>';
-
-
-              
-
-
-              $lasttype = $typelabel;
-
-            }
-          }
-         ?>
-         <br />
-         <br />
-         <br />
-      </div>
-    </div>
+    binnenkort!
 
 </div>
 
