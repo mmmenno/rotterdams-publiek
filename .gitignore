@@ -5,3 +5,4 @@ assets/filmladders/*
 tijdmachine/data/*.json
 gebeurtenissen/data/*.json
 plekken/data/*.json
+verhalen/data/*.json
