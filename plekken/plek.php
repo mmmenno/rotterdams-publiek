@@ -1,1 +1,9 @@
-nou moe
+<?php
+
+
+
+echo "hi";
+
+
+
+?>
