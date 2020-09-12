@@ -331,16 +331,12 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		  	<div id="map" style="height: 300px; margin-top: 20px;"></div>
 
 		  	
-		  	<?php
-
-		  	if(count($videos)>0){
-		  		echo "nou moe";
-		  	}else{
-		  		echo "niks niet";
-		  	}
+		  	<?php if(count($videos)>0){ ?>
+		  		<h3>Deze zaal in interviews</h3>
+		  	
 
 
-		  	?>
+		  	<?php } ?>
 		  	
 			
 		</div>
