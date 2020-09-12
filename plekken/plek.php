@@ -333,9 +333,12 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		  	
 		  	<?php if(count($videos)>0){ ?>
 		  		<h3>Deze zaal in interviews</h3>
-		  	
-
-
+			  	<?php foreach ($videos as $video) { ?>
+		  			<div class="video">
+		  				<iframe width="560" height="315" src="<?= $video['embedUrl'] ?>?start=<?= $video['start'] ?>&end=<?= $video['end'] ?>" frameborder="0" allow="" allowfullscreen></iframe>
+					</div>
+		  		<?php } ?>
+		  		<p class="evensmaller">Meer interviews, ook over andere plekken, op het <a href="/verhalen/">Verhalen overzicht</a>.</p>
 		  	<?php } ?>
 		  	
 			
