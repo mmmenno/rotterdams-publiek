@@ -1,5 +1,8 @@
 <?php
 
+echo "hi";
+die;
+
 if(!isset($_GET['qid'])){
   $qid = "Q179426";
 }else{
@@ -195,7 +198,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 }
 
 print_r($videos);
-die;
+
 
 
 ?><!DOCTYPE html>
@@ -238,9 +241,7 @@ die;
 
 
 		  	<h3>Info</h3>
-		  	<?php
 		  	
-			?>
 			
 			Wikidata: <a href="<?= $venue['uri'] ?>"><?= $venue['wdid'] ?></a><br />
 
