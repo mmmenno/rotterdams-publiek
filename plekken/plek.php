@@ -190,7 +190,6 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 }
 
-print_r($videos);
 
 ?><!DOCTYPE html>
 <html>
@@ -332,9 +331,16 @@ print_r($videos);
 		  	<div id="map" style="height: 300px; margin-top: 20px;"></div>
 
 		  	
-		  		<h3>Deze zaal in interviews</h3>
-		  		
-		  		<p class="evensmaller">Meer interviews, ook over andere plekken, op het <a href="/verhalen/">Verhalen overzicht</a>.</p>
+		  	<?php
+
+		  	if(count($videos)>0){
+		  		echo "nou moe";
+		  	}else{
+		  		echo "niks niet";
+		  	}
+
+
+		  	?>
 		  	
 			
 		</div>
