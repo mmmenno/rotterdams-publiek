@@ -194,6 +194,9 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 }
 
+print_r($videos);
+die;
+
 
 ?><!DOCTYPE html>
 <html>
