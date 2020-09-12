@@ -174,7 +174,7 @@ SELECT ?item ?movie ?embedUrl ?selector WHERE {
   ?movie schema:embedUrl ?embedUrl .
   ?item oa:hasTarget/oa:hasSelector/rdf:value ?selector .
 } 
-LIMIT 10
+LIMIT 12
 ";
 
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/rotterdamspubliek/services/rotterdamspubliek/sparql';
@@ -425,7 +425,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 $(function() {
 
     // Find all YouTube videos
-    var $allVideos = $("iframe[src^='http://www.youtube.com']"),
+    var $allVideos = $("iframe[src^='https://www.youtube.com']"),
 
         // The element that is fluid width
         $fluidEl = $(".video:first");
