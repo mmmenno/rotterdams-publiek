@@ -2,10 +2,10 @@
 
 include("functions.php");
 
-
+// just to get names of cinemas
 
 $sparql = "
-SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?straat ?straatLabel WHERE {
+SELECT ?item ?itemLabel WHERE {
   
     VALUES ?type { 
       wd:Q57660343 #podiumkunstgebouw
@@ -23,20 +23,6 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
     }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
-    OPTIONAL{
-      ?item wdt:P669 ?straat .
-    }
-  OPTIONAL{
-      ?item wdt:P571 ?bouwjaar .
-    }
-  OPTIONAL{
-      ?item wdt:P576 ?sloopjaar .
-    }
-  OPTIONAL{
-      ?item p:P31 ?iseen .
-      ?iseen pq:P580 ?starttype .
-      ?iseen pq:P582 ?eindtype .
-    }
   OPTIONAL{
       ?item p:P2561 ?naam .
       ?naam ps:P2561 ?naamstring .
@@ -46,7 +32,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
-LIMIT 1001";
+LIMIT 900";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';
@@ -56,48 +42,78 @@ $data = json_decode($json,true);
 
 
 foreach ($data['results']['bindings'] as $k => $v) {
-
    $wdid = str_replace("http://www.wikidata.org/entity/", "", $v['item']['value']);
-   $images[$wdid] = $v['image']['value'];
-   $type = $v['typeLabel']['value'];
-
-   if(isset($venues[$type][$wdid])){
-
-      if(strlen($v['naamstring']['value'])){
-         $venues[$type][$wdid]['names'][] = $v['naamstring']['value']; 
-      }
-
-      continue;
-   }
-
-   $venuecount++;
-
-   $venues[$type][$wdid]["wdid"] = $wdid;
-   $venues[$type][$wdid]["label"] = $v['itemLabel']['value'];
-   $venues[$type][$wdid]["straatlabel"] = $v['straatLabel']['value'];
-   $venues[$type][$wdid]["bstart"] = $v['bouwjaar']['value'];
-   $venues[$type][$wdid]["bend"] = $v['sloopjaar']['value'];
-
-   if(isset($v['starttype']['value'])){
-      $venues[$type][$wdid]["starttype"] = $v['starttype']['value'];
-   }
-   if(isset($v['eindtype']['value'])){
-      $venues[$type][$wdid]["eindtype"] = $v['eindtype']['value'];
-   }
-
-   if(strlen($v['naamstring']['value'])){
-      $venues[$type][$wdid]['names'][] = $v['naamstring']['value'];
-   }
-   
-
+   $zaallabels[$wdid] = $v['itemLabel']['value'];
 }
 
-$quarter = round($venuecount/4);
+$sparql = "
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oa: <http://www.w3.org/ns/oa#>
+SELECT ?item ?embedUrl ?givenName ?familyName ?dob ?oa ?oaSource WHERE {
+  ?item a schema:VideoObject .
+  ?item schema:embedUrl ?embedUrl .
+  ?item schema:about ?interviewee .
+  ?interviewee schema:givenName ?givenName .
+  ?interviewee schema:familyName ?familyName .
+  ?interviewee schema:birthDate ?dob .
+  OPTIONAL{
+    ?oa oa:hasTarget/oa:hasSource ?item . 
+    ?oa oa:hasBody/oa:hasPurpose oa:linking .
+    ?oa oa:hasBody/oa:hasSource ?oaSource .
+  }
+} 
+ORDER BY ASC(?item) ASC(?oa)
+LIMIT 1000";
+
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/rotterdamspubliek/services/rotterdamspubliek/sparql';
+
+$json = getSparqlResults($endpoint,$sparql);
+$data = json_decode($json,true);
+
+
+$movies = array();
+$beenthere = array();
+foreach ($data['results']['bindings'] as $k => $v) {
+
+    if(!isset($movies[$v['item']['value']])){
+        $movies[$v['item']['value']]['embedUrl'] = $v['embedUrl']['value'];
+        $movies[$v['item']['value']]['interviewee'] = array(
+            "name" => $v['givenName']['value'] . " " . $v['familyName']['value'],
+            "birthyear" => $v['dob']['value']
+        );
+        $movies[$v['item']['value']]['links'] = array();
+
+        $moviecount++;
+    }
+
+    
+    if(strlen($v['oaSource']['value'])){
+        $wdid = str_replace("http://www.wikidata.org/entity/","",$v['oaSource']['value']);
+        if(array_key_exists($wdid, $zaallabels)){
+            $naam = $zaallabels[$wdid];
+            $link = "/plekken/plek.php?qid=" . $wdid;
+        }else{
+            $naam = $wdid;
+            $link = $v['oaSource']['value'];
+        }
+        $movies[$v['item']['value']]['links'][] = '<a href="' . $link . '">' . $naam . '</a>';
+        $movies[$v['item']['value']]['links'] = array_unique($movies[$v['item']['value']]['links']);
+    }
+
+    
+
+}
+//print_r($movies);
+
+$quarter = round($moviecount/4);
 $half = $quarter*2;
-$threequarters = $venuecount-$quarter;
+$threequarters = $moviecount-$quarter;
 $breaks = array($quarter,$half,$threequarters);
 
-$third = round($venuecount/3);
+$third = ceil($moviecount/3);
 $twothirds = $third*2;
 $breaks = array($third,$twothirds);
 
@@ -136,12 +152,97 @@ $breaks = array($third,$twothirds);
       </div> 
     </div>
 
-    binnenkort!
+    <div class="row">
+      <div class="col-md-12">
+         <h3 style="margin-bottom: 24px;">Interviews over bioscoopbezoek in de jaren '50</h3>
+      </div> 
+    </div>
+
+    <div class="row">
+        
+            <?php 
+            $i = 0;
+            foreach ($movies as $movieID => $movie) { 
+             
+                $i++;
+
+                ?>
+                    <div class="col-md-4">
+                    <iframe width="560" height="315" src="<?= $movie['embedUrl'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <p class="smaller"><?= $movie['interviewee']['name'] ?>, geboren in <?= $movie['interviewee']['birthyear'] ?></p>
+
+                <?php
+
+                if(count($movie['links'])){
+                    echo '<p class="smaller">o.a. over ';
+                    echo implode(", ", $movie['links']);
+                    echo "</p>";
+                }
+
+                echo "</div>";
+
+                if($i%3==0){
+                    echo '</div><div class="row">';
+                }
+            
+            }
+            ?>
+        <br />
+        <br />
+        <br />
+        
+    </div>
 
 </div>
 
 </div>
 
+
+<script>
+// By Chris Coyier & tweaked by Mathias Bynens
+
+$(function() {
+
+    // Find all YouTube videos
+    var $allVideos = $("iframe[src^='http://www.youtube.com']"),
+
+        // The element that is fluid width
+        $fluidEl = $(".col-md-4:first");
+
+    // Figure out and save aspect ratio for each video
+    $allVideos.each(function() {
+
+        $(this)
+            .data('aspectRatio', this.height / this.width)
+            
+            // and remove the hard coded width/height
+            .removeAttr('height')
+            .removeAttr('width');
+
+    });
+
+    // When the window is resized
+    // (You'll probably want to debounce this)
+    $(window).resize(function() {
+
+        var newWidth = $fluidEl.width();
+        
+        // Resize all videos according to their own aspect ratio
+        $allVideos.each(function() {
+
+            var $el = $(this);
+            $el
+                .width(newWidth)
+                .height(newWidth * $el.data('aspectRatio'));
+
+        });
+
+    // Kick off one resize to fix all videos on page load
+    }).resize();
+
+});
+</script>
 
 
 

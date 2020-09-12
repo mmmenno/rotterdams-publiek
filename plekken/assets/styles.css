@@ -71,6 +71,10 @@ p{
 .quote .smaller{
 	text-align: right;
 }
+.video{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
 .eventcontent h3{
 	border:none;
 }

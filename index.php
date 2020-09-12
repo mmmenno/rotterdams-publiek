@@ -68,7 +68,18 @@
 
 					<h2 class="interviews">Verhalen</h2>
 					<p class="interviews">
-						Persoonlijke getuigenissen zijn soms ook vastgelegd op beeld en geluid. Het Stadsarchief verzamelt ook video en audio. We <a href="/verhalen/">laten hier een aantal van deze getuigenissen zien</a>, en proberen daarbij fragmenten aan locaties te verbinden.
+						Persoonlijke getuigenissen zijn soms vastgelegd op beeld en geluid. Het Stadsarchief verzamelt ook video en audio. We <a href="/verhalen/">laten hier een aantal van deze getuigenissen zien</a>, en proberen daarbij fragmenten aan locaties te verbinden.
+					</p>
+
+					<h2 class="events">R'dam. Made it happen.</h2>
+					<p class="events">
+						Uit de archieven hebben we op beeld vastgelegde <a href="/gebeurtenissen/">gebeurtenissen</a> uit het culturele leven opgediept - van bouw tot brand, van soundcheck tot première, en daarnaast een incidentele hondenshow.
+					</p>
+
+					<img src="assets/img/demonstratie-fassbinder.jpg" />
+
+					<p class="onderschrift events">
+						Demonstratie in Rotterdam tegen opvoering Fassbinders `het vuil, de stad en de dood` voor <a href="plekken/plek.php?qid=Q76161173">theater De Lantaren</a>
 					</p>
 
 					<h2>Een woord van dank</h2>
