@@ -331,15 +331,7 @@ print_r($videos);
 			<h3>Op de kaart</h3>
 		  	<div id="map" style="height: 300px; margin-top: 20px;"></div>
 
-		  	<?php if(count($videos)){ ?>
-		  		<h3>Deze zaal in interviews</h3>
-		  		<?php foreach ($videos as $video) { ?>
-		  			<div class="video">
-		  				<iframe width="560" height="315" src="<?= $video['embedUrl'] ?>?start=<?= $video['start'] ?>&end=<?= $video['end'] ?>" frameborder="0" allow="" allowfullscreen></iframe>
-					</div>
-		  		<? } ?>
-		  		<p class="evensmaller">Meer interviews, ook over andere plekken, op het <a href="/verhalen/">Verhalen overzicht</a>.</p>
-		  	<? } ?>
+		  	
 			
 		</div>
 	</div>
@@ -414,50 +406,7 @@ print_r($videos);
 
 </script>
 
-<script>
-// By Chris Coyier & tweaked by Mathias Bynens
 
-$(function() {
-
-    // Find all YouTube videos
-    var $allVideos = $("iframe[src^='https://www.youtube.com']"),
-
-        // The element that is fluid width
-        $fluidEl = $(".video:first");
-
-    // Figure out and save aspect ratio for each video
-    $allVideos.each(function() {
-
-        $(this)
-            .data('aspectRatio', this.height / this.width)
-            
-            // and remove the hard coded width/height
-            .removeAttr('height')
-            .removeAttr('width');
-
-    });
-
-    // When the window is resized
-    // (You'll probably want to debounce this)
-    $(window).resize(function() {
-
-        var newWidth = $fluidEl.width();
-        
-        // Resize all videos according to their own aspect ratio
-        $allVideos.each(function() {
-
-            var $el = $(this);
-            $el
-                .width(newWidth)
-                .height(newWidth * $el.data('aspectRatio'));
-
-        });
-
-    // Kick off one resize to fix all videos on page load
-    }).resize();
-
-});
-</script>
 
 </body>
 </html>
