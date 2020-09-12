@@ -1,4 +1,0 @@
-
-{ "head": { "link": [], "vars": ["text", "paper", "articledate", "articleurl"] },
-  "results": { "distinct": false, "ordered": true, "bindings": [
-    { "text": { "type": "literal", "value": "Voor de derde maal heeft de VARA in Rotterdam \u201EDoe open die deur' gepresenteerd. Dinsdagavond konden in zaal\u00A0Courzand\u00A0de Heyplaatbewoners kennismaken met de artisten, die zo vaak door de radio worden afgeroepen. Cor Steijn met Accordeola, het kwartet Jan Corduwener, Ina Verwoerd, Julia de Gruyter, Jetty Cantor, Cees de Lange, Maarten Kapteijn en de Balsamo's zij allen hebben 't hunne er toe bijgedragen, dat de kennismaking uitermate geslaagd is." }	, "paper": { "type": "literal", "value": "Het vr\u0133e volk" }	, "articledate": { "type": "typed-literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "1949-10-05" }	, "articleurl": { "type": "uri", "value": "https://resolver.kb.nl/resolve?urn=ddd:010950214:mpeg21:a0022" }} ] } }

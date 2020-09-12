@@ -1,8 +1,0 @@
-{
-  "head" : {
-    "vars" : [ "text", "paper", "articledate", "articleurl" ]
-  },
-  "results" : {
-    "bindings" : [ ]
-  }
-}
