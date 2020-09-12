@@ -331,7 +331,7 @@ print_r($videos);
 			<h3>Op de kaart</h3>
 		  	<div id="map" style="height: 300px; margin-top: 20px;"></div>
 
-		  	<?php if(count($videos)){ ?>
+		  	
 		  		<h3>Deze zaal in interviews</h3>
 		  		<?php foreach ($videos as $video) { ?>
 		  			<div class="video">
@@ -339,7 +339,7 @@ print_r($videos);
 					</div>
 		  		<? } ?>
 		  		<p class="evensmaller">Meer interviews, ook over andere plekken, op het <a href="/verhalen/">Verhalen overzicht</a>.</p>
-		  	<? } ?>
+		  	
 			
 		</div>
 	</div>
