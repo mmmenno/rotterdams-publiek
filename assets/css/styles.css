@@ -73,7 +73,7 @@ a:hover{
 	text-decoration: none;
 	color: #a749ac;
 }
-.buildings a, .buildings a:hover{
+.buildings a, .buildings a:hover, a.buildings, a.buildings:hover{
 	color: #c2675d;
 }
 .timemachine a, .timemachine a:hover{

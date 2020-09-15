@@ -23,12 +23,6 @@ SELECT ?item ?itemLabel WHERE {
     }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
-  OPTIONAL{
-      ?item p:P2561 ?naam .
-      ?naam ps:P2561 ?naamstring .
-      ?naam pq:P580 ?startnaam .
-      ?naam pq:P582 ?eindnaam .
-    }
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
@@ -51,7 +45,7 @@ PREFIX schema: <http://schema.org/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX oa: <http://www.w3.org/ns/oa#>
-SELECT ?item ?embedUrl ?givenName ?familyName ?dob ?oa ?oaSource WHERE {
+SELECT ?item ?itemLabel ?embedUrl ?givenName ?familyName ?dob ?oa ?oaSource WHERE {
   ?item a schema:VideoObject .
   ?item schema:embedUrl ?embedUrl .
   ?item schema:about ?interviewee .
@@ -61,7 +55,11 @@ SELECT ?item ?embedUrl ?givenName ?familyName ?dob ?oa ?oaSource WHERE {
   OPTIONAL{
     ?oa oa:hasTarget/oa:hasSource ?item . 
     ?oa oa:hasBody/oa:hasPurpose oa:linking .
-    ?oa oa:hasBody/oa:hasSource ?oaSource .
+    ?oa oa:hasBody ?oaBody .
+    ?oaBody oa:hasSource ?oaSource .
+    OPTIONAL{
+      ?oaBody rdfs:label ?itemLabel .
+    }
   }
 } 
 ORDER BY ASC(?item) ASC(?oa)
@@ -93,13 +91,14 @@ foreach ($data['results']['bindings'] as $k => $v) {
     if(strlen($v['oaSource']['value'])){
         $wdid = str_replace("http://www.wikidata.org/entity/","",$v['oaSource']['value']);
         if(array_key_exists($wdid, $zaallabels)){
-            $naam = $zaallabels[$wdid];
+            $naam = $v['itemLabel']['value'];
             $link = "/plekken/plek.php?qid=" . $wdid;
+            $movies[$v['item']['value']]['links'][] = '<a class="buildings" href="' . $link . '">' . $naam . '</a>';
         }else{
-            $naam = $wdid;
+            $naam = $v['itemLabel']['value'];
             $link = $v['oaSource']['value'];
+            $movies[$v['item']['value']]['links'][] = '<a href="' . $link . '">' . $naam . '</a>';
         }
-        $movies[$v['item']['value']]['links'][] = '<a href="' . $link . '">' . $naam . '</a>';
         $movies[$v['item']['value']]['links'] = array_unique($movies[$v['item']['value']]['links']);
     }
 
@@ -137,6 +136,7 @@ $breaks = array($third,$twothirds);
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
+  <link rel="stylesheet" href="/assets/css/styles.css" />
   <link rel="stylesheet" href="assets/styles.css" />
 
   
@@ -205,7 +205,7 @@ $breaks = array($third,$twothirds);
 $(function() {
 
     // Find all YouTube videos
-    var $allVideos = $("iframe[src^='https://www.youtube.com']"),
+    var $allVideos = $("iframe[src^='https://www.youtube.com'],iframe[src^='http://www.youtube.com']"),
 
         // The element that is fluid width
         $fluidEl = $(".col-md-4:first");
