@@ -60,10 +60,4 @@ function getSparqlResults($endpoint,$query){
 
 
 
-
-
-
-
-
-
 ?>

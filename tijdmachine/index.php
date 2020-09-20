@@ -27,6 +27,7 @@ $next = $year + 1;
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
 
+	<link rel="stylesheet" href="/assets/css/styles.css" />
 	<link rel="stylesheet" href="assets/styles.css" />
 
 
@@ -72,9 +73,6 @@ $next = $year + 1;
 			<h2>Op de poppodia</h2>
 			<div class="content" id="concerten"></div>
 
-			<h2>Affiches</h2>
-			<div class="content" id="affiches"></div>
-
 			<h2>Tentoonstellingen in Boijmans</h2>
 			<div class="content" id="boijmans"></div>
 
@@ -87,7 +85,7 @@ $next = $year + 1;
 		</div>
 		<div class="col-md-4">
 
-			<h2>Gebeurtenissen in beeld</h2>
+			<h2>R'dam. Made it happen.</h2>
 			<div class="content" id="gebeurtenissen"></div>
 
 			
@@ -125,6 +123,8 @@ $next = $year + 1;
 					$('#megaconcerten').load('concerten/megaconcerts.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "concerten"){
 					$('#concerten').load('concerten/poppodia.php?year=<?= $year ?>');
+				}else if(div.attr('id') == "gebeurtenissen"){
+					$('#gebeurtenissen').load('gebeurtenissen/index.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "vrouwen"){
 					$('#vrouwen').load('rkd/vrouwen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "kunstscene"){
@@ -146,6 +146,8 @@ $next = $year + 1;
 			}else if(div.attr('id') == "bioscopen" && <?= $year ?> < 1912){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "concerten" && <?= $year ?> < 1967){
+				$(this).addClass('faded');
+			}else if(div.attr('id') == "megaconcerten" && <?= $year ?> < 1967){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "boijmans" && <?= $year ?> < 1927){
 				$(this).addClass('faded');
