@@ -155,6 +155,9 @@ $breaks = array($third,$twothirds);
     <div class="row">
       <div class="col-md-12">
          <h3 style="margin-bottom: 24px;">Interviews over bioscoopbezoek in de jaren '50</h3>
+         <p style="margin-bottom: 24px;">
+           Deze interviews zijn afgenomen in het kader van het <a target="_blank" href="https://www.europeancinemaaudiences.org/">European Cinema Audiences</a> project.
+         </p>
       </div> 
     </div>
 
