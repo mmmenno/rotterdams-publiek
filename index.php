@@ -121,7 +121,7 @@
 			</p>
 
 			<p>
-				De databestanden die we zelf gemaakt of verzameld hebben, zoals de quotes uit krantenbank Delpher en de 'culturele gebeurtenissen' en het beeld waarop ze zijn vastgelegd, delen we via onze data-repository op GitHub.
+				De databestanden die we zelf gemaakt of verzameld hebben, zoals de quotes uit krantenbank Delpher, de 'culturele gebeurtenissen' en de koppelingen tussen afbeeldingen uit het archief en locaties, delen we via <a href="https://github.com/mmmenno/rotterdams-publiek-data">onze data-repository op GitHub</a>.
 			</p>
 
 

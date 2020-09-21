@@ -88,6 +88,9 @@ $next = $year + 1;
 			<h2>R'dam. Made it happen.</h2>
 			<div class="content" id="gebeurtenissen"></div>
 
+			<h2>In de pers</h2>
+			<div class="content" id="pers"></div>
+
 			
 		</div>
 	</div>
@@ -125,6 +128,8 @@ $next = $year + 1;
 					$('#concerten').load('concerten/poppodia.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "gebeurtenissen"){
 					$('#gebeurtenissen').load('gebeurtenissen/index.php?year=<?= $year ?>');
+				}else if(div.attr('id') == "pers"){
+					$('#pers').load('pers/index.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "vrouwen"){
 					$('#vrouwen').load('rkd/vrouwen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "kunstscene"){
