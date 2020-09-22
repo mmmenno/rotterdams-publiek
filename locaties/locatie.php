@@ -321,7 +321,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 //print_r($otherevents);
 
 
-// EVENTS
+// ILLUSTRATIONS
 
 $sparql = "
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>

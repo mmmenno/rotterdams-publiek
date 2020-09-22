@@ -178,17 +178,219 @@ $endpoint = 'https://api.druid.datalegend.net/datasets/menno/rotterdamspubliek/s
 $json = getSparqlResults($endpoint,$sparql);
 $data = json_decode($json,true);
 
-$videos = array();
+$interviews = array();
 foreach ($data['results']['bindings'] as $k => $v) {
 	$timesstring = str_replace("t=", "", $v['selector']['value']);
 	$times = explode(",", $timesstring);
-	$videos[] = array(
+	$interviews[] = array(
 		"embedUrl" => $v['embedUrl']['value'],
 		"start" => $times[0],
 		"end" => $times[1],
 	);
 
 }
+
+
+
+// ILLUSTRATIONS
+
+$sparql = "
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT * WHERE {
+	?cho dct:spatial wd:" . $qid . " .
+	?cho foaf:depiction ?imgurl .
+	?cho dc:date ?chodate .
+	?cho dc:creator ?creator .
+	?cho edm:isShownAt ?isShownAt .
+	?cho dc:title ?chotitle .
+	MINUS { ?cho dc:type <http://vocab.getty.edu/aat/300263837> }
+} 
+ORDER BY ASC(?chodate)
+LIMIT 100
+";
+
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+$json = getSparqlResults($endpoint,$sparql);
+$data = json_decode($json,true);
+
+
+$illustrations = array();
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$illustrations[$v['cho']['value']] = array(
+		"label" => $v['chotitle']['value'],
+		"creator" => $v['creator']['value'],
+		"imgurl" => $v['imgurl']['value'],
+		"date" => dutchdate($v['chodate']['value']),
+		"isShownAt" => $v['isShownAt']['value']
+	);
+
+}
+
+
+
+
+// GEBEURTENISSEN
+
+$sparqlQueryString = "
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+SELECT ?item ?label ?begin ?end ?place ?placeLabel ?cho ?imgurl WHERE {
+	?item a sem:Event ;
+		sem:eventType ?eventtype ;
+		sem:hasPlace wd:" . $qid . " ;
+		rdfs:label ?label ;
+		sem:hasEarliestBeginTimeStamp ?begin;
+		sem:hasLatestEndTimeStamp ?end .
+	?eventtype rdfs:label ?typelabel .
+	?cho dc:subject ?item .
+	?cho foaf:depiction ?imgurl .
+	MINUS { ?cho dc:type <http://vocab.getty.edu/aat/300263837> }
+} 
+ORDER BY ?begin
+LIMIT 100
+";
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+
+$json = getSparqlResults($endpoint,$sparqlQueryString);
+$data = json_decode($json,true);
+
+
+
+
+$events = array();
+//print_r($data);
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$monthfrom = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+    $monthto = array("januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december");
+    
+
+	$from = date("j M",strtotime($v['begin']['value']));
+	$from = str_replace($monthfrom, $monthto, $from);
+
+
+	$to = date("j M",strtotime($v['end']['value']));
+	$to = str_replace($monthfrom, $monthto, $to);
+
+	if($from==$to){
+		$to = "";
+	}else{
+		$to = " - " . $to;
+	}
+
+	if(date("Y",strtotime($v['end']['value'])) != $year){
+		$to .= " '" . substr(date("Y",strtotime($v['end']['value'])),2,2);
+	}
+
+	$events[$v['item']['value']] = array(
+		"title" => $v['label']['value'],
+		"actorname" => $v['actorname']['value'],
+		"wiki" => $v['wikipedia']['value'],
+		"actor" => $v['actor']['value'],
+		"datum" => $from . $to
+	);
+
+}
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$events[$v['item']['value']]['imgs'][] = array(
+		"cho" => $v['cho']['value'],
+		"imgurl" => $v['imgurl']['value']
+	);
+
+	$count = count($events[$v['item']['value']]['imgs']);
+	$events[$v['item']['value']]['featuredimg'] = $events[$v['item']['value']]['imgs'][rand(0,($count-1))];
+
+}
+//print_r($events);
+
+
+$sparqlQueryString = "
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+SELECT ?item ?label ?begin ?end ?place ?placeLabel ?newsreel ?newsreelfile WHERE {
+	?item a sem:Event ;
+		sem:eventType ?eventtype ;
+		sem:hasPlace wd:" . $qid . " ;
+		rdfs:label ?label ;
+		sem:hasEarliestBeginTimeStamp ?begin;
+		sem:hasLatestEndTimeStamp ?end .
+	?eventtype rdfs:label ?typelabel .
+	?newsreel dc:subject ?item .
+	?newsreel dc:type <http://vocab.getty.edu/aat/300263837> .
+	?newsreel edm:isShownBy ?newsreelfile .
+} 
+ORDER BY ?begin
+LIMIT 100
+";
+
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+
+$json = getSparqlResults($endpoint,$sparqlQueryString);
+$data = json_decode($json,true);
+
+
+
+
+$videos = array();
+
+
+foreach ($data['results']['bindings'] as $k => $v) {
+
+	$monthfrom = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+    $monthto = array("januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december");
+    
+
+	$from = date("j M",strtotime($v['begin']['value']));
+	$from = str_replace($monthfrom, $monthto, $from);
+
+
+	$to = date("j M",strtotime($v['end']['value']));
+	$to = str_replace($monthfrom, $monthto, $to);
+
+	if($from==$to){
+		$to = "";
+	}else{
+		$to = " - " . $to;
+	}
+
+	if(date("Y",strtotime($v['end']['value'])) != $year){
+		$to .= " '" . substr(date("Y",strtotime($v['end']['value'])),2,2);
+	}
+
+	$videos[$v['item']['value']] = array(
+		"title" => $v['label']['value'],
+		"actorname" => $v['actorname']['value'],
+		"newsreel" => $v['newsreel']['value'],
+		"newsreelfile" => $v['newsreelfile']['value'],
+		"datum" => $from . $to
+	);
+
+}
+//print_r($videos);
 
 
 ?><!DOCTYPE html>
@@ -268,11 +470,8 @@ foreach ($data['results']['bindings'] as $k => $v) {
 				echo 'gebouw verdwenen in ' . date("Y",strtotime($venue['bend'])) . '<br />';
 			}
 
-			if(count($types)){
-				echo '<br/>gebruikt als:</br>';
-			}
 			foreach ($types as $k => $v) {
-				echo '<strong>' . $k . '</strong> ';
+				echo 'een <strong>' . $k . '</strong> ';
 				if(strlen($v['starttype'])){
 					echo 'van ' . date("Y",strtotime($v['starttype']));
 				}
@@ -301,11 +500,24 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			?>
 
 			<?php if($image != ""){ ?>
-				<img src="<?= $image ?>?width=800px" style="width: 100%;" />
+				<br /><img src="<?= $image ?>?width=800px" style="width: 100%;" />
 			<?php } ?>
-
-
 			<br />
+
+
+
+			<h3>Afbeeldingen</h3>
+			<?php 
+			//print_r($illustrations);
+				foreach($illustrations as $k => $v){
+
+					echo '<a target="_blank" href="' . $v['isShownAt'] . '"><img src="' . $v['imgurl'] . '" ></a>';
+					echo '<p class="onderschrift">' . $v['label'] . " | " . $v['date'] . '</p>';
+					
+				}
+			?>
+
+
 		</div>
 		<div class="col-md-4">
 			
@@ -332,15 +544,42 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		  	<div id="map" style="height: 300px; margin-top: 20px;"></div>
 
 		  	
-		  	<?php if(count($videos)>0){ ?>
+		  	<?php if(count($interviews)>0){ ?>
 		  		<h3>Deze zaal in interviews</h3>
-			  	<?php foreach ($videos as $video) { ?>
-		  			<div class="video">
-		  				<iframe width="560" height="315" src="<?= $video['embedUrl'] ?>?start=<?= $video['start'] ?>&end=<?= $video['end'] ?>" frameborder="0" allow="" allowfullscreen></iframe>
+			  	<?php foreach ($interviews as $interview) { ?>
+		  			<div class="interview">
+		  				<iframe width="560" height="315" src="<?= $interview['embedUrl'] ?>?start=<?= $interview['start'] ?>&end=<?= $interview['end'] ?>" frameborder="0" allow="" allowfullscreen></iframe>
 					</div>
 		  		<?php } ?>
 		  		<p class="evensmaller">Meer interviews, ook over andere plekken, op het <a href="/verhalen/">Verhalen overzicht</a>.</p>
 		  	<?php } ?>
+
+
+
+		  	<h3>R'dam. Made it happen.</h3>
+
+		  	<?php foreach($videos as $k => $v){ ?>
+				<div xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="oip_media" about="<?= $v['newsreelfile'] ?>">
+					<video width="100%" controls="controls">
+						<source type="video/mp4" src="<?= $v['newsreelfile'] ?>#t=3"/>
+					</video>
+				</div>
+
+				<p class="onderschrift" style="margin-top: 5px"><?= $v['title'] ?> | <?= $v['datum'] ?></p>
+			<?php } ?>
+
+			<?php foreach ($events as $event) { ?>
+			
+				<div class="event">
+
+					<a href="<?= $event['featuredimg']['cho'] ?>"><img src="<?= $event['featuredimg']['imgurl'] ?>" /></a>
+
+					<p class="onderschrift"><?= $event['title'] ?> | <?= $event['datum'] ?></p>
+					<p class="small"></p>
+
+				</div>
+
+			<?php } ?>
 		  	
 			
 		</div>
@@ -422,10 +661,10 @@ foreach ($data['results']['bindings'] as $k => $v) {
 $(function() {
 
     // Find all YouTube videos
-    var $allVideos = $("iframe[src^='https://www.youtube.com']"),
+    var $allVideos = $("iframe[src^='https://www.youtube.com'],iframe[src^='http://www.youtube.com']"),
 
         // The element that is fluid width
-        $fluidEl = $(".video:first");
+        $fluidEl = $(".interview:first");
 
     // Figure out and save aspect ratio for each video
     $allVideos.each(function() {

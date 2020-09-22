@@ -188,8 +188,8 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		<p class="onderschrift" style="margin-top: 5px"><?= $v['title'] ?> | <a href="/plekken/plek.php?qid=<?= $v['place'] ?>"><?= $v['placeLabel'] ?></a> | <?= $v['datum'] ?></p>
 	<?php } ?>
 
-<?php
-foreach ($events as $event) { 
+	<?php
+	foreach ($events as $event) { 
 
 	
 	?>
@@ -199,13 +199,12 @@ foreach ($events as $event) {
 		<a href="<?= $event['featuredimg']['cho'] ?>"><img src="<?= $event['featuredimg']['imgurl'] ?>" /></a>
 
 		<p class="onderschrift"><?= $event['title'] ?> | <a href="/plekken/plek.php?qid=<?= $event['place'] ?>"><?= $event['placeLabel'] ?></a> | <?= $event['datum'] ?></p>
-		<p class="small"></p>
 
 	</div>
 
 	<?php 
-} 
-?>
+	} 
+	?>
 </table>
 
 
