@@ -505,8 +505,9 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			<br />
 
 
-
-			<h3>Afbeeldingen</h3>
+			<?php if(count($illustrations)>0){ ?>
+				<h3>Afbeeldingen</h3>
+			<?php } ?>
 			<?php 
 			//print_r($illustrations);
 				foreach($illustrations as $k => $v){
@@ -556,7 +557,10 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 
 
-		  	<h3>R'dam. Made it happen.</h3>
+		  	<?php if(count($videos)>0 || count($events)>0){ ?>
+		  		<h3>R'dam. Made it happen.</h3>
+			<?php } ?>
+
 
 		  	<?php foreach($videos as $k => $v){ ?>
 				<div xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="oip_media" about="<?= $v['newsreelfile'] ?>">
@@ -567,7 +571,6 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 				<p class="onderschrift" style="margin-top: 5px"><?= $v['title'] ?> | <?= $v['datum'] ?></p>
 			<?php } ?>
-
 			<?php foreach ($events as $event) { ?>
 			
 				<div class="event">
