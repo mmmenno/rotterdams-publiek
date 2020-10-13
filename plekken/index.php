@@ -46,7 +46,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
-LIMIT 900";
+LIMIT 902";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';

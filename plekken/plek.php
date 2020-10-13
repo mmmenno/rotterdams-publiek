@@ -40,8 +40,12 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?startty
   OPTIONAL{
 		?item p:P2561 ?naam .
 		?naam ps:P2561 ?naamstring .
-		?naam pq:P580 ?startnaam .
-		?naam pq:P582 ?eindnaam .
+		OPTIONAL{
+			?naam pq:P580 ?startnaam .
+		}
+		OPTIONAL{
+			?naam pq:P582 ?eindnaam .
+		}
 	 }
   OPTIONAL{
     ?item wdt:P1398 ?prev .
@@ -59,7 +63,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?startty
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
-LIMIT 1000";
+LIMIT 600";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';
@@ -205,6 +209,7 @@ SELECT * WHERE {
 	?cho foaf:depiction ?imgurl .
 	?cho dc:date ?chodate .
 	?cho dc:creator ?creator .
+	?cho dc:description ?description .
 	?cho edm:isShownAt ?isShownAt .
 	?cho dc:title ?chotitle .
 	MINUS { ?cho dc:type <http://vocab.getty.edu/aat/300263837> }
@@ -214,7 +219,7 @@ LIMIT 100
 ";
 
 
-$endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+$endpoint = 'https://api.druid.datalegend.net/datasets/menno/rotterdamspubliek/services/rotterdamspubliek/sparql';
 $json = getSparqlResults($endpoint,$sparql);
 $data = json_decode($json,true);
 
@@ -225,6 +230,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 	$illustrations[$v['cho']['value']] = array(
 		"label" => $v['chotitle']['value'],
+		"description" => $v['description']['value'],
 		"creator" => $v['creator']['value'],
 		"imgurl" => $v['imgurl']['value'],
 		"date" => dutchdate($v['chodate']['value']),
@@ -433,7 +439,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 
 
-		  	<h3>Info</h3>
+		  	<h3>Info van Wikidata</h3>
 		  	
 			
 			Wikidata: <a href="<?= $venue['uri'] ?>"><?= $venue['wdid'] ?></a><br />
@@ -450,7 +456,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			foreach ($names as $k => $v) {
 				echo '<strong>' . $k . '</strong> ';
 				if(strlen($v['start'])){
-					echo 'van ' . date("Y",strtotime($v['start']));
+					echo 'vanaf ' . date("Y",strtotime($v['start']));
 				}
 				if(strlen($v['end'])){
 					echo ' tot ' . date("Y",strtotime($v['end']));
@@ -467,7 +473,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			}
 
 			if(strlen($venue['bend'])){ 
-				echo 'gebouw verdwenen in ' . date("Y",strtotime($venue['bend'])) . '<br />';
+				echo 'gebouw verdwenen in ' . date("Y",strtotime($venue['bend'])) . '<br /><br />';
 			}
 
 			foreach ($types as $k => $v) {
@@ -513,7 +519,16 @@ foreach ($data['results']['bindings'] as $k => $v) {
 				foreach($illustrations as $k => $v){
 
 					echo '<a target="_blank" href="' . $v['isShownAt'] . '"><img src="' . $v['imgurl'] . '" ></a>';
-					echo '<p class="onderschrift">' . $v['label'] . " | " . $v['date'] . '</p>';
+					
+					echo '<p class="onderschrift">';
+					if(strlen($v['label'])){
+						echo '<strong>' . $v['label'] . "</strong> | ";
+					} 
+					if(strlen($v['description'])){
+						echo '' . $v['description'] . " | ";
+					} 
+					echo $v['date'];
+					echo '</p>';
 					
 				}
 			?>

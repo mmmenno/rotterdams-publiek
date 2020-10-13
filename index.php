@@ -93,7 +93,7 @@
 						Dit project is mogelijk gemaakt door een subsidie van het <a href="https://stimuleringsfonds.nl/">Stimuleringsfonds Creatieve Industrie</a>.
 					</p>
 
-					<img src="assets/img/SCI.jpg" />
+					<img style="width: 80%" src="assets/img/SCI.jpg" />
 
 					<h2>Over ons</h2>
 					<p>

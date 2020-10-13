@@ -52,6 +52,8 @@ function dutchdate($date){
 	$maanden = array("","jan","feb","maart","april","mei","juni","juli","aug","sept","okt","nov","dec");
 	$dutch = date("j ",strtotime($date)) . $maanden[date("n",strtotime($date))] . date(" Y",strtotime($date));
 
+	$dutch = preg_replace("/^1 jan /","",$dutch);
+
 	return $dutch;
 }
 
