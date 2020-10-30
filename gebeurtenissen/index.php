@@ -163,7 +163,7 @@ asort($eventtypes);
 
         <h3><a href="" style="font-weight: normal;"><?= $v['label'] ?></a></h3>
         <span class="startyear"><?= $v['startyear'] ?></span> <span class="endyear"><?= $v['endyear'] ?></span>
-        <p class="small"><?= $v['typelabel'] ?> | <?= $datum ?> | <a href="../locaties/locatie.php?qid=<?= $v['place'] ?>"><?= $v['placelabel'] ?></a></p>
+        <p class="small"><?= $v['typelabel'] ?> | <?= $datum ?> | <a href="../plekken/plek.php?qid=<?= $v['place'] ?>"><?= $v['placelabel'] ?></a></p>
 
         <div class="eventcontent"></div>
 
