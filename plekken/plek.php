@@ -590,7 +590,7 @@ if(in_array($qid, $concertzalen)){
 					?>
 				</div>
 				<p class="evensmaller">
-					De concerten waarop de lijst hierboven gebaseerd is komen uit <a href="https://www.setlist.fm/">setlist.fm</a>. Klik op het jaar om het concert daar te zien (misschien inclusief setlist) en op de naam om de Wikipediapagina van de band of artiest te openen. De lijst is gesorteerd op de grootte, in aantal karakters, van de Nederlandse Wikipediapagina bij inlezen.
+					De concerten waarop de lijst hierboven gebaseerd is komen uit <a href="https://www.setlist.fm/">setlist.fm</a>. Klik op het jaar om het concert daar te zien (misschien inclusief setlist) en op de naam om de Wikipediapagina van de band of artiest te openen. De lijst is gesorteerd op de grootte, in aantal karakters, van de Nederlandstalige Wikipediapagina bij inlezen.
 				</p>
 			<?php } ?>
 

@@ -124,7 +124,7 @@ foreach ($concerts as $concert) {
 			<strong><a target="_blank" href="<?= $concert['wiki'] ?>"><?= $concert['artistname'] ?></a></strong>
 			<br />
 			<span class="evensmaller">
-				<?= $concert['datum'] ?> in <a href="/locaties/locatie.php?qid=<?= $concert['location'] ?>"><?= $concert['locationname'] ?></a>
+				<?= $concert['datum'] ?> in <a href="/plekken/plek.php?qid=<?= $concert['location'] ?>"><?= $concert['locationname'] ?></a>
 			</span><br />
 	</td></tr>
 
