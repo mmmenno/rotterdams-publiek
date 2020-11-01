@@ -14,28 +14,23 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 SELECT DISTINCT(?artist) ?artistname (SAMPLE(?bandimg) AS ?bandimg) ?rating ?wikipedia (MIN(?date) AS ?date) ?location ?locationname WHERE {
-  ?concert a schema:MusicEvent .
-  ?concert sem:hasTimeStamp ?date .
-  ?concert schema:performer [
-      owl:sameAs ?artist ;
-      rdfs:label ?artistname ;
-      schema:ratingValue ?rating ;
-  ] .
-  OPTIONAL{
-    ?concert schema:performer/schema:subjectOf ?wikipedia .
-  }
-	SERVICE <https://query.wikidata.org/sparql> {
-		OPTIONAL{
-			?artist wdt:P18 ?bandimg .
-		}
+	?concert a schema:MusicEvent .
+	?concert sem:hasTimeStamp ?date .
+	?concert schema:performer [
+		owl:sameAs ?artist ;
+		rdfs:label ?artistname ;
+		schema:ratingValue ?rating ;
+	] .
+	OPTIONAL{
+		?concert schema:performer/schema:subjectOf ?wikipedia .
 	}
-  ?concert schema:location [
-     rdf:value ?location ;
-     rdfs:label ?locationname ;
-  ] .
-  BIND(year(xsd:dateTime(?date)) AS ?year)
-  FILTER(?year = " . $year . ")
-  FILTER(?locationname = \"Ahoy\" || ?locationname = \"Stadion Feĳenoord\")
+	?concert schema:location [
+		rdf:value ?location ;
+		rdfs:label ?locationname ;
+	] .
+	BIND(year(xsd:dateTime(?date)) AS ?year)
+	FILTER(?year = " . $year . ")
+	FILTER(?locationname = \"Ahoy\" || ?locationname = \"Stadion Feĳenoord\")
 } 
 GROUP BY ?artist ?artistname ?rating ?wikipedia ?location ?locationname
 ORDER BY ASC(?date)
@@ -51,7 +46,7 @@ $data = json_decode($json,true);
 
 
 $concerts = array();
-$bandimgs = array();
+$actors = array();
 
 //print_r($data);
 
@@ -63,13 +58,40 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		"location" => str_replace("http://www.wikidata.org/entity/","",$v['location']['value']),
 		"wiki" => $v['wikipedia']['value'],
 		"artist" => $v['artist']['value'],
-		"img" => $v['bandimg']['value'],
 		"datum" => dutchdate($v['date']['value'])
 	);
+
+	if(strlen($v['artist']['value'])){
+		$actors[] = str_replace("http://www.wikidata.org/entity/","wd:",$v['artist']['value']);
+	}
 
 	
 
 }
+
+
+// now see if we can get images
+$sparqlQueryString = "
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+
+SELECT ?item ?img WHERE {
+	VALUES ?item { " . implode(" ",$actors) . " }
+  	?item wdt:P18 ?img
+}
+";
+
+$endpoint = 'https://query.wikidata.org/sparql';
+$json = getSparqlResults($endpoint,$sparqlQueryString);
+$data = json_decode($json,true);
+
+//print_r($data);
+$actorimgs = array();
+foreach ($data['results']['bindings'] as $row) { 
+	$actorimgs[$row['item']['value']] = $row['img']['value'];
+}
+
+
 
 
 function dutchdate($date){
@@ -92,8 +114,8 @@ foreach ($concerts as $concert) {
 	
 	<tr>
 		<td style="width: 60px;">
-      		<?php if(strlen($concert['img'])){ ?>
-				<img style="width: 60px;" src="<?= $concert['img'] ?>?width=100px" />
+      		<?php if(isset($actorimgs[$concert['artist']])){ ?>
+				<img style="width: 60px;" src="<?= $actorimgs[$concert['artist']] ?>?width=100px" />
 			<?php }else{ ?>
 				<div style="width: 60px; height: 50px; background-color: #929eda;"></div>
 			<?php } ?>

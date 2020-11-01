@@ -23,7 +23,7 @@ PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
-SELECT DISTINCT ?exh ?label ?begin ?end ?actorarticle ?actorlabel ?actorimg WHERE {
+SELECT DISTINCT ?exh ?label ?begin ?end ?actorarticle ?actorwdid ?actorlabel WHERE {
   ?exh sem:eventType wd:Q464980 .
   ?exh sem:hasPlace  wd:" . $place . " .
   ?exh rdfs:label ?label .
@@ -35,11 +35,6 @@ SELECT DISTINCT ?exh ?label ?begin ?end ?actorarticle ?actorlabel ?actorimg WHER
 	  ?actorwdid foaf:isPrimaryTopicOf ?actorarticle .
 	}
 	?actor dbo:role \"tentoongestelde\" .
-	SERVICE <https://query.wikidata.org/sparql> {
-		OPTIONAL{
-			?actorwdid wdt:P18 ?actorimg .
-		}
-	}
   }
   ?exh sem:hasEarliestBeginTimeStamp ?begin .
   ?exh sem:hasLatestEndTimeStamp ?end .
@@ -63,6 +58,7 @@ $data = json_decode($json,true);
 //print_r($data);
 
 $exhibitions = array();
+$actors = array();
 
 foreach ($data['results']['bindings'] as $row) { 
 
@@ -70,8 +66,12 @@ foreach ($data['results']['bindings'] as $row) {
 		$actor = array(
 			"label" => $row['actorlabel']['value'],
 			"article" => $row['actorarticle']['value'],
-			"img" => $row['actorimg']['value']
+			"wdid" => $row['actorwdid']['value']
 		);
+	}
+
+	if(strlen($row['actorwdid']['value'])){
+		$actors[] = str_replace("http://www.wikidata.org/entity/","wd:",$row['actorwdid']['value']);
 	}
 
 	if(isset($exhibitions[$row['exh']['value']]) && isset($actor)){
@@ -113,7 +113,34 @@ foreach ($data['results']['bindings'] as $row) {
 
 }
 
-//print_r($exhibitions);
+//print_r($actors);
+
+$sparqlQueryString = "
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+
+SELECT ?item ?img WHERE {
+	VALUES ?item { " . implode(" ",$actors) . " }
+  	?item wdt:P18 ?img
+}
+";
+
+
+//echo $sparqlQueryString;
+
+
+$endpoint = 'https://query.wikidata.org/sparql';
+
+$json = getSparqlResults($endpoint,$sparqlQueryString);
+$data = json_decode($json,true);
+
+//print_r($data);
+$actorimgs = array();
+foreach ($data['results']['bindings'] as $row) { 
+	$actorimgs[$row['item']['value']] = $row['img']['value'];
+}
+
+//print_r($actorimgs);
 
 ?>
 
@@ -126,12 +153,12 @@ foreach ($exhibitions as $exh) {
 	$actors = array();
 	if(isset($exh['actors'])){
 		foreach ($exh['actors'] as $key => $value) {
-			if(strlen($value['img'])){
-				$img = $value['img'];
+			if(isset($actorimgs[$value['wdid']])){
+				$img = $actorimgs[$value['wdid']];
 			}
 			$actor = "";
 			if(strlen($value['article'])){
-				$actor .= '<a href="' . $value['article'] . '">';
+				$actor .= '<a target="_blank" href="' . $value['article'] . '">';
 			}
 			if(strlen($value['label'])){
 				$actor .= $value['label'];

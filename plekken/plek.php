@@ -358,12 +358,7 @@ $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/eve
 $json = getSparqlResults($endpoint,$sparqlQueryString);
 $data = json_decode($json,true);
 
-
-
-
 $videos = array();
-
-
 foreach ($data['results']['bindings'] as $k => $v) {
 
 	$monthfrom = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
@@ -397,6 +392,24 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 }
 //print_r($videos);
+
+
+
+
+$concertzalen = array(
+	"Q81801550",
+	"Q81610581",
+	"Q330298",
+	"Q2845918",
+	"Q2683762",
+	"Q2237396",
+	"Q179426"
+);
+
+if(in_array($qid, $concertzalen)){
+	include("hieropgetreden.php");
+}
+
 
 
 ?><!DOCTYPE html>
@@ -552,6 +565,34 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			} 
 			?>
 
+			<?php if(in_array($qid, $concertzalen)){ ?>
+				<h3>Hier te zien</h3>
+				<div class="quote" style="background-color: #000;">
+					<?php 
+					foreach ($artists as $key => $value) {
+
+						$concerts = explode(",", $value['concerts']);
+
+						if($value['nrofconcerts']>1){
+							$oa = "o.a. ";
+						}else{
+							$oa = "";
+						}
+
+						echo "<span class=\"smaller\"><a target=\"_blank\" href=\"" . $concerts[0] . "\">" . $oa . $value['year'] . "</a></span> ";
+						
+						if(strlen($value['wikipedia'])){
+							echo '<strong><a target="_blank" style="color:#fff;" href="' . $value['wikipedia'] . '">' . $value['name'] . "</a></strong> ";	
+						}else{
+							echo '<strong style="color:#ccc;">' . $value['name'] . '</strong> ';
+						}	
+					} 
+					?>
+				</div>
+				<p class="evensmaller">
+					De concerten waarop de lijst hierboven gebaseerd is komen uit <a href="https://www.setlist.fm/">setlist.fm</a>. Klik op het jaar om het concert daar te zien (misschien inclusief setlist) en op de naam om de Wikipediapagina van de band of artiest te openen. De lijst is gesorteerd op de grootte, in aantal karakters, van de Nederlandse Wikipediapagina bij inlezen.
+				</p>
+			<?php } ?>
 
 		</div>
 		<div class="col-md-4">
