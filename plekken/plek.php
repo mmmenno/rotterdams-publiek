@@ -455,11 +455,11 @@ if(in_array($qid, $concertzalen)){
 		  	<h3>Info van Wikidata</h3>
 		  	
 			
-			Wikidata: <a href="<?= $venue['uri'] ?>"><?= $venue['wdid'] ?></a><br />
+			Wikidata: <a target="_blank" href="<?= $venue['uri'] ?>"><?= $venue['wdid'] ?></a><br />
 
 			<?php 
 			if(strlen($venue['wikipedia'])){ 
-				echo 'Wikipedia: <a href="' . $venue['wikipedia'] . '">' . str_replace("https://","",$venue['wikipedia']) . '</a><br />';
+				echo 'Wikipedia: <a target="_blank" href="' . $venue['wikipedia'] . '">' . str_replace("https://","",$venue['wikipedia']) . '</a><br />';
 			}
 
 			if(count($names)){

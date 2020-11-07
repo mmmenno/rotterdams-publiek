@@ -211,7 +211,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 <p class="evensmaller">
 	<?php if(count($events)==0 && count($videos)==0){ ?>
-		Voor dit jaar hebben we helaas nog geen gebeurtenissen paraat.
+		Voor dit jaar hebben we geen gebeurtenissen paraat.
 	<?php } ?>
 </p>
 

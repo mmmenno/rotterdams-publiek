@@ -13,7 +13,8 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-SELECT DISTINCT(?artist) ?artistname ?rating ?wikipedia (MIN(?date) AS ?date) ?location ?locationname WHERE {
+SELECT ?concert ?artist ?artistname ?rating ?wikipedia ?date
+	?location ?locationname WHERE {
 	?concert a schema:MusicEvent .
 	?concert sem:hasTimeStamp ?date .
 	?concert schema:performer [
@@ -33,9 +34,9 @@ SELECT DISTINCT(?artist) ?artistname ?rating ?wikipedia (MIN(?date) AS ?date) ?l
 	FILTER(?locationname != \"Ahoy\")
 	FILTER(?locationname != \"Stadion Feĳenoord\")
 } 
-GROUP BY ?artist ?artistname ?rating ?wikipedia ?location ?locationname
+#GROUP BY ?artist ?artistname ?rating ?wikipedia ?location ?locationname
 ORDER BY ASC(?date)
-LIMIT 50
+LIMIT 150
 ";
 
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
@@ -58,6 +59,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		"locationname" => $v['locationname']['value'],
 		"location" => str_replace("http://www.wikidata.org/entity/","",$v['location']['value']),
 		"wiki" => $v['wikipedia']['value'],
+		"setlistlink" => $v['concert']['value'],
 		"artist" => $v['artist']['value'],
 		"datum" => dutchdate($v['date']['value'])
 	);
@@ -106,6 +108,8 @@ function dutchdate($date){
 <?php
 foreach ($concerts as $concert) { 
 
+
+
 	?>
 	
 	<tr>
@@ -124,7 +128,7 @@ foreach ($concerts as $concert) {
 			<?php } ?>
 			<br />
 			<span class="evensmaller">
-				<?= $concert['datum'] ?> in <a href="/plekken/plek.php?qid=<?= $concert['location'] ?>"><?= $concert['locationname'] ?></a>
+				<a target="_blank" href="<?= $concert['setlistlink'] ?>"><?= $concert['datum'] ?></a> in <a href="/plekken/plek.php?qid=<?= $concert['location'] ?>"><?= $concert['locationname'] ?></a>
 			</span><br />
 	</td></tr>
 
