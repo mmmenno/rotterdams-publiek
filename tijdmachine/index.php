@@ -43,6 +43,9 @@ $next = $year + 1;
 		<div class="col-md-12">
 			<h1><a href="/">Rotterdams Publiek</a> | <a href="?year=<?= $prev ?>">&laquo;</a> <?= $year ?> <a href="?year=<?= $next ?>">&raquo;</a></h1>
 		</div>
+		<div class="col-md-12">
+			<p class="small" style="margin-bottom: 0">klik op een kopje om gegevens te tonen of te verbergen ...</p>
+		</div>
 	</div>
 </div>
 
