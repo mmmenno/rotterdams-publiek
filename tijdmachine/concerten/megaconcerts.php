@@ -87,8 +87,12 @@ $data = json_decode($json,true);
 
 //print_r($data);
 $actorimgs = array();
+$actorimglinks = array();
 foreach ($data['results']['bindings'] as $row) { 
 	$actorimgs[$row['item']['value']] = $row['img']['value'];
+	$pos = strrpos($row['img']['value'],"/") + 1;
+	$filename = substr($row['img']['value'], $pos);
+	$actorimglinks[$row['item']['value']] = "https://commons.wikimedia.org/wiki/File:" . $filename;
 }
 
 
@@ -115,7 +119,9 @@ foreach ($concerts as $concert) {
 	<tr>
 		<td style="width: 60px;">
       		<?php if(isset($actorimgs[$concert['artist']])){ ?>
-				<img style="width: 60px;" src="<?= $actorimgs[$concert['artist']] ?>?width=100px" />
+				<a target="_blank" href="<?= $actorimglinks[$concert['artist']] ?>">
+					<img style="width: 60px;" src="<?= $actorimgs[$concert['artist']] ?>?width=100px" />
+				</a>
 			<?php }else{ ?>
 				<div style="width: 60px; height: 50px; background-color: #929eda;"></div>
 			<?php } ?>
@@ -136,7 +142,7 @@ foreach ($concerts as $concert) {
 
 
 <p class="evensmaller">
-	Deze concerten in Ahoy en De Kuip komen van <a href="https://www.setlist.fm/search?query=city:%28Rotterdam%29" target="_blank">setlist.fm</a> en het kan zijn dat ze daar actuelere informatie hebben. De afbeeldingen komen van <a href="https://commons.wikimedia.org/" target="_blank">Wikimedia Commons</a>.
+	Deze concerten in Ahoy en De Kuip komen van <a href="https://www.setlist.fm/search?query=city:%28Rotterdam%29" target="_blank">setlist.fm</a> en het kan zijn dat ze daar actuelere informatie hebben. De afbeeldingen komen van <a href="https://commons.wikimedia.org/" target="_blank">Wikimedia Commons</a> en zijn allemaal CC-BY-SA gelicenseerd - klikken op de afbeelding brengt je naar grotere formaten en metadata (o.a. de maker) van de afbeelding.
 </p>
 
 
