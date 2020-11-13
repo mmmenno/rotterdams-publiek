@@ -88,6 +88,9 @@ $next = $year + 1;
 		</div>
 		<div class="col-md-4">
 
+			<h2>Affiches</h2>
+			<div class="content" id="affiches"></div>
+
 			<h2>R'dam. Made it happen.</h2>
 			<div class="content" id="gebeurtenissen"></div>
 
@@ -131,6 +134,8 @@ $next = $year + 1;
 					$('#concerten').load('concerten/poppodia.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "gebeurtenissen"){
 					$('#gebeurtenissen').load('gebeurtenissen/index.php?year=<?= $year ?>');
+				}else if(div.attr('id') == "affiches"){
+					$('#affiches').load('affiches/index.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "pers"){
 					$('#pers').load('pers/index.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "vrouwen"){
@@ -160,6 +165,8 @@ $next = $year + 1;
 			}else if(div.attr('id') == "boijmans" && <?= $year ?> < 1927){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "filmladder" && ( <?= $year ?> < 1980 || <?= $year ?> > 1989 )){
+				$(this).addClass('faded');
+			}else if(div.attr('id') == "affiches" && ( <?= $year ?> < 1845 || <?= $year ?> > 1943 )){
 				$(this).addClass('faded');
 			}
 		});

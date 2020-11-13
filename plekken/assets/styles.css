@@ -75,3 +75,6 @@ input[type="range"]{
 	border-top:none;
 	border-bottom: 1px solid #ccc;
 }
+.poster img{
+	margin:8px 0 2px 0;
+}

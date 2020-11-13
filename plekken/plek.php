@@ -411,6 +411,9 @@ if(in_array($qid, $concertzalen)){
 }
 
 
+include("affiches.php");
+
+
 
 ?><!DOCTYPE html>
 <html>
@@ -558,6 +561,22 @@ if(in_array($qid, $concertzalen)){
 					echo "<div class=\"quote\">";
 					echo "<p><span>&ldquo;</span>" . $value['text'] . "<span>&rdquo;</span></p>";
 					echo "<div class=\"smaller\"><a target=\"_blank\" href=\"" . $value['articleurl'] . "\">" . $value['articledate'] . ", " . $value['paper'] . "</a></div>";
+					echo "</div>";
+				}
+				
+					
+			} 
+			?>
+
+
+			<?php if(count($posters)){ ?>
+			<h3>Affiches</h3>
+			<?php 
+			
+				foreach ($posters as $key => $poster) {
+					echo "<div class=\"poster\">";
+					echo "<a target=\"_blank\" href=\"" . $poster['articleurl'] . "\"><img src=" . $poster['img'] . " /></a>";
+					echo "<div class=\"evensmaller\">" . $poster['datum'] . "</div>";
 					echo "</div>";
 				}
 				
