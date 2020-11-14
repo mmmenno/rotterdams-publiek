@@ -575,7 +575,7 @@ include("affiches.php");
 			
 				foreach ($posters as $key => $poster) {
 					echo "<div class=\"poster\">";
-					echo "<a target=\"_blank\" href=\"" . $poster['articleurl'] . "\"><img src=" . $poster['img'] . " /></a>";
+					echo "<a target=\"_blank\" href=\"" . $poster['uri'] . "\"><img src=" . $poster['img'] . " /></a>";
 					echo "<div class=\"evensmaller\">" . $poster['datum'] . "</div>";
 					echo "</div>";
 				}

@@ -35,11 +35,18 @@ $posters = array();
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
+	if($v['begin']['value']==$v['end']['value']){
+		$datum = $v['begin']['value'];
+	}else{
+		$datum = $v['begin']['value'] . " - " . $v['end']['value'];;
+	}
+
 	$posters[] = array(
 		"uri" => $v['saobj']['value'],
 		"img" => $v['img']['value'],
 		"begin" => $v['begin']['value'],
 		"end" => $v['end']['value'],
+		"datum" => $datum,
 		"loc" => str_replace("http://www.wikidata.org/entity/","",$v['loc']['value'])
 	);
 
@@ -56,9 +63,9 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	
 	<div class="poster">
 
-		<a href="<?= $poster['uri'] ?>"><img src="<?= $poster['img'] ?>" /></a>
+		<a target="_blank" href="<?= $poster['uri'] ?>"><img src="<?= $poster['img'] ?>" /></a>
 
-		<p class="onderschrift" style="text-align: right;"><?= $poster['begin'] ?> - <?= $poster['end'] ?> | <a href="/plekken/plek.php?qid=<?= $poster['loc'] ?>">meer over deze plek</a></p>
+		<p class="onderschrift" style="text-align: right;"><?= $poster['datum'] ?> | <a href="/plekken/plek.php?qid=<?= $poster['loc'] ?>">meer over deze plek</a></p>
 
 	</div>
 
