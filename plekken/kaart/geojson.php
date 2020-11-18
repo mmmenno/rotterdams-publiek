@@ -2,19 +2,30 @@
 
 //ini_set('memory_limit', '1024M');
 
-include("functions.php");
+include("../functions.php");
 
 $sparqlQueryString = "
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
 SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?coords ?baguri ?wkt WHERE {
   
-    VALUES ?type { wd:Q57660343 wd:Q41253 wd:Q24354 wd:Q24699794 wd:Q207694 wd:Q856584 wd:Q57659484 wd:Q1060829 wd:Q18674739 wd:Q15206070 }
+    VALUES ?type { 
+      wd:Q57660343 #podiumkunstgebouw
+      wd:Q41253 #bioscoop
+      wd:Q24354 #theatergebouw
+      wd:Q24699794 #museumgebouw
+      wd:Q207694 #kunstmuseum
+      wd:Q856584 #bibliotheekgebouw
+      wd:Q57659484 #tentoonstellingsgebouw
+      wd:Q1060829 #concertgebouw
+      wd:Q18674739 #evenementenlocatie
+      wd:Q15206070 #poppodium
+      wd:Q30022 #koffiehuis
+      wd:Q1228895 #discotheek
+    }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
-    OPTIONAL{
-      ?item wdt:P625 ?coords .
-    }
+    ?item wdt:P625 ?coords .
     OPTIONAL{
       ?item wdt:P5208 ?bagid .
       BIND(uri(CONCAT('http://bag.basisregistraties.overheid.nl/bag/id/pand/',?bagid)) AS ?baguri) .
@@ -46,22 +57,10 @@ LIMIT 1000
 ";
 
 $endpointUrl = 'https://query.wikidata.org/sparql';
-$url = $endpointUrl . '?query=' . urlencode($sparqlQueryString) . "&format=json";
+$json = getSparqlResults($endpointUrl,$sparqlQueryString);
+$data = json_decode($json,true);
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,$url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-curl_setopt($ch,CURLOPT_USERAGENT,'MonumentMap');
-$headers = [
-    'Accept: application/sparql-results+json'
-];
 
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-$response = curl_exec ($ch);
-curl_close ($ch);
-
-$data = json_decode($response, true);
 
 
 $venues = array();
@@ -117,7 +116,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	$props = array(
 		"wdid" => $wdid,
 		"label" => $v['itemLabel']['value'],
-		"bagid" => $v['bagid']['value'],
+		"bagid" => $v['baguri']['value'],
 		"types" => array(),
 		"names" => array(),
 		"bstart" => $v['bouwjaar']['value'],
@@ -146,19 +145,21 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	}
 }
 
-
-print_r($bagids);
+//print_r($venues);
+//die;
+//print_r($bagids);
 
 $bagsparql = "
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-prefix bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
+PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
 
 SELECT ?baguri ?wkt WHERE {
 	VALUES ?baguri {
 	";
-
-foreach($bagids as $bagid){
-	$bagsparql .= "\t<" . $bagid . ">\n";
+if(is_array($bagids)){
+	foreach($bagids as $bagid){
+		$bagsparql .= "\t<" . $bagid . ">\n";
+	}
 }
 
 $bagsparql .= "}
@@ -169,9 +170,37 @@ $bagsparql .= "}
 }
 ";
 
-echo $bagsparql;
-die;
+//echo $bagsparql;
 
+$endpointUrl = 'https://bag.basisregistraties.overheid.nl/sparql';
+//$url = $endpointUrl . '?query=' . urlencode($sparqlQueryString) . "&format=json";
+
+$curldata = "query=" . urlencode($bagsparql);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL,$endpointUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $curldata);
+curl_setopt($ch,CURLOPT_USERAGENT,'MonumentMap');
+$headers = [
+    'Accept: application/sparql-results+json'
+];
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+$response = curl_exec ($ch);
+curl_close ($ch);
+
+$bagdata = json_decode($response, true);
+//print_r($bagdata);
+
+$baggeometries = array();
+foreach ($bagdata['results']['bindings'] as $bag) {
+	$baggeometries[$bag['baguri']['value']] = $bag['wkt']['value'];
+}
+//die;
+
+//print_r($baggeometries);
 
 $fc = array("type"=>"FeatureCollection", "features"=>array());
 
@@ -213,11 +242,19 @@ foreach ($venues as $k => $venue) {
 	}
 	unset($latestbytype);
 
+	// replace wikidata point with bag polygon if any
+	if(strlen($venue['properties']['bagid'])){
+		//echo $venue['properties']['bagid'] ."\n";
+		$venue['geometry'] = wkt2geojson($baggeometries[$venue['properties']['bagid']]);
+	}else{
+		//print_r($venue);
+	}
+
 
 	$fc['features'][] = $venue;
 
 }
-
+//die;
 $json = json_encode($fc);
 
 file_put_contents("locaties.geojson", $json);

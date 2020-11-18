@@ -1,4 +1,6 @@
 
+body{
+}
 @media only screen and (max-width: 900px) {
   	#bigmap {
 		width: 100%;
@@ -9,9 +11,9 @@
   	#bigmap {
   		height: 600px;
   		width: 100%;
+  		background-color: #ccc;
 	}
 }
-
 .mapcol{
 	padding-right: 0;
 	padding-left: 0;

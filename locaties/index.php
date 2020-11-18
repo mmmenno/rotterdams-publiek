@@ -25,7 +25,7 @@ if(!file_exists(__DIR__ . "/locaties.geojson") || isset($_GET['uncache'])){
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
   <link rel="stylesheet" href="../assets/css/styles.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/locaties/styles.css" />
 
   
 </head>
@@ -44,7 +44,7 @@ if(!file_exists(__DIR__ . "/locaties.geojson") || isset($_GET['uncache'])){
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-9 mapcol">
-        <div id="bigmap"></div>
+        <div id="bigmap" style="">ljklj</div>
       </div>
       <div class="col-md black">
         <h3 id="itemtitle">Locaties</h3>

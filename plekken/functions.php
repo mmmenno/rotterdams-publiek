@@ -3,11 +3,12 @@
 
 function getSparqlResults($endpoint,$query){
 
+
 	// params
 	$url = $endpoint . '?query=' . urlencode($query) . "&format=json";
 	$urlhash = hash("md5",$url);
 	$datafile = __DIR__ . "/data/" . $urlhash . ".json";
-	$maxcachetime = 60*60*24*30;
+	$maxcachetime = 10;
 
 	// get cached data if recent
 	if(file_exists($datafile)){
@@ -32,6 +33,8 @@ function getSparqlResults($endpoint,$query){
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 	$response = curl_exec ($ch);
 	curl_close ($ch);
+
+	//var_dump($response);
 
 	// if valid results were returned, save file
 	$data = json_decode($response,true);
