@@ -164,7 +164,7 @@ $next = $year + 1;
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "boijmans" && <?= $year ?> < 1927){
 				$(this).addClass('faded');
-			}else if(div.attr('id') == "filmladder" && ( <?= $year ?> < 1980 || <?= $year ?> > 1989 )){
+			}else if(div.attr('id') == "filmladder" && ( <?= $year ?> < 1970 || <?= $year ?> > 1989 )){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "affiches" && ( <?= $year ?> < 1845 || <?= $year ?> > 1943 )){
 				$(this).addClass('faded');
