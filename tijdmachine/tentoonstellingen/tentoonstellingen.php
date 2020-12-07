@@ -182,12 +182,12 @@ foreach ($exhibitions as $exh) {
 			<div style="width: 60px; height: 50px; background-color: #929eda;"></div>
 		<?php } ?>
 	</td><td>
-		<?= $exh['label'] ?>
+		<strong><?= $exh['label'] ?></strong>
 		<br />
-		<div class="evensmaller">
+		<span class="evensmaller">
 			<?= $exh['from'] ?><?= $exh['to'] ?><br />
 			<?= implode(" | ",$actors) ?>
-		</div>
+		</span>
 	</td></tr>
 
 	<?php 

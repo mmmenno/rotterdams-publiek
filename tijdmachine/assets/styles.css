@@ -66,6 +66,10 @@ img{
 	width: 100%;
 	margin-bottom: 16px;
 }
+td img{
+	margin-top: 0;
+	margin-bottom: 0;
+}
 .btn-primary{
 	margin-top: 20px;
 	background-color: #fff;
@@ -98,7 +102,7 @@ ol{
 	border-top:none;
 	padding: 8px 12px 8px 0;
 	border-bottom: 1px solid #ccc;
-	line-height: 1.1em;
+	line-height: 1.2em;
 }
 .light{
 	color: #ccc;
@@ -115,6 +119,9 @@ ol{
 }
 .nroftd{
 	width: 70px;
+}
+td strong{
+	color: #76757b;
 }
 .clickYear {
     cursor: pointer;
