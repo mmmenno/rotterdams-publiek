@@ -410,6 +410,10 @@ if(in_array($qid, $concertzalen)){
 	include("hieropgetreden.php");
 }
 
+if(array_key_exists("bioscoop", $types)){
+	include("filmvoorstellingen.php");
+}
+
 
 include("affiches.php");
 
@@ -548,6 +552,34 @@ include("affiches.php");
 					
 				}
 			?>
+
+			<?php if(isset($filmsshowed) && count($filmsshowed)){ ?>
+				<h3>Films te zien in dit theater</h3>
+				<table class="table">
+				<?php
+				foreach ($filmsshowed as $row) { 
+
+					?>
+					
+					<tr>
+						<td class="nroftd">
+				      		<div class="nrof"><?= $row['number'] ?></div>
+						</td>
+						<td>
+							<strong><a target="_blank" href="<?= $row['link'] ?>"><?= $row['filmtitle'] ?></a></strong>
+							<br />
+							<span class="evensmaller">hier vertoond <?= $row['period'] ?></span>
+						</td>
+					</tr>
+
+					<?php 
+				} 
+				?>
+				</table>
+				<p class="evensmaller">
+					Het getal in het blokje geeft het aantal weken weer waarin de film vertoond is. Lang niet alle voostellingen zijn bekend - voorstellingen na 1950 zijn sowieso (nog) niet ingevoerd. Met dank aan <a href="http://cinemacontext.nl/" target="_blank">Cinema Context</a> voor het beschikbaar stellen van de data!
+				</p>
+			<?php } ?>
 
 
 		</div>

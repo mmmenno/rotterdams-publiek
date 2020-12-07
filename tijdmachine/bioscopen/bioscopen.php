@@ -15,7 +15,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT 	
-?venue ?venuename ?wkt ?captime ?cap ?begin ?end
+?venue ?venuename ?wkt ?captime ?cap ?begin ?end ?wiki
 WHERE {
 	?venue a schema:MovieTheater .
   	?venue schema:temporalCoverage ?existence .
@@ -34,6 +34,9 @@ WHERE {
 	  	?capnode sem:hasLatestBeginTimeStamp ?captime .
 		FILTER(?captime <= \"" . $nextyear . "\"^^xsd:gYear)	
 	}
+  	OPTIONAL{
+    	?venue schema:containedInPlace ?wiki .
+  	}
 }
 ORDER BY ASC(?venue) DESC(?captime)
 limit 250
@@ -66,8 +69,12 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			"bioscoop" => $v['venuename']['value'],
 			"capacity" => $v['cap']['value'],
 			"captime" => $v['captime']['value'],
-			"begin" => $v['begin']['value']
+			"begin" => $v['begin']['value'],
+			"link" => $v['venue']['value']
 		);
+		if(isset($v['wiki']['value'])){
+			$cinemas[$v['venue']['value']]['link'] = "/plekken/plek.php?qid=" . str_replace("http://www.wikidata.org/entity/","",$v['wiki']['value']);
+		}
 		$nrs[$v['venue']['value']] = $v['cap']['value'];
 	}
 
@@ -100,8 +107,8 @@ foreach ($nrs as $k => $v) {
       		<div class="nrof"><?= $capacity ?></div>
 		</td>
 		<td>
-			<a target="_blank" href="<?= $link ?>">
-				<strong><a target="_blank" href="<?= $k ?>"><?= $cinemas[$k]['bioscoop'] ?></a></strong>
+			<a href="<?= $cinemas[$k]['link'] ?>">
+				<strong><?= $cinemas[$k]['bioscoop'] ?></strong>
 			</a><br />
 			<span class="evensmaller">
 				<?= $description ?>

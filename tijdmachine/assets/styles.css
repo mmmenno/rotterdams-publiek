@@ -98,6 +98,7 @@ ol{
 	border-top:none;
 	padding: 8px 12px 8px 0;
 	border-bottom: 1px solid #ccc;
+	line-height: 1.1em;
 }
 .light{
 	color: #ccc;
@@ -107,7 +108,7 @@ ol{
 	color: #fff; 
 	font-weight: bold;
 	height: 44px; 
-	padding-top: 6px;
+	padding-top: 12px;
 	background-color: #929eda; 
 	text-align: center; 
 	vertical-align: middle;
