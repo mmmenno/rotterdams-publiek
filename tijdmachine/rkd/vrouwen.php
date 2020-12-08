@@ -59,9 +59,9 @@ foreach ($data['results']['bindings'] as $row) {
 	
 	<tr>
 		<td>
-		<a target="_blank" href="<?= $link ?>">
-			<strong><?= $row['name']['value'] ?></strong>
-		</a><br />
+		<strong><a target="_blank" href="<?= $link ?>">
+			<?= $row['name']['value'] ?>
+		</a></strong><br />
 		<span class="smaller">
 			werkzaam in R'dam vanaf <?= $row['startyear']['value'] ?>
 		</span><br />

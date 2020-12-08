@@ -107,9 +107,9 @@ foreach ($nrs as $k => $v) {
       		<div class="nrof"><?= $capacity ?></div>
 		</td>
 		<td>
-			<a href="<?= $cinemas[$k]['link'] ?>">
-				<strong><?= $cinemas[$k]['bioscoop'] ?></strong>
-			</a><br />
+			<strong><a href="<?= $cinemas[$k]['link'] ?>">
+				<?= $cinemas[$k]['bioscoop'] ?>
+			</a></strong><br />
 			<span class="evensmaller">
 				<?= $description ?>
 			</span><br />

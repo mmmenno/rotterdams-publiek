@@ -104,9 +104,10 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	}
 
 	if(strlen($v['naamstring']['value'])){
-		$names[$v['naamstring']['value']]['name'] = $v['naamstring']['value'];
-		$names[$v['naamstring']['value']]['start'] = $v['startnaam']['value'];
-		$names[$v['naamstring']['value']]['end'] = $v['eindnaam']['value'];
+		$keystring = $v['startnaam']['value'] . $v['eindnaam']['value'] . $v['naamstring']['value'];
+		$names[$keystring]['name'] = $v['naamstring']['value'];
+		$names[$keystring]['start'] = $v['startnaam']['value'];
+		$names[$keystring]['end'] = $v['eindnaam']['value'];
 	}
 
 	if(strlen($v['wkt']['value'])){
@@ -117,7 +118,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	
 
 }
-
+ksort($names);
 
 
 
@@ -474,7 +475,7 @@ include("affiches.php");
 			}
 
 			foreach ($names as $k => $v) {
-				echo '<strong>' . $k . '</strong> ';
+				echo '<strong>' . $v['name'] . '</strong> ';
 				if(strlen($v['start'])){
 					echo 'vanaf ' . date("Y",strtotime($v['start']));
 				}
@@ -493,7 +494,7 @@ include("affiches.php");
 			}
 
 			if(strlen($venue['bend'])){ 
-				echo 'gebouw verdwenen in ' . date("Y",strtotime($venue['bend'])) . '<br /><br />';
+				echo 'gebouw verdwenen rond ' . date("Y",strtotime($venue['bend'])) . '<br /><br />';
 			}
 
 			foreach ($types as $k => $v) {
@@ -577,7 +578,7 @@ include("affiches.php");
 				?>
 				</table>
 				<p class="evensmaller">
-					Het getal in het blokje geeft het aantal weken weer waarin de film vertoond is. Lang niet alle voostellingen zijn bekend - voorstellingen na 1950 zijn sowieso (nog) niet ingevoerd. Met dank aan <a href="http://cinemacontext.nl/" target="_blank">Cinema Context</a> voor het beschikbaar stellen van de data!
+					Het getal in het blokje geeft het aantal weken weer waarin de film vertoond is. Lang niet alle voostellingen zijn bekend - voorstellingen na 1950 zijn sowieso (nog) niet ingevoerd. Er worden maximaal 25 films getoond. Deze gegevens komen van <a href="http://cinemacontext.nl/" target="_blank">Cinema Context</a>, waar je veel meer informatie over films, voorstellingen en bioscopen kunt vinden.
 				</p>
 			<?php } ?>
 
