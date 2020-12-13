@@ -57,9 +57,17 @@
 					</p>
 
 					
-					<h2>Meehelpen? Graag!</h2>
+					<h2>Filmladders invoeren - help je mee?</h2>
 					<p>
-						In samenwerking met <a href="http://cinemacontext.nl/">Cinema Context</a> starten we binnenkort een crowdsourceproject, waarin we filmladders uit de jaren '80 in gaan voeren. Mooi om later snel te kunnen zien in welke bioscopen bijvoorbeeld Franse films draaiden, maar ook leuk om in te voeren - je ziet al die films en zalen die je zelf misschien wel hebt bezocht voorbij komen.
+						In samenwerking met <a href="http://cinemacontext.nl/">Cinema Context</a> zijn we een <a href="https://widgets.hetvolk.org/data-entry/start/678ec0d9-91a6-07cb-a7c9-d91c4fef852e">crowdsourceproject</a> gestart, waarin we filmladders uit de jaren '80 invoeren. Mooi om later snel te kunnen zien in welke bioscopen bijvoorbeeld Franse films draaiden of wat de populairste films waren, maar ook leuk om in te voeren - je ziet al die films en zalen die je zelf misschien wel hebt bezocht voorbij komen. 
+					</p>
+
+					<p>
+						Als extraatje vragen we je van elke ladder je favoriete film op te geven, om zo de <strong>Rotterdams Publiek 80's Films Top 100</strong> te kunnen samenstellen!
+					</p>
+
+					<p>
+						Wil je helpen? Ga dan naar het project <a href="https://widgets.hetvolk.org/data-entry/start/678ec0d9-91a6-07cb-a7c9-d91c4fef852e">Filmladders Rotterdam jaren '80 </a> op hetvolk.org, lees de instructies, maak een account aan en voer een paar ladders in!
 					</p>
 					
 
