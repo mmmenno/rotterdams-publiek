@@ -7,8 +7,6 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href="https://fonts.googleapis.com/css?family=Nunito:300,700" rel="stylesheet">
-
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<script
@@ -56,18 +54,19 @@
 						De danszaal van het <a href="plekken/plek.php?qid=Q76161121">Amerikaansch Danspaviljoen</a> aan het Stationsplein - een gebouw dat eerder Cirque Variété en later Circus Schouwburg huisvestte.
 					</p>
 
-					
-					<h2>Filmladders invoeren - help je mee?</h2>
+					<h2>De data</h2>
 					<p>
-						In samenwerking met <a href="http://cinemacontext.nl/">Cinema Context</a> zijn we een <a href="https://widgets.hetvolk.org/data-entry/start/678ec0d9-91a6-07cb-a7c9-d91c4fef852e">crowdsourceproject</a> gestart, waarin we filmladders uit de jaren '80 invoeren. Mooi om later snel te kunnen zien in welke bioscopen bijvoorbeeld Franse films draaiden of wat de populairste films waren, maar ook leuk om in te voeren - je ziet al die films en zalen die je zelf misschien wel hebt bezocht voorbij komen. 
+						Rotterdams Publiek kan bestaan dankzij 'linked open data'. De gebouwen bijvoorbeeld kunnen we rechtstreeks uit <a href="https://www.wikidata.org/">Wikidata</a> ophalen. Samen met andere 'Wikidatianen' hebben we ook een bijdrage geleverd aan het invoeren van die data.
 					</p>
 
 					<p>
-						Als extraatje vragen we je van elke ladder je favoriete film op te geven, om zo de <strong>Rotterdams Publiek 80's Films Top 100</strong> te kunnen samenstellen!
+						De databestanden die we zelf gemaakt of verzameld hebben, zoals de quotes uit krantenbank Delpher, de 'culturele gebeurtenissen' en de koppelingen tussen afbeeldingen uit het archief en locaties, delen we via <a href="https://github.com/mmmenno/rotterdams-publiek-data">onze data-repository op GitHub</a>.
 					</p>
 
-					<p>
-						Wil je helpen? Ga dan naar het project <a href="https://widgets.hetvolk.org/data-entry/start/678ec0d9-91a6-07cb-a7c9-d91c4fef852e">Filmladders Rotterdam jaren '80 </a> op hetvolk.org, lees de instructies, maak een account aan en voer een paar ladders in!
+					<img src="assets/img/walhalla.jpg" />
+
+					<p class="onderschrift">
+						Eén van de honderden quotes uit Delpher komt uit <a target="_blank" href="https://resolver.kb.nl/resolve?urn=ddd:010212708:mpeg21:a0183">dit bericht</a>, dat toont hoe vrolijk zwieren het is in <span class="buildings"><a href="plekken/plek.php?qid=Q35567390">danszaal Walhalla</a></span>.
 					</p>
 					
 
@@ -84,10 +83,20 @@
 						Uit de archieven hebben we op beeld vastgelegde <a href="/gebeurtenissen/">gebeurtenissen</a> uit het culturele leven opgediept - van bouw tot brand, van soundcheck tot première, en daarnaast een incidentele hondenshow.
 					</p>
 
+					<?php 
+					/*
 					<img src="assets/img/demonstratie-fassbinder.jpg" />
 
 					<p class="onderschrift events">
 						Demonstratie in Rotterdam tegen opvoering Fassbinders `het vuil, de stad en de dood` voor <a href="plekken/plek.php?qid=Q76161173">theater De Lantaren</a>
+					</p>
+					*/
+					?>
+
+					<img src="assets/img/bouw-scala.jpg" />
+
+					<p class="onderschrift buildings">
+						De bouw van <a href="plekken/plek.php?qid=Q38238710">bioscoop Scala</a>, het latere Cinerama.
 					</p>
 
 					<h2>Een woord van dank</h2>
@@ -101,36 +110,58 @@
 						Dit project is mogelijk gemaakt door een subsidie van het <a href="https://stimuleringsfonds.nl/">Stimuleringsfonds Creatieve Industrie</a>.
 					</p>
 
-					<img style="width: 80%" src="assets/img/SCI.jpg" />
+					<img style="width: 60%" src="assets/img/SCI.jpg" />
 
-					<h2>Over ons</h2>
-					<p>
-						Rotterdams Publiek is bedacht en gemaakt door Menno den Engelse (<a href="http://islandsofmeaning.nl/">Islands of Meaning</a>), Thunnis van Oort, <a href="https://bertspaan.nl/">Bert Spaan</a>, Carinda Strangio (<a href="https://bitman.nl/">Bitman</a>) en Marie-Claire Dangerfield (<a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>).
+					<img src="assets/img/mick.jpg" />
+
+					<p class="onderschrift">
+						In de <span class="timemachine"><a href="tijdmachine/?year=1982">tijdmachine</a></span> en bij concertpodia geven we ook overzichten van concerten, zoals dat van de Stones in <span class="buildings"><a href="plekken/plek.php?qid=Q330298">de Kuip</a></span>, in 1982. In <span class="buildings"><a href="plekken/plek.php?qid=Q81801550">HAL4</a></span> speelde dat jaar The Birthday Party.
 					</p>
 
+					
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
+
+					
+			<h2>Helpen</h2>
+			<p>
+				De gegevens op deze site zijn voor een groot deel door vrijwilligers bijeengebracht - <a href="/helpen/index.php">hier lees je hoe je een bijdrage kunt leveren aan het beschrijven van het uitgaansverleden van de stad</a>.
+			</p>
+
+			<img src="../assets/img/stapeltje-ladders.jpg" />
+
+			<p class="onderschrift">
+				Op het moment loopt er een project waarin we jaren '80 filmladders invoeren.
+			</p>
+
 			<h2 class="timemachine">Tijdmachine</h2>
 			<p class="timemachine">
 				Hoe zag het culturele landschap eruit in <a href="tijdmachine/?year=1995">1995</a>? Of in <a href="tijdmachine/?year=1968">1968</a>? Of in <a href="tijdmachine/?year=1932">1932</a>? Welke tentoonstellingen, concerten en films kon je dat jaar zien? Onze <a href="tijdmachine/?year=1984">tijdmachine</a> dompelt je onder in de tijden van weleer.
 			</p>
 
+			<img src="assets/img/affiche-grand.png" />
+
+			<p class="onderschrift timemachine">
+				Affiche uit <a href="tijdmachine/?year=1937">1937</a>. Het <a href="plekken/plek.php?qid=Q15875871">Grand Theatre</a> is bij het bombardement vernietigd.
+			</p>
+
+			<?php 
+			/*
 			<img src="assets/img/filmladder.jpg" />
 
 			<p class="onderschrift timemachine">
 				Nachtvoorstellingen in een filmladder uit <a href="tijdmachine/?year=1988">1988</a>. Calypso bestond nog tot in 1997, Lumière tot in 2003.
 			</p>
+			*/ 
+			?>
 
-			<h2>De data</h2>
+			<h2>Over ons</h2>
 			<p>
-				Rotterdams Publiek kan bestaan dankzij 'linked open data'. De gebouwen bijvoorbeeld kunnen we rechtstreeks uit <a href="https://www.wikidata.org/">Wikidata</a> ophalen. Samen met andere 'Wikidatianen' hebben we ook een bijdrage geleverd aan het invoeren van die data.
+				Rotterdams Publiek is bedacht en gemaakt door Menno den Engelse (<a href="http://islandsofmeaning.nl/">Islands of Meaning</a>), Thunnis van Oort, <a href="https://bertspaan.nl/">Bert Spaan</a>, Carinda Strangio (<a href="https://bitman.nl/">Bitman</a>) en Marie-Claire Dangerfield (<a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>).
 			</p>
 
-			<p>
-				De databestanden die we zelf gemaakt of verzameld hebben, zoals de quotes uit krantenbank Delpher, de 'culturele gebeurtenissen' en de koppelingen tussen afbeeldingen uit het archief en locaties, delen we via <a href="https://github.com/mmmenno/rotterdams-publiek-data">onze data-repository op GitHub</a>.
-			</p>
 
 
 		</div>
