@@ -104,7 +104,7 @@
 						Zonder onze partners, vooraleerst het <a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>, maar zeker ook <a href="https://digitup.nl/">DIG IT UP</a> en <a href="https://www.belvedererotterdam.nl/">Verhalenhuis Belvédère</a>, hadden we het niet voor elkaar gekregen. Dank!
 					</p>
 					<p>
-						Dank ook aan de <a href="https://www.kb.nl/">Koninklijke Bibliotheek</a>, <a href="https://www.boijmans.nl/">Boijmans</a>, <a href="https://rkd.nl/">RKD</a>, het <a href="https://www.create.humanities.uva.nl/">UvA CREATE</a> team, <a href="https://www.setlist.fm/">setlist.fm</a>, <a href="https://www.netwerkdigitaalerfgoed.nl/">NDE</a>, het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a> en andere erfgoedinstellingen voor het (open) beschikbaar maken van data, waardoor dit soort projecten gemaakt kunnen worden.
+						Dank ook aan de <a href="https://www.kb.nl/">Koninklijke Bibliotheek</a>, <a href="https://www.boijmans.nl/">Boijmans</a>, <a href="https://rkd.nl/">RKD</a>, het <a href="https://www.create.humanities.uva.nl/">UvA CREATE</a> team, <a href="https://www.setlist.fm/">setlist.fm</a>, <a href="https://www.netwerkdigitaalerfgoed.nl/">NDE</a>, het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a> en andere erfgoedinstellingen voor het (open) beschikbaar maken van data. Zo kunnen dit soort projecten gemaakt worden.
 					</p>
 					<p>
 						Dit project is mogelijk gemaakt door een subsidie van het <a href="https://stimuleringsfonds.nl/">Stimuleringsfonds Creatieve Industrie</a>.
@@ -115,7 +115,7 @@
 					<img src="assets/img/mick.jpg" />
 
 					<p class="onderschrift">
-						In de <span class="timemachine"><a href="tijdmachine/?year=1982">tijdmachine</a></span> en bij concertpodia geven we ook overzichten van concerten, zoals dat van de Stones in <span class="buildings"><a href="plekken/plek.php?qid=Q330298">de Kuip</a></span>, in 1982. In <span class="buildings"><a href="plekken/plek.php?qid=Q81801550">HAL4</a></span> speelde dat jaar The Birthday Party.
+						In de <span class="timemachine"><a href="tijdmachine/?year=1982">tijdmachine</a></span> en bij concertpodia vind je overzichten van concerten, zoals dat van de Stones in <span class="buildings"><a href="plekken/plek.php?qid=Q330298">de Kuip</a></span>, in 1982. In <span class="buildings"><a href="plekken/plek.php?qid=Q81801550">HAL4</a></span> speelde dat jaar The Birthday Party.
 					</p>
 
 					
@@ -127,7 +127,7 @@
 					
 			<h2>Helpen</h2>
 			<p>
-				De gegevens op deze site zijn voor een groot deel door vrijwilligers bijeengebracht - <a href="/helpen/index.php">hier lees je hoe je een bijdrage kunt leveren aan het beschrijven van het uitgaansverleden van de stad</a>.
+				De gegevens op Rotterdams Publiek zijn voor een groot deel door vrijwilligers bijeengebracht - <a href="/helpen/index.php">hier lees je hoe je kunt helpen bij het beschrijven van het uitgaansverleden van de stad</a>.
 			</p>
 
 			<img src="../assets/img/stapeltje-ladders.jpg" />
@@ -143,8 +143,8 @@
 
 			<img src="assets/img/affiche-grand.png" />
 
-			<p class="onderschrift timemachine">
-				Affiche uit <a href="tijdmachine/?year=1937">1937</a>. Het <a href="plekken/plek.php?qid=Q15875871">Grand Theatre</a> is bij het bombardement vernietigd.
+			<p class="onderschrift">
+				Affiche uit <span class="timemachine"><a href="tijdmachine/?year=1937">1937</a></span>. Het <span class="buildings"><a href="plekken/plek.php?qid=Q15875871">Grand Theatre</a></span> is bij het bombardement vernietigd.
 			</p>
 
 			<?php 
