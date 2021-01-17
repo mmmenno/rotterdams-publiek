@@ -121,7 +121,7 @@ $next = $year + 1;
 				div.append('<div class="loader"></div>');
 
 				if(div.attr('id') == "boijmans"){
-					$('#boijmans').load('tentoonstellingen/tentoonstellingen.php?year=<?= $year ?>');
+					$('#boijmans').load('tentoonstellingen/tentoonstellingen-wiki.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "films"){
 					$('#films').load('bioscopen/filmvoorstellingen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "bioscopen"){
