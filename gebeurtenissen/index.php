@@ -105,6 +105,7 @@ asort($eventtypes);
   
   <link rel="stylesheet" href="assets/styles.css" />
 
+  <script async defer data-domain="rotterdamspubliek.nl" src="https://plausible.io/js/plausible.js"></script>
   
 </head>
 <body>
