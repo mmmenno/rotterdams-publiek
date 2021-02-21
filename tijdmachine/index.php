@@ -79,6 +79,9 @@ $next = $year + 1;
 			<h2>Tentoonstellingen in Boijmans</h2>
 			<div class="content" id="boijmans"></div>
 
+			<h2>Tentoonstellingen elders</h2>
+			<div class="content" id="elders"></div>
+
 			<h2>Vrouwen in de kunst</h2>
 			<div class="content" id="vrouwen"></div>
 
@@ -122,6 +125,8 @@ $next = $year + 1;
 
 				if(div.attr('id') == "boijmans"){
 					$('#boijmans').load('tentoonstellingen/tentoonstellingen-wiki.php?year=<?= $year ?>');
+				}else if(div.attr('id') == "elders"){
+					$('#elders').load('tentoonstellingen/tentoonstellingen-wiki-not-boijmans.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "films"){
 					$('#films').load('bioscopen/filmvoorstellingen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "bioscopen"){
@@ -167,6 +172,8 @@ $next = $year + 1;
 			}else if(div.attr('id') == "filmladder" && ( <?= $year ?> < 1970 || <?= $year ?> > 1989 )){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "affiches" && ( <?= $year ?> < 1845 || <?= $year ?> > 1943 )){
+				$(this).addClass('faded');
+			}else if(div.attr('id') == "elders" && ( <?= $year ?> < 1940 )){
 				$(this).addClass('faded');
 			}
 		});

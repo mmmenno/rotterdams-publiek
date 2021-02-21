@@ -451,7 +451,7 @@ include("affiches.php");
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md">
-			<h1><a href="../">Rotterdams Publiek</a> | <?= $venue['label'] ?></h1>
+			<h1><a href="../">Rotterdams Publiek</a> | <a href="/plekken/">Plekken</a> | <?= $venue['label'] ?></h1>
 		</div>
 	</div>
 	<div class="row">
@@ -670,6 +670,12 @@ include("affiches.php");
 		  		<h3>R'dam. Made it happen.</h3>
 			<?php } ?>
 
+			<?php if($qid == "Q80815548" || $qid == "Q29569055") { ?>
+			
+				<p class="smaller">In <?= $venue['label'] ?> gehouden tentoonstellingen zijn ook te vinden in <a href="/tijdmachine/?year=1968">de Tijdmachine</a></p>
+
+			<?php } ?>
+
 
 		  	<?php foreach($videos as $k => $v){ ?>
 				<div xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="oip_media" about="<?= $v['newsreelfile'] ?>">
@@ -692,6 +698,8 @@ include("affiches.php");
 				</div>
 
 			<?php } ?>
+
+
 		  	
 			
 		</div>
