@@ -43,7 +43,7 @@
 				<div class="col-md-6">
 
 
-					<h2>Filmladders invoeren - help je mee?</h2>
+					<h2>Filmladders invoeren</h2>
 					<p>
 						In samenwerking met <a href="http://cinemacontext.nl/">Cinema Context</a> zijn we op hetvolk.org een <a href="https://widgets.hetvolk.org/data-entry/start/678ec0d9-91a6-07cb-a7c9-d91c4fef852e">crowdsourceproject</a> gestart om filmladders uit de jaren '80 in te voeren. 
 					</p> 
