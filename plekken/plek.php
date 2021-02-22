@@ -451,7 +451,7 @@ include("affiches.php");
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md">
-			<h1><a href="../">Rotterdams Publiek</a> | <a href="/plekken/">Plekken</a> | <?= $venue['label'] ?></h1>
+			<h1><a href="../">Rotterdams Publiek</a> | <a href="/plekken/">plekken</a> | <?= $venue['label'] ?></h1>
 		</div>
 	</div>
 	<div class="row">
