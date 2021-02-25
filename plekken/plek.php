@@ -653,6 +653,8 @@ include("affiches.php");
 			<h3>Op de kaart</h3>
 		  	<div id="map" style="height: 300px; margin-top: 20px;"></div>
 
+		  	<?php include("memories.php"); ?>
+
 		  	
 		  	<?php if(count($interviews)>0){ ?>
 		  		<h3>Deze zaal in interviews</h3>

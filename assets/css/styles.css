@@ -101,6 +101,23 @@ a:hover{
 .quote .smaller, .quote .evensmaller{
 	text-align: right;
 }
+.memory{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background-color: #c2675d;
+	color: #fff;
+	padding: 16px;
+	font-family: 'Times New Roman', serif;
+}
+.memory h4{
+	font-size: 22px;
+	margin: 0 0 8px 0;
+}
+.memory .credits{
+	font-style: italic;
+	text-align: right;
+}
+
 img{
 	width: 100%;
 	margin-bottom: 16px;
