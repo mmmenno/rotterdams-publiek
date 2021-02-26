@@ -1,4 +1,0 @@
-
-{ "head": { "link": [], "vars": ["text", "paper", "articledate", "articleurl"] },
-  "results": { "distinct": false, "ordered": true, "bindings": [
-    { "text": { "type": "literal", "value": "De bioscoop in Nighttown, genaamd Airplane, liep tot op heden niet denderend, maar daar kon wel eens verandering in komen. Sinds drie weken is Airplane aangesloten bij de bioscoopbond en dat betekent dat het programma wordt opgenomen in de filmladder. Bovenaan zelfs. Burger had met de keuze van de naam al bedacht dat hij alfabetisch v\u00F3\u00F3r Alhambra moest zitten." }	, "paper": { "type": "literal", "value": "Het vr\u0133e volk" }	, "articledate": { "type": "typed-literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "1988-12-13" }	, "articleurl": { "type": "uri", "value": "https://resolver.kb.nl/resolve?urn=ddd:010963000:mpeg21:a0212" }} ] } }

@@ -1,4 +1,0 @@
-
-{ "head": { "link": [], "vars": ["text", "paper", "articledate", "articleurl"] },
-  "results": { "distinct": false, "ordered": true, "bindings": [
-    { "text": { "type": "literal", "value": "Plannen bestonden voor het bouwen van een 40-tal theaters in diverse steden van het land. Verscheidene hiervan waren reeds zoo goed als gereed. Zoo b.v. het Cineone-theater aan net Mathenesserplein te Rotterdam, waar reeds geruimen tijd geleden de inrichting kant en klaar was." }	, "paper": { "type": "literal", "value": "Haagsche courant" }	, "articledate": { "type": "typed-literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "1937-03-12" }	, "articleurl": { "type": "uri", "value": "https://resolver.kb.nl/resolve?urn=MMKB04:000149140:mpeg21:a0064" }} ] } }

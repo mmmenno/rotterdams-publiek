@@ -1,4 +1,0 @@
-
-{ "head": { "link": [], "vars": ["text", "paper", "articledate", "articleurl"] },
-  "results": { "distinct": false, "ordered": true, "bindings": [
-    { "text": { "type": "literal", "value": "Een ander probleem waarmee met name Colosseum en\u00A0Harmonie\u00A0te kampen hebben, is de last die deze buurtbioscopen ondervinden van 'opgeschoten jongelui, ruzie- en herrietrappers'. Hun optreden schrikt andere mensen af. Bij\u00A0Harmonie\u00A0zei men ons: 'Onze bioscoop is volledig een jongensbioscoop geworden. Anderen dan zij komen hier niet meer.'" }	, "paper": { "type": "literal", "value": "Het vr\u0133e volk" }	, "articledate": { "type": "typed-literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "1971-03-29" }	, "articleurl": { "type": "uri", "value": "https://resolver.kb.nl/resolve?urn=ddd:010957500:mpeg21:a0179" }} ] } }
