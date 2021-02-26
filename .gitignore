@@ -8,5 +8,6 @@ plekken/data/*.json
 verhalen/data/*.json
 
 files
+files/*
 iiif
 tiles
