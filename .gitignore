@@ -7,7 +7,6 @@ gebeurtenissen/data/*.json
 plekken/data/*.json
 verhalen/data/*.json
 
-files
 files/filmladders-per-jaar/1980/*.jpg
 iiif
 tiles
