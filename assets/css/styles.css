@@ -109,6 +109,9 @@ a:hover{
 	padding: 16px;
 	font-family: 'Times New Roman', serif;
 }
+.timemachine .memory{
+	background-color: #929eda;
+}
 .memory h4{
 	font-size: 22px;
 	margin: 0 0 8px 0;

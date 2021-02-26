@@ -34,7 +34,7 @@ $next = $year + 1;
 
 	
 </head>
-<body>
+<body class="timemachine">
 
 
 
@@ -100,6 +100,9 @@ $next = $year + 1;
 			<h2>In de pers</h2>
 			<div class="content" id="pers"></div>
 
+			<h2>Herinneringen</h2>
+			<div class="content" id="memories"></div>
+
 			
 		</div>
 	</div>
@@ -147,6 +150,8 @@ $next = $year + 1;
 					$('#vrouwen').load('rkd/vrouwen.php?year=<?= $year ?>');
 				}else if(div.attr('id') == "kunstscene"){
 					$('#kunstscene').load('rkd/kunstscene.php?year=<?= $year ?>');
+				}else if(div.attr('id') == "memories"){
+					$('#memories').load('herinneringen/index.php?year=<?= $year ?>');
 				}
 			}
 
@@ -174,6 +179,8 @@ $next = $year + 1;
 			}else if(div.attr('id') == "affiches" && ( <?= $year ?> < 1845 || <?= $year ?> > 1943 )){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "elders" && ( <?= $year ?> < 1940 )){
+				$(this).addClass('faded');
+			}else if(div.attr('id') == "memories" && ( <?= $year ?> < 1950 )){
 				$(this).addClass('faded');
 			}
 		});

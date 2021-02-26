@@ -24,7 +24,7 @@ $memories = json_decode($json,true);
 		<p class="credits">
 			<?= $memory['gebruikersnaam'] ?>, over
 			<?php if(strlen($memory['datum'])){ ?>
-				het jaar <a style="color: #fff; text-decoration: underline;" href="https://rotterdamspubliek.nl/tijdmachine/?year=<?= $memory['datum'] ?>"><?= $memory['datum'] ?></a>
+				het jaar <a style="color: #fff; text-decoration: underline;" href="/tijdmachine/?year=<?= $memory['datum'] ?>"><?= $memory['datum'] ?></a>
 			<?php }elseif(strlen($memory['periode_vanaf']) && strlen($memory['periode_tot'])){ ?>
 				de periode <?= $memory['periode_vanaf'] ?> - <?= $memory['periode_tot'] ?>
 			<?php } ?>
