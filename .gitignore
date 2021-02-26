@@ -8,6 +8,6 @@ plekken/data/*.json
 verhalen/data/*.json
 
 files
-files/filmladders-per-jaar/*
+files/filmladders-per-jaar/1980
 iiif
 tiles
