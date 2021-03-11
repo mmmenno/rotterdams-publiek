@@ -82,7 +82,7 @@
 					</p>
 					
 					<p>
-						De <a href="https://w.wiki/$wv">1800+ Rotterdamse tentoonstellingen</a> die inmiddels op Wikidata staan kunnen ook voorzien worden van afbeeldingen. Daarnaast kan je bij zo'n tentoonstelling een 'main subject' of 'hoofdonderwerp' (P921) opgeven. Dat kan de kunstenaar zijn wiens werk tentoongesteld wordt, maar ook iets als 'Japans aardewerk'. En hoewel Boijmans redelijk compleet lijkt, zijn er nog allerlei tentoonstellingen toe te voegen.
+						De <a href="https://w.wiki/$wv">1800+ Rotterdamse tentoonstellingen</a> die inmiddels op Wikidata staan kunnen ook voorzien worden van afbeeldingen. Daarnaast kan je bij zo'n tentoonstelling een 'main subject' of 'hoofdonderwerp' (P921) opgeven. Dat kan de kunstenaar zijn wiens werk tentoongesteld wordt, maar ook iets als 'Japans aardewerk'. En hoewel Boijmans redelijk compleet lijkt, zijn er nog allerlei tentoonstellingen van andere instellingen toe te voegen.
 					</p>
 
 					<h2>Wikipedia</h2>
@@ -95,6 +95,18 @@
 		</div>
 		<div class="col-md-4">
 			
+			<h2>Herinneringen</h2>
+			<p>
+				Foto's, affiches en programma's laten zien hoe uitgaansplekken eruit zagen en wat er te zien was, maar <em>hoe</em> het er was, dat wordt pas duidelijk uit de anekdotes van mensen die er geweest zijn.
+			</p> 
+
+			<p>
+				Je kan het beeld van Rotterdams uitgaansverleden completer maken door <a href="https://rotterdamspubliek-api.versie1.online/herinnering/form/">hier een herinnering te delen</a>. Op de pagina van elke <a href="/plekken/">plek</a> vind je een linkje naar datzelfde formulier, waarbij de locatie al is ingevuld.
+			</p>
+
+			<p>
+				Het maakt niet uit of je herinneringen een grijs of een meer recent verleden betreffen. Sterker nog, omdat kranten en afbeeldingen van de laatste paar decennia vaak auteursrechtelijk beschermd zijn, kunnen recentere herinneringen juist in een leemte voorzien.
+			</p> 
 
 		</div>
 	</div>

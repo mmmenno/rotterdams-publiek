@@ -43,7 +43,7 @@
 				<div class="col-md-6">
 
 
-					<h2 class="buildings">Gebouwen</h2>
+					<h2 class="buildings">Plekken</h2>
 					<p class="buildings">
 						Bioscopen, danszalen, theathers, musea, etc. - <a href="/plekken/">hier vind je het overzicht</a>.
 					</p>
@@ -73,31 +73,26 @@
 				</div>
 				<div class="col-md-6">
 
-					<h2 class="interviews">Verhalen</h2>
-					<p class="interviews">
-						Persoonlijke getuigenissen zijn soms vastgelegd op beeld en geluid. Het Stadsarchief verzamelt ook video en audio. We <a href="/verhalen/">laten hier een aantal van deze getuigenissen zien</a>, en proberen daarbij fragmenten aan locaties te verbinden.
+					<h2 class="timemachine">Tijdmachine</h2>
+					<p class="timemachine">
+						Hoe zag het culturele landschap eruit in <a href="tijdmachine/?year=1995">1995</a>? Of in <a href="tijdmachine/?year=1968">1968</a>? Of in <a href="tijdmachine/?year=1932">1932</a>? Welke tentoonstellingen, concerten en films kon je dat jaar zien? Onze <a href="tijdmachine/?year=1984">tijdmachine</a> dompelt je onder in de tijden van weleer.
 					</p>
 
-					<h2 class="events">R'dam. Made it happen.</h2>
-					<p class="events">
-						Uit de archieven hebben we op beeld vastgelegde <a href="/gebeurtenissen/">gebeurtenissen</a> uit het culturele leven opgediept - van bouw tot brand, van soundcheck tot première, en daarnaast een incidentele hondenshow.
+					<img src="assets/img/affiche-grand.png" />
+
+					<p class="onderschrift">
+						Affiche uit <span class="timemachine"><a href="tijdmachine/?year=1937">1937</a></span>. Het <span class="buildings"><a href="plekken/plek.php?qid=Q15875871">Grand Theatre</a></span> is bij het bombardement vernietigd.
 					</p>
 
 					<?php 
 					/*
-					<img src="assets/img/demonstratie-fassbinder.jpg" />
+					<img src="assets/img/filmladder.jpg" />
 
-					<p class="onderschrift events">
-						Demonstratie in Rotterdam tegen opvoering Fassbinders `het vuil, de stad en de dood` voor <a href="plekken/plek.php?qid=Q76161173">theater De Lantaren</a>
+					<p class="onderschrift timemachine">
+						Nachtvoorstellingen in een filmladder uit <a href="tijdmachine/?year=1988">1988</a>. Calypso bestond nog tot in 1997, Lumière tot in 2003.
 					</p>
-					*/
+					*/ 
 					?>
-
-					<img src="assets/img/bouw-scala.jpg" />
-
-					<p class="onderschrift buildings">
-						De bouw van <a href="plekken/plek.php?qid=Q38238710">bioscoop Scala</a>, het latere Cinerama.
-					</p>
 
 					<h2>Een woord van dank</h2>
 					<p>
@@ -136,26 +131,57 @@
 				Op het moment loopt er een project waarin we jaren '80 filmladders invoeren.
 			</p>
 
-			<h2 class="timemachine">Tijdmachine</h2>
-			<p class="timemachine">
-				Hoe zag het culturele landschap eruit in <a href="tijdmachine/?year=1995">1995</a>? Of in <a href="tijdmachine/?year=1968">1968</a>? Of in <a href="tijdmachine/?year=1932">1932</a>? Welke tentoonstellingen, concerten en films kon je dat jaar zien? Onze <a href="tijdmachine/?year=1984">tijdmachine</a> dompelt je onder in de tijden van weleer.
+
+			<h2 class="interviews">Verhalen</h2>
+			<p class="interviews">
+				Persoonlijke getuigenissen zijn soms vastgelegd op beeld en geluid. Het Stadsarchief verzamelt ook video en audio. We <a href="/verhalen/">laten hier een aantal van deze getuigenissen zien</a>, en proberen daarbij fragmenten aan locaties te verbinden.
 			</p>
 
-			<img src="assets/img/affiche-grand.png" />
-
-			<p class="onderschrift">
-				Affiche uit <span class="timemachine"><a href="tijdmachine/?year=1937">1937</a></span>. Het <span class="buildings"><a href="plekken/plek.php?qid=Q15875871">Grand Theatre</a></span> is bij het bombardement vernietigd.
+			<h2 class="events">R'dam. Made it happen.</h2>
+			<p class="events">
+				Uit de archieven hebben we op beeld vastgelegde <a href="/gebeurtenissen/">gebeurtenissen</a> uit het culturele leven opgediept - van bouw tot brand, van soundcheck tot première, en daarnaast een incidentele hondenshow.
 			</p>
 
 			<?php 
 			/*
-			<img src="assets/img/filmladder.jpg" />
+			<img src="assets/img/demonstratie-fassbinder.jpg" />
 
-			<p class="onderschrift timemachine">
-				Nachtvoorstellingen in een filmladder uit <a href="tijdmachine/?year=1988">1988</a>. Calypso bestond nog tot in 1997, Lumière tot in 2003.
+			<p class="onderschrift events">
+				Demonstratie in Rotterdam tegen opvoering Fassbinders `het vuil, de stad en de dood` voor <a href="plekken/plek.php?qid=Q76161173">theater De Lantaren</a>
 			</p>
-			*/ 
+			*/
 			?>
+
+			<img src="assets/img/bouw-scala.jpg" />
+
+			<p class="onderschrift buildings">
+				De bouw van <a href="plekken/plek.php?qid=Q38238710">bioscoop Scala</a>, het latere Cinerama.
+			</p>
+
+			<?php
+
+			$url = "https://rotterdamspubliek-api.versie1.online/herinnering/recent/1";
+			$json = file_get_contents($url);
+
+			$memories = json_decode($json,true);
+
+			?>
+
+			<h2>Herinneringen</h2>
+
+			Bij <a href="/plekken/">plekken</a> en in de <a href="/tijdmachine/?year=1990">tijdmachine</a> kan je als bezoeker herinneringen delen, zoals deze:
+
+			<?php foreach ($memories as $memory) { ?>
+				<div class="memory">
+					<h4><?= $memory['titel'] ?></h4>
+					<p><?= strip_tags($memory['bericht']) ?></p>
+					<p class="credits">
+						<a style="color: #fff; text-decoration: underline;" href="https://rotterdamspubliek-api.versie1.online/herinnering/gebruiker/<?= $memory['gebruikersnaam'] ?>"><?= $memory['gebruikersnaam'] ?></a>, over <a style="color: #fff; text-decoration: underline;" href="/plekken/plek.php?qid=<?= $memory['wikiId'] ?>">deze plek</a>
+					</p>
+				</div>
+			<?php } ?>
+
+			
 
 			<h2>Over ons</h2>
 			<p>

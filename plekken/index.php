@@ -138,6 +138,17 @@ $breaks = array($third,$twothirds);
       </div> 
     </div>
 
+    <div class="row">
+      <div class="col-md-8">
+         <p class="lead" style="margin-top: 20px;">
+           De plekken in deze lijst bestaan vaak al lang en soms al lang niet meer. In de loop der jaren zijn vaak verschillende bedrijven of instellingen gevestigd geweest op dezelfde plek en sommige zijn juist weer verhuisd van de ene plek naar de andere. Die dynamiek zie je hier al aan de namen, en als je doorklikt in detail.
+         </p>
+      </div> 
+      <div class="col-md-4">
+         <img style="width: 100%; margin-top: 20px;" src="../assets/img/soon.png" />
+      </div> 
+    </div>
+
     <div class="row white listing">
       <div class="col-md-4">
          <?php 

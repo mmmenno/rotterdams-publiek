@@ -18,7 +18,7 @@ $memories = json_decode($json,true);
 		<h4><?= $memory['titel'] ?></h4>
 		<p><?= strip_tags($memory['bericht']) ?></p>
 		<p class="credits">
-			<?= $memory['gebruikersnaam'] ?>, over <a style="color: #fff; text-decoration: underline;" href="/plekken/plek.php?qid=<?= $memory['wikiId'] ?>">deze plek</a>
+			<a style="color: #fff; text-decoration: underline;" href="https://rotterdamspubliek-api.versie1.online/herinnering/gebruiker/<?= $memory['gebruikersnaam'] ?>"><?= $memory['gebruikersnaam'] ?></a>, over <a style="color: #fff; text-decoration: underline;" href="/plekken/plek.php?qid=<?= $memory['wikiId'] ?>">deze plek</a>
 		</p>
 	</div>
 <?php } ?>

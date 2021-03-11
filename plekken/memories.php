@@ -22,7 +22,7 @@ $memories = json_decode($json,true);
 		<h4><?= $memory['titel'] ?></h4>
 		<p><?= strip_tags($memory['bericht']) ?></p>
 		<p class="credits">
-			<?= $memory['gebruikersnaam'] ?>, over
+			<a style="color: #fff; text-decoration: underline;" href="https://rotterdamspubliek-api.versie1.online/herinnering/gebruiker/<?= $memory['gebruikersnaam'] ?>"><?= $memory['gebruikersnaam'] ?></a>, over
 			<?php if(strlen($memory['datum'])){ ?>
 				het jaar <a style="color: #fff; text-decoration: underline;" href="/tijdmachine/?year=<?= $memory['datum'] ?>"><?= $memory['datum'] ?></a>
 			<?php }elseif(strlen($memory['periode_vanaf']) && strlen($memory['periode_tot'])){ ?>
@@ -36,7 +36,7 @@ $memories = json_decode($json,true);
 
 
 <p class="smaller">
-Zelf een herinnering aan deze plek? <a href="https://rotterdamspubliek-api.versie1.online/herinnering/form/<?= $qid ?>">Deel je herinnering hier</a> als je denkt dat die een goed beeld geeft van deze plek.
+Zelf een herinnering aan deze plek? <a href="https://rotterdamspubliek-api.versie1.online/herinnering/form/<?= $qid ?>">Deel je herinnering hier</a> en schrijf mee aan de culturele geschiedenis van Rotterdam.
 </p>
 
 
