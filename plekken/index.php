@@ -101,6 +101,8 @@ $third = round($venuecount/3);
 $twothirds = $third*2;
 $breaks = array($third,$twothirds);
 
+//print_r($venues);
+
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -138,33 +140,121 @@ $breaks = array($third,$twothirds);
       </div> 
     </div>
 
+
     <div class="row">
       <div class="col-md-8">
-         <p class="lead" style="margin-top: 20px;">
-           De plekken in deze lijst bestaan soms al lang en soms al lang niet meer. In de loop der jaren zijn vaak verschillende bedrijven of instellingen gevestigd geweest op dezelfde plek en sommige zijn juist weer verhuisd van de ene plek naar de andere. Die dynamiek zie je hier al aan de namen, en als je doorklikt in detail.
-         </p>
+        <p class="lead" style="margin-top: 20px;">
+        De plekken in deze lijst bestaan soms al lang en soms al lang niet meer. In de loop der jaren zijn vaak verschillende bedrijven of instellingen gevestigd geweest op dezelfde plek en sommige zijn juist weer verhuisd van de ene plek naar de andere. Die dynamiek zie je hier al aan de namen, en als je doorklikt in detail.
+        </p>
+        <div class="row white listing">
+          <div class="col-md-6">
+                <?php 
+                $i = 0;
+                foreach ($venues as $typelabel => $venuesintype) { 
+                  if($i>=$third){
+                    continue;
+                  }
+                  echo "<h3>" . $typelabel . "</h3>";
+                  $lasttype = $typelabel;
+                  foreach ($venuesintype as $venue) { 
+                    $i++;
+
+                    if($i>=$third){
+                      continue;
+                    }
+
+                    if($typelabel != $lasttype){
+                      echo "<h3>" . $typelabel . "</h3>";
+                    }
+
+                    echo '<h4><a href="plek.php?qid=' . $venue['wdid'] . '">' . $venue['label'] . '</a></h4>';
+
+
+                    echo '<p class="small">';
+                    echo $venue['straatlabel'];
+                    if(isset($venue['names'])){
+                      $othernames = array();
+
+                      foreach ($venue['names'] as $name) { 
+                        if($name != $venue['label'] && !in_array($name, $othernames)){
+                          $othernames[] = $name;
+                        }
+                      }
+
+                      if(count($othernames)){
+                        $aka = implode(", ", $othernames);
+                        echo ' | a.k.a. ' . $aka;
+                      }
+                    }
+                    echo '</p>';
+                    
+                    $lasttype = $typelabel;
+
+                  }
+                }
+                ?>
+          </div>
+          <div class="col-md-6">
+                <?php 
+                $i = 0;
+                foreach ($venues as $typelabel => $venuesintype) { 
+                  foreach ($venuesintype as $venue) { 
+                    $i++;
+
+                    if($i<$third || $i >= $twothirds){
+                      continue;
+                    }
+                    if($typelabel == $lasttype && $i == $third){
+                      echo "<h3>" . $typelabel . " - vervolg</h3>";
+                    }
+                    if($typelabel != $lasttype){
+                      echo "<h3>" . $typelabel . "</h3>";
+                    }
+
+                    echo '<h4><a href="plek.php?qid=' . $venue['wdid'] . '">' . $venue['label'] . '</a></h4>';
+
+
+                    echo '<p class="small">';
+                    echo $venue['straatlabel'];
+                    if(isset($venue['names'])){
+                      $othernames = array();
+
+                      foreach ($venue['names'] as $name) { 
+                        if($name != $venue['label'] && !in_array($name, $othernames)){
+                          $othernames[] = $name;
+                        }
+                      }
+
+                      if(count($othernames)){
+                        $aka = implode(", ", $othernames);
+                        echo ' | a.k.a. ' . $aka;
+                      }
+                    }
+                    echo '</p>';
+                    
+                    $lasttype = $typelabel;
+
+                  }
+                }
+                ?>
+          </div>
+        </div>
       </div> 
       <div class="col-md-4">
          <img style="width: 100%; margin-top: 20px;" src="../assets/img/soon.png" />
-      </div> 
-    </div>
 
-    <div class="row white listing">
-      <div class="col-md-4">
          <?php 
           $i = 0;
           foreach ($venues as $typelabel => $venuesintype) { 
-            //echo "<h3>" . $typelabel . "</h3>";
             foreach ($venuesintype as $venue) { 
               $i++;
 
-              if(in_array($i,$breaks)){
-                echo '</div><div class="col-md-4">';
-                if($typelabel == $lasttype){
-                  echo "<h3>" . $typelabel . " - vervolg</h3>";
-                }
+              if($i < $twothirds){
+                continue;
               }
-
+              if($typelabel == $lasttype && $i == $twothirds){
+                echo "<h3>" . $typelabel . " - vervolg</h3>";
+              }
               if($typelabel != $lasttype){
                 echo "<h3>" . $typelabel . "</h3>";
               }
@@ -189,23 +279,15 @@ $breaks = array($third,$twothirds);
                 }
               }
               echo '</p>';
-
-
               
-
-
               $lasttype = $typelabel;
 
             }
           }
-         ?>
-         <br />
-         <br />
-         <br />
-      </div>
+          ?>
+      </div> 
     </div>
 
-</div>
 
 </div>
 
