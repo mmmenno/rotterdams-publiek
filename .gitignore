@@ -2,6 +2,7 @@
 locaties/locaties.geojson
 
 assets/filmladders/*
+files/filmladders-per-jaar/*
 tijdmachine/data/*.json
 gebeurtenissen/data/*.json
 plekken/data/*.json

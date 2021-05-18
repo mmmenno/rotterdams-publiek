@@ -167,6 +167,12 @@
 
 			?>
 
+			<h2>Kaart</h2>
+
+			Op de <a href="/plekken/kaart/">kaart</a> zie je waar je wanneer naar welke plekken kon, als je zin had om te dansen, of in een ander uitje.
+
+			<a href="/plekken/kaart/"><img src="assets/img/maps<?= rand(1,4) ?>.png" /></a>
+			
 			<h2>Herinneringen</h2>
 
 			Bij <a href="/plekken/">plekken</a> en in de <a href="/tijdmachine/?year=1990">tijdmachine</a> kan je als bezoeker herinneringen delen, zoals deze:

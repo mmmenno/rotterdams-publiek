@@ -241,7 +241,12 @@ $breaks = array($third,$twothirds);
         </div>
       </div> 
       <div class="col-md-4">
-         <img style="width: 100%; margin-top: 20px;" src="../assets/img/soon.png" />
+
+        <h3 style="font-style: italic;">Alle plekken op de kaart</h3>
+
+        <p class="small">Selecteer een periode <a href="kaart/">op de kaart</a>, en je ziet de hotspots van dat moment, op historische achtergrondkaarten. Druk op je spatiebalk om naar de huidige kaart te switchen.</p>
+
+        <a href="kaart/"><img style="width: 100%; margin-top: 4px;" src="../assets/img/maps<?= rand(1,4) ?>.png" /></a>
 
          <?php 
           $i = 0;
