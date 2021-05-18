@@ -114,6 +114,12 @@
 					</p>
 
 					
+					<h2>Over ons</h2>
+					<p>
+						Rotterdams Publiek is bedacht en gemaakt door Menno den Engelse (<a href="http://islandsofmeaning.nl/">Islands of Meaning</a>), Thunnis van Oort, <a href="https://bertspaan.nl/">Bert Spaan</a>, Carinda Strangio (<a href="https://bitman.nl/">Bitman</a>) en Marie-Claire Dangerfield (<a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>).
+					</p>
+
+					
 				</div>
 			</div>
 		</div>
@@ -189,10 +195,6 @@
 
 			
 
-			<h2>Over ons</h2>
-			<p>
-				Rotterdams Publiek is bedacht en gemaakt door Menno den Engelse (<a href="http://islandsofmeaning.nl/">Islands of Meaning</a>), Thunnis van Oort, <a href="https://bertspaan.nl/">Bert Spaan</a>, Carinda Strangio (<a href="https://bitman.nl/">Bitman</a>) en Marie-Claire Dangerfield (<a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>).
-			</p>
 
 
 

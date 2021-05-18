@@ -650,7 +650,7 @@ include("affiches.php");
 		</div>
 		<div class="col-md-4">
 
-			<h3>Op de kaart</h3>
+			<h3>Op de <a href="/plekken/kaart/">kaart</a></h3>
 		  	<div id="map" style="height: 300px; margin-top: 20px;"></div>
 
 		  	<?php include("memories.php"); ?>
