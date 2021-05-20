@@ -136,7 +136,7 @@ $breaks = array($third,$twothirds);
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-         <h1><a href="../">Rotterdams Publiek</a> | Plekken</h1>
+         <h1><a href="../">Rotterdams Publiek</a> | plekken</h1>
       </div> 
     </div>
 
