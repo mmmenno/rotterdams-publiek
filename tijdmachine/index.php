@@ -77,9 +77,9 @@ $next = $year + 1;
 
 			if($year < 1915){
 				$map = 1;
-			}elseif($year < 1945){
+			}elseif($year < 1946){
 				$map = 2;
-			}elseif($year < 1965){
+			}elseif($year < 1961){
 				$map = 3;
 			}else{
 				$map = 4;
