@@ -6,6 +6,7 @@ Met mijn opa en oma ging ik, elf jaar oud, een dagje naar Rotterdam - voor het e
 De tentoonstelling Framing Sculptures liet zien hoe onder andere Brancusi zijn beeldhouwwerk in foto's gebruikte en helemaal helder werd dat - zowel voor mij als mijn toen tienjarige dochter - in een aparte ruimte waar je zelf kopieën van werken van Brancusi kon stapelen, schikken en belichten om vervolgens te fotograferen. Beeldhouwwerk als decorstuk, foto's als kunst.
 */
 
+$url = "https://memorylane.rotterdamspubliek.nl/herinnering/id/" . $qid;
 $url = "https://rotterdamspubliek-api.versie1.online/herinnering/id/" . $qid;
 $json = file_get_contents($url);
 
@@ -22,7 +23,7 @@ $memories = json_decode($json,true);
 		<h4><?= $memory['titel'] ?></h4>
 		<p><?= strip_tags($memory['bericht']) ?></p>
 		<p class="credits">
-			<a style="color: #fff; text-decoration: underline;" href="https://rotterdamspubliek-api.versie1.online/herinnering/gebruiker/<?= $memory['gebruikersnaam'] ?>"><?= $memory['gebruikersnaam'] ?></a>, over
+			<a target="_blank" style="color: #fff; text-decoration: underline;" href="https://memorylane.rotterdamspubliek.nl/herinnering/gebruiker/<?= $memory['gebruikersnaam'] ?>"><?= $memory['gebruikersnaam'] ?></a>, over
 			<?php if(strlen($memory['datum'])){ ?>
 				het jaar <a style="color: #fff; text-decoration: underline;" href="/tijdmachine/?year=<?= $memory['datum'] ?>"><?= $memory['datum'] ?></a>
 			<?php }elseif(strlen($memory['periode_vanaf']) && strlen($memory['periode_tot'])){ ?>
@@ -36,7 +37,7 @@ $memories = json_decode($json,true);
 
 
 <p class="smaller">
-Zelf een herinnering aan deze plek? <a href="https://rotterdamspubliek-api.versie1.online/herinnering/form/<?= $qid ?>">Deel je herinnering hier</a> en schrijf mee aan de culturele geschiedenis van Rotterdam.
+Zelf een herinnering aan deze plek? <a href="https://memorylane.rotterdamspubliek.nl/herinnering/form/<?= $qid ?>">Deel je herinnering hier</a> en schrijf mee aan de culturele geschiedenis van Rotterdam.
 </p>
 
 

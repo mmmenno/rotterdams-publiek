@@ -73,6 +73,26 @@ $next = $year + 1;
 		</div>
 		<div class="col-md-4">
 
+			<?php 
+
+			if($year < 1916){
+				$map = 1;
+			}elseif($year < 1935){
+				$map = 2;
+			}elseif($year < 1965){
+				$map = 3;
+			}else{
+				$map = 4;
+			}
+
+			?>
+
+			<h2>Op de kaart</h2>
+			<a target="_blank" href="/plekken/kaart/#year=<?= $year ?>"><img src="/assets/img/maplink<?= $map ?>.png" /></a>
+			<p class="small">
+				Klik <a target="_blank" href="/plekken/kaart/#year=<?= $year ?>">naar de kaart</a> om te zien hoe Rotterdam er in dit jaar ongeveer uitgezien moet hebben, en waar je toen uit kon gaan.
+			</p>
+
 			<h2>Op de poppodia</h2>
 			<div class="content" id="concerten"></div>
 

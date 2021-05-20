@@ -166,10 +166,13 @@
 
 			<?php
 
+			$url = "https://memorylane.rotterdamspubliek.nl/herinnering/recent/1";
 			$url = "https://rotterdamspubliek-api.versie1.online/herinnering/recent/1";
-			$json = file_get_contents($url);
+			if($json = file_get_contents($url)){
+				$memories = json_decode($json,true);
+			}
 
-			$memories = json_decode($json,true);
+			
 
 			?>
 
@@ -183,15 +186,21 @@
 
 			Bij <a href="/plekken/">plekken</a> en in de <a href="/tijdmachine/?year=1990">tijdmachine</a> kan je als bezoeker herinneringen delen, zoals deze:
 
-			<?php foreach ($memories as $memory) { ?>
+			<?php 
+			if(isset($memories)){
+				foreach ($memories as $memory) { 
+				?>
 				<div class="memory">
 					<h4><?= $memory['titel'] ?></h4>
 					<p><?= strip_tags($memory['bericht']) ?></p>
 					<p class="credits">
-						<a style="color: #fff; text-decoration: underline;" href="https://rotterdamspubliek-api.versie1.online/herinnering/gebruiker/<?= $memory['gebruikersnaam'] ?>"><?= $memory['gebruikersnaam'] ?></a>, over <a style="color: #fff; text-decoration: underline;" href="/plekken/plek.php?qid=<?= $memory['wikiId'] ?>">deze plek</a>
+						<a target="_blank" style="color: #fff; text-decoration: underline;" href="https://memorylane.rotterdamspubliek.nl/herinnering/gebruiker/<?= $memory['gebruikersnaam'] ?>"><?= $memory['gebruikersnaam'] ?></a>, over <a style="color: #fff; text-decoration: underline;" href="/plekken/plek.php?qid=<?= $memory['wikiId'] ?>">deze plek</a>
 					</p>
 				</div>
-			<?php } ?>
+				<?php 
+				} 
+			}
+			?>
 
 			
 
