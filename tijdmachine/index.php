@@ -75,9 +75,9 @@ $next = $year + 1;
 
 			<?php 
 
-			if($year < 1916){
+			if($year < 1915){
 				$map = 1;
-			}elseif($year < 1935){
+			}elseif($year < 1945){
 				$map = 2;
 			}elseif($year < 1965){
 				$map = 3;
