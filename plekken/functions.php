@@ -34,7 +34,7 @@ function getSparqlResults($endpoint,$query){
 	$response = curl_exec ($ch);
 	curl_close ($ch);
 
-	//var_dump($response);
+	var_dump($response);
 
 	// if valid results were returned, save file
 	$data = json_decode($response,true);
