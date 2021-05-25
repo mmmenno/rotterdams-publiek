@@ -101,7 +101,7 @@
 			</p> 
 
 			<p>
-				Je kan het beeld van Rotterdams uitgaansverleden completer maken door <a href="https://rotterdamspubliek-api.versie1.online/herinnering/form/">hier een herinnering te delen</a>. Op de pagina van elke <a href="/plekken/">plek</a> vind je een linkje naar datzelfde formulier, waarbij de locatie al is ingevuld.
+				Je kan het beeld van Rotterdams uitgaansverleden completer maken door <a href="https://memorylane.rotterdamspubliek.nl/herinnering/form/">hier een herinnering te delen</a>. Op de pagina van elke <a href="/plekken/">plek</a> vind je een linkje naar datzelfde formulier, waarbij de locatie al is ingevuld.
 			</p>
 
 			<p>
