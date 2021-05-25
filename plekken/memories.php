@@ -7,10 +7,26 @@ De tentoonstelling Framing Sculptures liet zien hoe onder andere Brancusi zijn b
 */
 
 $url = "https://memorylane.rotterdamspubliek.nl/herinnering/id/" . $qid;
-$url = "https://rotterdamspubliek-api.versie1.online/herinnering/id/" . $qid;
-$json = file_get_contents($url);
+//$url = "https://rotterdamspubliek-api.versie1.online/herinnering/id/" . $qid;
 
+$json = curl_get_contents($url);
 $memories = json_decode($json,true);
+//shuffle($memories);
+
+function curl_get_contents($url)
+{
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    $data = curl_exec($ch);
+    curl_close($ch);
+
+    return $data;
+}
+
 
 //print_r($memories);
 

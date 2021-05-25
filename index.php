@@ -166,10 +166,25 @@
 
 			<?php
 
-			$url = "https://memorylane.rotterdamspubliek.nl/herinnering/recent/1";
-			$url = "https://rotterdamspubliek-api.versie1.online/herinnering/recent/1";
-			if($json = file_get_contents($url)){
-				$memories = json_decode($json,true);
+			$url = "http://memorylane.rotterdamspubliek.nl/herinnering/recent/10";
+			//$url = "https://rotterdamspubliek-api.versie1.online/herinnering/recent/1";
+			
+			$json = curl_get_contents($url);
+			$memories = json_decode($json,true);
+			shuffle($memories);
+
+			function curl_get_contents($url)
+			{
+			    $ch = curl_init();
+
+			    curl_setopt($ch, CURLOPT_HEADER, 0);
+			    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			    curl_setopt($ch, CURLOPT_URL, $url);
+
+			    $data = curl_exec($ch);
+			    curl_close($ch);
+
+			    return $data;
 			}
 
 			
@@ -188,7 +203,12 @@
 
 			<?php 
 			if(isset($memories)){
+				$i = 0;
 				foreach ($memories as $memory) { 
+					$i++;
+					if($i==2){
+						break;
+					}
 				?>
 				<div class="memory">
 					<h4><?= $memory['titel'] ?></h4>
