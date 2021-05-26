@@ -22,6 +22,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
       wd:Q15206070 #poppodium
       wd:Q30022 #koffiehuis
       wd:Q1228895 #discotheek
+      wd:Q1684522 #jazzclub
     }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
@@ -42,7 +43,9 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
 	OPTIONAL{
       ?item p:P31 ?iseen .
       ?iseen pq:P580 ?starttype .
-      ?iseen pq:P582 ?eindtype .
+      OPTIONAL{
+      	?iseen pq:P582 ?eindtype .
+  	  }
     }
 	OPTIONAL{
       ?item p:P2561 ?naam .
