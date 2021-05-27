@@ -24,6 +24,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
     }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
+    ?item wdt:P625 ?coords .
     OPTIONAL{
       ?item wdt:P669 ?straat .
     }
@@ -47,7 +48,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
-LIMIT 902";
+LIMIT 900";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';

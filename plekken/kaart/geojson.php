@@ -56,7 +56,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
   	MINUS  { ?item wdt:P361 wd:Q13439237 .}
 	SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
-LIMIT 1100
+LIMIT 800
 ";
 
 $endpointUrl = 'https://query.wikidata.org/sparql';
