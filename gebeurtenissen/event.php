@@ -2,6 +2,8 @@
 
 //echo "hello";
 
+include("functions.php");
+
 
 function dutchdate($date){
 
@@ -66,6 +68,8 @@ LIMIT 100
 
 
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/events/services/events/sparql';
+
+/*
 $url = "http://128.199.33.115/querydata/?name=event-" . $eventnr . "&endpoint=" . $endpoint . "&query=" . urlencode($sparql);
 
 if(isset($_GET['uncache'])){
@@ -75,6 +79,10 @@ if(isset($_GET['uncache'])){
 $result = file_get_contents($url);
 
 $data = json_decode($result,true);
+*/
+
+$json = getSparqlResults($endpoint,$sparql);
+$data = json_decode($json,true);
 
 //print_r($data);
 $imgs = array();
