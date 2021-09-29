@@ -417,6 +417,8 @@ if(array_key_exists("bioscoop", $types)){
 
 
 include("affiches.php");
+include("commons.php");
+include("wikipedia.php");
 
 
 
@@ -457,18 +459,23 @@ include("affiches.php");
 	<div class="row">
 		<div class="col-md-4">
 
-			
+			<?php if(strlen($wptext)){ ?>
+
+				<h3>Op Wikipedia</h3>
+				<p style="margin-top: 16px;"><?= $wptext ?></p>
+
+			<?php } ?>
 
 
 
-		  	<h3>Info van Wikidata</h3>
+		  <h3>Info van Wikidata</h3>
 		  	
 			
 			Wikidata: <a target="_blank" href="<?= $venue['uri'] ?>"><?= $venue['wdid'] ?></a><br />
 
 			<?php 
 			if(strlen($venue['wikipedia'])){ 
-				echo 'Wikipedia: <a target="_blank" href="' . $venue['wikipedia'] . '">' . str_replace("https://","",$venue['wikipedia']) . '</a><br />';
+				//echo 'Wikipedia: <a target="_blank" href="' . $venue['wikipedia'] . '">' . str_replace("https://","",$venue['wikipedia']) . '</a><br />';
 			}
 
 			if(count($names)){
@@ -617,6 +624,17 @@ include("affiches.php");
 					
 			} 
 			?>
+
+			<?php if(count($commons)){ ?>
+			<h3>Van Wikimedia Commons</h3>
+      <div class="bbimgs">
+        <?php foreach ($commons as $key => $commonsimg) { ?>
+          <a target="_blank" title="bekijk op commons" href="<?= $commonsimg['beeld'] ?>"><img src="<?= $commonsimg['image'] ?>?width=500"></a>
+        <?php } ?>
+      </div>
+      <?php } ?>
+
+
 
 			<?php if(in_array($qid, $concertzalen)){ ?>
 				<h3>Hier te zien</h3>

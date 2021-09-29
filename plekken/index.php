@@ -21,6 +21,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?starttype ?eindtype ?na
       wd:Q30022 #koffiehuis
       wd:Q1228895 #discotheek
       wd:Q1684522 #jazzclub
+      wd:Q622425 #nachtclub
     }
     ?item wdt:P131 wd:Q2680952 .
     ?item wdt:P31 ?type .
