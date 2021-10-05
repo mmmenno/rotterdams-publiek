@@ -502,7 +502,7 @@ include("wikipedia.php");
 			}
 
 			if(strlen($venue['bend'])){ 
-				echo 'gebouw verdwenen in / rond' . date("Y",strtotime($venue['bend'])) . '<br /><br />';
+				echo 'gebouw verdwenen in / rond ' . date("Y",strtotime($venue['bend'])) . '<br /><br />';
 			}
 
 			foreach ($types as $k => $v) {

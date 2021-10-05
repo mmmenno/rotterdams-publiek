@@ -94,6 +94,33 @@
 			</div>
 		</div>
 		<div class="col-md-4">
+
+			<h2>Editathons</h2>
+			<p>
+				Zondag 10 oktober, van 14:00 uur tot 17:00, organiseren we een editathon bij <a href="https://digitup.nl/">DIGITUP</a> aan de Nieuwe Binnenweg 13b.
+			</p> 
+
+			<p>
+				Het zwaartepunt ligt deze editathon bij Rotterdams filmverleden, het werk zal dan ook voornamelijk bestaan uit het invoeren van filmladders (zie elders op deze pagina). Filmwetenschapper Thunnis van Oort zal iets vertellen over wat je zoal met die data kan doen.
+			</p> 
+
+			<p>
+				Daarnaast gaan we, met wie wil, ook aan de slag met Wikidata en Wikimedia Commons. Hoe kunnen we Rotterdams culturele verleden daar beter beschrijven en illustreren?
+			</p> 
+
+			<p>
+				Zin om te komen? Stuur even een mailtje naar contact[at]digitup[punt]nl om te laten weten dat je er wilt zijn. En neem je laptop mee! 
+			</p> 
+
+			<img src="https://preserve-gar.archieven.nl/mi-184/fonc-gar/4100/NL-RtSA_4100_2005-8463-01.jpg?format=thumb&size=500px&miadt=184&miahd=1904547143&mivast=184&rdt=20200809&open=E6A97" />
+
+			<p class="onderschrift">
+				Welke films werden in de jaren '80 Rotterdam binnengereden?
+			</p>
+
+			<p>
+				Eerder in 2021 organiseerden we twee edithatons bij DIGITUP om flyers en affiches van Baroeg te beschrijven, en we waren bij een derde editathon bij Baroeg zelf.
+			</p>
 			
 			<h2>Herinneringen</h2>
 			<p>
