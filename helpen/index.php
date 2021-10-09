@@ -105,7 +105,7 @@
 			</p> 
 
 			<p>
-				Daarnaast gaan we, met wie wil, ook aan de slag met Wikidata en Wikimedia Commons. Hoe kunnen we Rotterdams culturele verleden daar beter beschrijven en illustreren?
+				Daarnaast gaan we, met wie wil, ook aan de slag met Wikidata en Wikimedia Commons. Hoe kunnen we Rotterdams culturele verleden daar beter beschrijven en illustreren? We lopen <a href="editathon.php">wat begrippen</a> langs.
 			</p> 
 
 			<p>
