@@ -196,7 +196,7 @@ $next = $year + 1;
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "filmladder" && ( <?= $year ?> < 1970 || <?= $year ?> > 1989 )){
 				$(this).addClass('faded');
-			}else if(div.attr('id') == "affiches" && ( <?= $year ?> < 1845 || <?= $year ?> > 1943 )){
+			}else if(div.attr('id') == "affiches" && ( <?= $year ?> < 1845 || <?= $year ?> > 1943 ) && ( <?= $year ?> < 1977 || <?= $year ?> > 2009 )){
 				$(this).addClass('faded');
 			}else if(div.attr('id') == "elders" && ( <?= $year ?> < 1940 )){
 				$(this).addClass('faded');

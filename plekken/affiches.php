@@ -20,7 +20,7 @@ ORDER BY RAND()
 LIMIT 100
 ";
 
-
+//echo $sparqlQueryString;
 
 $endpoint = 'https://api.druid.datalegend.net/datasets/menno/rotterdamspubliek/services/rotterdamspubliek/sparql';
 
@@ -47,7 +47,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		"loc" => str_replace("http://www.wikidata.org/entity/","",$v['loc']['value'])
 	);
 }
-//print_r($videos);
+//print_r($posters);
 
 
 ?>
