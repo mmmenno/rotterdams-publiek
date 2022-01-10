@@ -6,6 +6,7 @@ files/filmladders-per-jaar/*
 tijdmachine/data/*.json
 gebeurtenissen/data/*.json
 plekken/data/*.json
+specials/data/*.json
 verhalen/data/*.json
 
 files
