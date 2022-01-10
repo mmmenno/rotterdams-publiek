@@ -29,7 +29,7 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="../assets/css/styles.css" />
+	<link rel="stylesheet" href="/assets/css/styles.css" />
 	<link rel="stylesheet" href="/specials/hal4affiches/styles.css" />
 
 	<script async defer data-domain="rotterdamspubliek.nl" src="https://plausible.io/js/plausible.js"></script>
