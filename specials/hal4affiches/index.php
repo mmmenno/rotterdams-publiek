@@ -123,7 +123,7 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 						?>
 						<div id="<?= $v['id'] ?>" class="col-md-4 <?= $classes ?>">
 
-							<img src="<?= $v['imgurl'] ?>?width=400px" />
+							<a href="<?= $v['link'] ?>"><img src="<?= $v['imgurl'] ?>?width=400px" /></a>
 							<p class="onderschrift"><?= $v['label'] ?></p>
 
 						</div>
@@ -149,7 +149,7 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 						?>
 						<div id="<?= $v['id'] ?>" class="col-md-4 <?= $classes ?>">
 
-							<img src="<?= $v['img'] ?>" />
+							<a href="<?= $v['uri'] ?>"><img src="<?= $v['img'] ?>" /></a>
 
 						</div>
 					<?php 

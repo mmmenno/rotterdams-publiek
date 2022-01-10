@@ -91,7 +91,8 @@ foreach ($data['results']['bindings'] as $k => $v) {
 			$blocks[$imgid] = array(
 				"class" => "img",
 				"id" => $imgid,
-				"imgurl" => $v['afb']['value'],
+				"imgurl" => str_replace("http://","https://",$v['afb']['value']),
+				"link" => str_replace("http://commons.wikimedia.org/wiki/Special:FilePath/","https://commons.wikimedia.org/wiki/File:",$v['afb']['value']),
 				"label" => $v['itemLabel']['value']
 			);
 		}
