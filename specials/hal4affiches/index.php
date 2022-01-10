@@ -55,7 +55,7 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 
 			<h2>Affiches</h2>
 
-			<?php foreach($blocks as $poster){ 
+			<?php foreach($posters as $poster){ 
 
 				if($poster['class']!="poster"){
 					continue;
@@ -67,6 +67,8 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 				?>
 
 				<img id="thumb-<?= $poster['id'] ?>" class="<?= trim($wdids) ?>" src="<?= str_replace("original","medium",$poster['img']) ?>" />
+
+
 
 			<?php } ?>
 			
@@ -150,7 +152,7 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 						<div id="<?= $v['id'] ?>" class="col-md-4 <?= $classes ?>">
 
 							<a href="<?= $v['uri'] ?>"><img src="<?= $v['img'] ?>" /></a>
-
+							<p class="onderschrift"><?= $v['datum'] ?></p>
 						</div>
 					<?php 
 					} 

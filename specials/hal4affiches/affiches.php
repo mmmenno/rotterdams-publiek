@@ -8,7 +8,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
-SELECT DISTINCT ?aff ?img ?begin ?end ?loc ?act  WHERE {
+SELECT ?aff ?img ?begin ?end ?loc ?act  WHERE {
   ?aff dc:type <http://vocab.getty.edu/aat/300027221> .
   ?aff foaf:depiction ?img .
   ?aff sem:hasEarliestBeginTimeStamp ?begin .
@@ -18,9 +18,8 @@ SELECT DISTINCT ?aff ?img ?begin ?end ?loc ?act  WHERE {
   	?aff dc:subject ?act .
 	}
 } 
-GROUP BY ?aff ?img ?begin ?end ?loc
 ORDER BY ASC(?begin)
-LIMIT 500
+LIMIT 400
 ";
 
 //echo $sparqlQueryString;
@@ -65,6 +64,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		$blocks[$id]['acts'][] = $wdid;
 	}
 }
+$posters = $blocks;
 //print_r($posters);
 
 

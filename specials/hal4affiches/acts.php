@@ -46,7 +46,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
 	$wdid = str_replace("http://www.wikidata.org/entity/","",$v['item']['value']);
 
-	//include("create-wikipedia-abstracts.php");
+	include("create-wikipedia-abstracts.php");
 
 	$startjaar = date("Y",strtotime($v['begin']['value']));
 	$eindjaar = date("Y",strtotime($v['end']['value']));
@@ -61,6 +61,9 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	}
 	if(substr($v['landLabel']['value'],0,3) == "Bel"){
 		$v['landLabel']['value'] = "Belgi&euml;";
+	}
+	if(substr($v['landLabel']['value'],0,3) == "Aus"){
+		$v['landLabel']['value'] = "Australi&euml;";
 	}
 	if($v['natLabel']['value'] == "Koninkrijk der Nederlanden"){
 		$v['natLabel']['value'] = "Nederland";
