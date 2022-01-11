@@ -7,7 +7,7 @@
 	float: left;
 }
 a{
-	color: #d62df0;
+	color: #be73d3;
 }
 #herkomsten{
 	padding-top: 1px;
@@ -16,7 +16,7 @@ a{
 #genres a, #herkomsten a{
 	color: #fff;
 	display: inline-block;
-	background-color: #d62df0;
+	background-color: #be73d3;
 	margin: 0 2px 2px 0;
 	padding: 2px 4px;
 	font-variant: small-caps;
@@ -29,22 +29,22 @@ a{
 	margin-bottom: 24px;
 }
 .article h3{
-	background-color: #fbe1ff;
-	color: #d62df0;
+	background-color: #ebdbff;
+	color: #be73d3;
 	margin-top: 8px;
 	margin-bottom: 4px;
 	padding: 12px;
 	border: none;
 }
 .article p{
-	background-color: #fbe1ff;
-	color: #d62df0;
+	background-color: #ebdbff;
+	color: #be73d3;
 	margin-top: 0;
 	margin-bottom: 4px;
 	padding: 12px;
 }
 .article a{
-	background-color: #d62df0;
+	background-color: #be73d3;
 	color: #fff;
 	display: inline-block;
 	margin-top: 0;

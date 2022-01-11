@@ -17,7 +17,7 @@ SELECT DISTINCT ?saobj ?img ?begin ?end ?loc  WHERE {
 } 
 GROUP BY ?saobj ?img ?begin ?end ?loc
 ORDER BY RAND()
-LIMIT 100
+LIMIT 10
 ";
 
 //echo $sparqlQueryString;

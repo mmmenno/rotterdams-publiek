@@ -54,6 +54,13 @@
 						De danszaal van het <a href="plekken/plek.php?qid=Q76161121">Amerikaansch Danspaviljoen</a> aan het Stationsplein - een gebouw dat eerder Cirque Variété en later Circus Schouwburg huisvestte.
 					</p>
 
+					<h2 class="specials">Specials</h2>
+					<p class="specials">
+						De eerste special laat je <a href="/specials/hal4affiches/">bladeren door HAL4 affiches</a>. Bekijk op genre of herkomst van de acts - van Neue Deutsche Welle tot Mbalax, van Cuba tot Japan. Mogelijk gemaakt door deelnemers aan het Hal4 Affiche crowdsourceproject!
+					</p>
+
+					<a href="/specials/hal4affiches/"><img src="assets/img/affiches-hal4.jpg" /></a>
+
 					<h2>De data</h2>
 					<p>
 						Rotterdams Publiek kan bestaan dankzij 'linked open data'. De gebouwen bijvoorbeeld kunnen we rechtstreeks uit <a href="https://www.wikidata.org/">Wikidata</a> ophalen. Samen met andere 'Wikidatianen' hebben we ook een bijdrage geleverd aan het invoeren van die data.

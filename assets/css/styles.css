@@ -57,6 +57,9 @@ h2.interviews{
 h2.events{
 	border-bottom: 4px solid #b585b9;
 }
+h2.specials{
+	border-bottom: 4px solid #be73d3;
+}
 h3{
 	margin-top: 30px;
 	padding-top: 0;
@@ -83,6 +86,9 @@ a:hover{
 }
 .events a, .events a:hover{
 	color: #b585b9;
+}
+.specials a, .specials a:hover{
+	color: #be73d3;
 }
 .quote{
 	margin-bottom: 20px;

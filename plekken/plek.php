@@ -539,6 +539,14 @@ include("wikipedia.php");
 			<?php } ?>
 			<br />
 
+			<?php if($qid == "Q81801550"){ ?>
+			<h3>HAL4 Affiche Special</h3>
+					<p>
+						<a href="/specials/hal4affiches/">Blader hier door HAL4 affiches</a> en bekijk ze per genre of herkomst van de acts - van Neue Deutsche Welle tot Mbalax, van Cuba tot Japan. Mogelijk gemaakt door deelnemers aan het Hal4 Affiche crowdsourceproject!
+					</p>
+
+					<a href="/specials/hal4affiches/"><img src="/assets/img/affiches-hal4.jpg" /></a>
+			<?php } ?>
 
 			<?php if(count($illustrations)>0){ ?>
 				<h3>Afbeeldingen</h3>

@@ -43,7 +43,7 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h1><a href="../index.php">Rotterdams Publiek</a> | specials | Hal4 affiches</h1>
+			<h1><a href="/index.php">Rotterdams Publiek</a> | specials | Hal4 affiches</h1>
 		</div>
 	</div>
 </div>
@@ -82,6 +82,20 @@ include("acts.php"); 		// acts (ds:subjects) from wikidata
 					<a style="font-size: <?= $size ?>px;" href=""><?= $k ?></a>
 				<?php } ?>
 
+				
+			</div>
+
+			<div id="over">
+
+				<h2>Over deze special</h2>
+
+				<p>De HAL4 affiches zijn digitaal beschikbaar gemaakt door DIG IT UP. Ze zijn, samen met veel ander materiaal, bij hen te zien <a href="https://digitup.nl/hal4/">in de online HAL4 expo</a>. Hiernaast klik je op een affiche naar het online collectie systeem van DIG IT UP, met meer informatie.</p>
+
+				<p>In een klein crowdsourceproject van Rotterdams Publiek zijn de op de affiches genoemde acts ingevoerd en van Wikidata identifiers (de inmiddels alombekende Qnummers) voorzien. Met die Qnummers heb je, naast een goede identificatie, ook toegang tot additionele data.</p>
+
+				<p>Op deze pagina zie je dat je zo bijvoorbeeld de genres waarin de acts actief zijn of waren, hun herkomst, afbeeldingen en eventuele Nederlandstalige Wikipediapagina's op kunt halen.</p>
+
+				<p>Tijdens het projectje zijn ook weer wat (Rotterdamse) acts en theatergezelschappen (verder) beschreven op Wikidata. Zo bouwen we samen aan voor iedereen toegankelijke en bruikbare data.</p>
 				
 			</div>
 
