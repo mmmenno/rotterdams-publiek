@@ -8,6 +8,7 @@ $year = $_GET['year'];
 $sparql = "
 PREFIX schema: <http://schema.org/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?text ?paper ?articledate ?articleurl ?location WHERE {
   ?i a schema:Quotation .
@@ -28,6 +29,8 @@ $endpoint = 'https://api.druid.datalegend.net/datasets/menno/rotterdamspubliek/s
 
 $json = getSparqlResults($endpoint,$sparql);
 $data = json_decode($json,true);
+
+//print_r($data);
 
 $quotes = array();
 foreach ($data['results']['bindings'] as $k => $v) {
