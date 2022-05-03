@@ -76,24 +76,55 @@ $names = array();
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
+	$image = "";
+
 	$venue = array();
-	$image = $v['image']['value'];
-
-
 	$venue["wdid"] = $qid;
+	$venue["bagid"] = "";
+	$venue["bstart"] = "";
+	$venue["bend"] = "";
+	$venue["next"] = "";
+	$venue["nextLabel"] = "";
+	$venue["prev"] = "";
+	$venue["prevLabel"] = "";
+	$venue['wikipedia'] = "";
+	$venue['straat'] = "";
+
 	$venue["uri"] = $v['item']['value'];
 	$venue["label"] = $v['itemLabel']['value'];
-	$venue["bagid"] = $v['bagid']['value'];
-	$venue["bstart"] = $v['bouwjaar']['value'];
-	$venue["bend"] = $v['sloopjaar']['value'];
-	$venue["next"] = $v['next']['value'];
-	$venue["nextLabel"] = $v['nextLabel']['value'];
-	$venue["prev"] = $v['prev']['value'];
-	$venue["prevLabel"] = $v['prevLabel']['value'];
-	$venue['wikipedia'] =$v['sitelink']['value'];
-	$venue['straat'] =$v['straatLabel']['value'];
+	
+	if(isset($v['image']['value'])){
+		$image = $v['image']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue["bagid"] = $v['bagid']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue["bstart"] = $v['bouwjaar']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue["bend"] = $v['sloopjaar']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue["next"] = $v['next']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue["nextLabel"] = $v['nextLabel']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue["prev"] = $v['prev']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue["prevLabel"] = $v['prevLabel']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue['wikipedia'] =$v['sitelink']['value'];
+	}
+	if(isset($v['bagid']['value'])){
+		$venue['straat'] =$v['straatLabel']['value'];
+	}
 
-	if(strlen($v['iseentypeLabel']['value'])){
+	if(isset($v['iseentypeLabel']['value'])){
 		$type = $v['iseentypeLabel']['value'];
 		$types[$type]['type'] = $type;
 		$types[$type]["starttype"] = $v['starttype']['value'];
@@ -103,14 +134,20 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		$types[$v['typeLabel']['value']]['type'] = $v['typeLabel']['value'];
 	}
 
-	if(strlen($v['naamstring']['value'])){
+	if(isset($v['naamstring']['value'])){
+		if(!isset($v['eindnaam']['value'])){
+			$v['eindnaam']['value'] = "";
+		}
+		if(!isset($v['startnaam']['value'])){
+			$v['startnaam']['value'] = "";
+		}
 		$keystring = $v['startnaam']['value'] . $v['eindnaam']['value'] . $v['naamstring']['value'];
 		$names[$keystring]['name'] = $v['naamstring']['value'];
 		$names[$keystring]['start'] = $v['startnaam']['value'];
 		$names[$keystring]['end'] = $v['eindnaam']['value'];
 	}
 
-	if(strlen($v['wkt']['value'])){
+	if(isset($v['wkt']['value'])){
 		$venue['geojsonfeature'] = wkt2geojson($v['wkt']['value']);
 	}elseif(strlen($v['coords']['value'])){
 		$venue['geojsonfeature'] = wkt2geojson(strtoupper($v['coords']['value']));
@@ -285,7 +322,7 @@ $events = array();
 foreach ($data['results']['bindings'] as $k => $v) {
 
 	$monthfrom = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-    $monthto = array("januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december");
+  $monthto = array("januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december");
     
 
 	$from = date("j M",strtotime($v['begin']['value']));
@@ -301,8 +338,20 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		$to = " - " . $to;
 	}
 
-	if(date("Y",strtotime($v['end']['value'])) != $year){
+	if(isset($v['end']['value'])){
 		$to .= " '" . substr(date("Y",strtotime($v['end']['value'])),2,2);
+	}
+
+	if(!isset($v['actorname']['value'])){
+		$v['actorname']['value'] = "";
+	}
+
+	if(!isset($v['wikipedia']['value'])){
+		$v['wikipedia']['value'] = "";
+	}
+
+	if(!isset($v['actor']['value'])){
+		$v['actor']['value'] = "";
 	}
 
 	$events[$v['item']['value']] = array(
@@ -379,8 +428,12 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		$to = " - " . $to;
 	}
 
-	if(date("Y",strtotime($v['end']['value'])) != $year){
+	if(isset($v['end']['value'])){
 		$to .= " '" . substr(date("Y",strtotime($v['end']['value'])),2,2);
+	}
+
+	if(!isset($v['actorname']['value'])){
+		$v['actorname']['value'] = "";
 	}
 
 	$videos[$v['item']['value']] = array(
@@ -417,7 +470,7 @@ if(array_key_exists("bioscoop", $types)){
 
 
 include("affiches.php");
-include("commons.php");
+include("commons-static.php");
 include("wikipedia.php");
 
 
@@ -507,10 +560,10 @@ include("wikipedia.php");
 
 			foreach ($types as $k => $v) {
 				echo 'een <strong>' . $k . '</strong> ';
-				if(strlen($v['starttype'])){
+				if(isset($v['starttype'])){
 					echo 'van ' . date("Y",strtotime($v['starttype']));
 				}
-				if(strlen($v['eindtype'])){
+				if(isset($v['eindtype'])){
 					echo ' tot ' . date("Y",strtotime($v['eindtype']));
 				}
 				echo '<br />';

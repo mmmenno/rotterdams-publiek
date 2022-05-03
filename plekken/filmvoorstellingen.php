@@ -43,7 +43,7 @@ $singles = array();
 if(isset($data['results']['bindings'])){
 	foreach ($data['results']['bindings'] as $k => $v) {
 		
-		if(strlen($v['imdb']['value'])){
+		if(isset($v['imdb']['value'])){
 			$link = $v['imdb']['value'];
 		}else{
 			$link = $v['film']['value'];

@@ -57,16 +57,21 @@ $endpoint = 'https://query.wikidata.org/sparql';
 $json = getSparqlResults($endpoint,$sparql);
 $data = json_decode($json,true);
 
+$venuecount = 0;
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
    $wdid = str_replace("http://www.wikidata.org/entity/", "", $v['item']['value']);
-   $images[$wdid] = $v['image']['value'];
+
+   if(isset($v['image']['value'])){
+      $images[$wdid] = $v['image']['value'];
+   }
+
    $type = $v['typeLabel']['value'];
 
    if(isset($venues[$type][$wdid])){
 
-      if(strlen($v['naamstring']['value'])){
+      if(isset($v['naamstring']['value'])){
          $venues[$type][$wdid]['names'][] = $v['naamstring']['value']; 
       }
 
@@ -77,9 +82,15 @@ foreach ($data['results']['bindings'] as $k => $v) {
 
    $venues[$type][$wdid]["wdid"] = $wdid;
    $venues[$type][$wdid]["label"] = $v['itemLabel']['value'];
-   $venues[$type][$wdid]["straatlabel"] = $v['straatLabel']['value'];
-   $venues[$type][$wdid]["bstart"] = $v['bouwjaar']['value'];
-   $venues[$type][$wdid]["bend"] = $v['sloopjaar']['value'];
+   if(isset($v['straatLabel']['value'])){
+      $venues[$type][$wdid]["straatlabel"] = $v['straatLabel']['value'];
+   }
+   if(isset($v['bouwjaar']['value'])){
+      $venues[$type][$wdid]["bstart"] = $v['bouwjaar']['value'];
+   }
+   if(isset($v['sloopjaar']['value'])){
+      $venues[$type][$wdid]["bend"] = $v['sloopjaar']['value'];
+   }
 
    if(isset($v['starttype']['value'])){
       $venues[$type][$wdid]["starttype"] = $v['starttype']['value'];
@@ -88,7 +99,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
       $venues[$type][$wdid]["eindtype"] = $v['eindtype']['value'];
    }
 
-   if(strlen($v['naamstring']['value'])){
+   if(isset($v['naamstring']['value'])){
       $venues[$type][$wdid]['names'][] = $v['naamstring']['value'];
    }
    
@@ -174,7 +185,9 @@ $breaks = array($third,$twothirds);
 
 
                     echo '<p class="small">';
-                    echo $venue['straatlabel'];
+                    if(isset($venue['straatlabel'])){
+                        echo $venue['straatlabel'];
+                     }
                     if(isset($venue['names'])){
                       $othernames = array();
 
@@ -218,7 +231,9 @@ $breaks = array($third,$twothirds);
 
 
                     echo '<p class="small">';
-                    echo $venue['straatlabel'];
+                    if(isset($venue['straatlabel'])){
+                        echo $venue['straatlabel'];
+                     }
                     if(isset($venue['names'])){
                       $othernames = array();
 
@@ -271,7 +286,9 @@ $breaks = array($third,$twothirds);
 
 
               echo '<p class="small">';
-              echo $venue['straatlabel'];
+               if(isset($venue['straatlabel'])){
+                  echo $venue['straatlabel'];
+               }
               if(isset($venue['names'])){
                 $othernames = array();
 

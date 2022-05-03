@@ -8,14 +8,14 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
-SELECT DISTINCT ?saobj ?img ?begin ?end ?loc  WHERE {
+SELECT DISTINCT ?saobj ?img ?begin ?end  WHERE {
   ?saobj dc:type <http://vocab.getty.edu/aat/300027221> .
   ?saobj foaf:depiction ?img .
   ?saobj sem:hasEarliestBeginTimeStamp ?begin .
   ?saobj sem:hasLatestEndTimeStamp ?end .
   ?saobj dct:spatial wd:" . $qid . " .
 } 
-GROUP BY ?saobj ?img ?begin ?end ?loc
+GROUP BY ?saobj ?img ?begin ?end
 ORDER BY RAND()
 LIMIT 10
 ";
@@ -44,7 +44,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 		"begin" => $v['begin']['value'],
 		"end" => $v['end']['value'],
 		"datum" => $datum,
-		"loc" => str_replace("http://www.wikidata.org/entity/","",$v['loc']['value'])
+		"loc" => $qid
 	);
 }
 //print_r($posters);

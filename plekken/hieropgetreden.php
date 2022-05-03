@@ -9,7 +9,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-SELECT DISTINCT(?artist) ?artistname ?rating ?wikipedia (MIN(?year) AS ?year) 
+SELECT DISTINCT ?artist ?artistname ?rating ?wikipedia (MIN(?year) AS ?year) 
   (COUNT(?concert) AS ?nrofconcerts) 
   (GROUP_CONCAT(DISTINCT ?concert; SEPARATOR=\",\") AS ?concerts) 
   WHERE {
@@ -47,7 +47,6 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	);
 
 }
-//print_r($videos);
 
 
 ?>
