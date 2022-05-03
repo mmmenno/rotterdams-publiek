@@ -54,12 +54,20 @@
 						De danszaal van het <a href="plekken/plek.php?qid=Q76161121">Amerikaansch Danspaviljoen</a> aan het Stationsplein - een gebouw dat eerder Cirque Variété en later Circus Schouwburg huisvestte.
 					</p>
 
-					<h2 class="specials">Specials</h2>
-					<p class="specials">
-						De eerste special laat je <a href="/specials/hal4affiches/">bladeren door HAL4 affiches</a>. Bekijk op genre of herkomst van de acts - van Neue Deutsche Welle tot Mbalax, van Cuba tot Japan. Mogelijk gemaakt door deelnemers aan het Hal4 Affiche crowdsourceproject!
+					<h2>Helpen</h2>
+					<p>
+						De gegevens op Rotterdams Publiek zijn voor een groot deel door vrijwilligers bijeengebracht - <a href="/helpen/index.php">hier lees je hoe je kunt helpen bij het beschrijven van het uitgaansverleden van de stad</a>.
 					</p>
 
-					<a href="/specials/hal4affiches/"><img src="assets/img/affiches-hal4.jpg" /></a>
+					<?php /*
+					<img src="../assets/img/stapeltje-ladders.jpg" />
+
+					<p class="onderschrift">
+						Op het moment loopt er een project waarin we jaren '80 filmladders invoeren.
+					</p>
+					*/ ?>
+
+
 
 					<h2>De data</h2>
 					<p>
@@ -103,7 +111,7 @@
 
 					<h2>Een woord van dank</h2>
 					<p>
-						Zonder onze partners, vooraleerst het <a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>, maar zeker ook <a href="https://digitup.nl/">DIG IT UP</a> en <a href="https://www.belvedererotterdam.nl/">Verhalenhuis Belvédère</a>, hadden we het niet voor elkaar gekregen. Dank!
+						Zonder onze partners, vooraleerst het <a href="https://stadsarchief.rotterdam.nl/">Stadsarchief Rotterdam</a>, maar zeker ook <a href="https://digitup.nl/">DIG IT UP</a>, hadden we het niet voor elkaar gekregen. Dank!
 					</p>
 					<p>
 						Dank ook aan de <a href="https://www.kb.nl/">Koninklijke Bibliotheek</a>, <a href="https://www.boijmans.nl/">Boijmans</a>, <a href="https://rkd.nl/">RKD</a>, het <a href="https://www.create.humanities.uva.nl/">UvA CREATE</a> team, <a href="https://www.setlist.fm/">setlist.fm</a>, <a href="https://www.netwerkdigitaalerfgoed.nl/">NDE</a>, het <a href="https://www.nationaalarchief.nl/">Nationaal Archief</a> en andere erfgoedinstellingen voor het (open) beschikbaar maken van data. Zo kunnen dit soort projecten gemaakt worden.
@@ -132,23 +140,12 @@
 		</div>
 		<div class="col-md-4">
 
-					
-			<h2>Helpen</h2>
-			<p>
-				De gegevens op Rotterdams Publiek zijn voor een groot deel door vrijwilligers bijeengebracht - <a href="/helpen/index.php">hier lees je hoe je kunt helpen bij het beschrijven van het uitgaansverleden van de stad</a>.
-			</p>
-
-			<img src="../assets/img/stapeltje-ladders.jpg" />
-
-			<p class="onderschrift">
-				Op het moment loopt er een project waarin we jaren '80 filmladders invoeren.
-			</p>
-
-
 			<h2 class="interviews">Verhalen</h2>
 			<p class="interviews">
 				Persoonlijke getuigenissen zijn soms vastgelegd op beeld en geluid. Het Stadsarchief verzamelt ook video en audio. We <a href="/verhalen/">laten hier een aantal van deze getuigenissen zien</a>, en proberen daarbij fragmenten aan locaties te verbinden.
 			</p>
+
+			
 
 			<h2 class="events">R'dam. Made it happen.</h2>
 			<p class="events">
@@ -170,6 +167,13 @@
 			<p class="onderschrift buildings">
 				De bouw van <a href="plekken/plek.php?qid=Q38238710">bioscoop Scala</a>, het latere Cinerama.
 			</p>
+
+			<h2 class="specials">Specials</h2>
+			<p class="specials">
+				De eerste special laat je <a href="/specials/hal4affiches/">bladeren door HAL4 affiches</a>. Bekijk op genre of herkomst van de acts - van Neue Deutsche Welle tot Mbalax, van Cuba tot Japan. Mogelijk gemaakt door deelnemers aan het Hal4 Affiche crowdsourceproject!
+			</p>
+
+			<a href="/specials/hal4affiches/"><img src="assets/img/affiches-hal4.jpg" /></a>
 
 			<?php
 
