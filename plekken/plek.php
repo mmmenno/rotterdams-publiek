@@ -9,7 +9,7 @@ if(!isset($_GET['qid'])){
 include("functions.php");
 
 $sparql = "
-SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?straatLabel ?coords ?bagid ?sitelink ?next ?nextLabel ?prev ?prevLabel WHERE {
+SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?starttype ?eindtype ?naamstring ?startnaam ?eindnaam ?image ?straatLabel ?coords ?bagid ?sitelink ?next ?nextLabel ?prev ?prevLabel ?beschrevenopurl WHERE {
   
   VALUES ?item { wd:" . $qid . " }
   ?item wdt:P31 ?type .
@@ -57,13 +57,16 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?startty
     ?item wdt:P669 ?straat .
   }
   OPTIONAL{
+    ?item wdt:P973 ?beschrevenopurl .
+  }
+  OPTIONAL{
   	?sitelink schema:about ?item;
     schema:isPartOf <https://nl.wikipedia.org/>;
   }
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
-LIMIT 600";
+LIMIT 100";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';
@@ -73,6 +76,7 @@ $data = json_decode($json,true);
 
 $types = array();
 $names = array();
+$beschrevenopurl = array();
 
 foreach ($data['results']['bindings'] as $k => $v) {
 
@@ -123,6 +127,9 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	if(isset($v['bagid']['value'])){
 		$venue['straat'] =$v['straatLabel']['value'];
 	}
+	if(isset($v['beschrevenopurl']['value'])){
+		$beschrevenopurl[$v['beschrevenopurl']['value']] = $v['beschrevenopurl']['value'];
+	}
 
 	if(isset($v['iseentypeLabel']['value'])){
 		$type = $v['iseentypeLabel']['value'];
@@ -158,7 +165,7 @@ foreach ($data['results']['bindings'] as $k => $v) {
 ksort($names);
 
 
-
+//print_r($venue);
 
 
 // QUOTATIONS
@@ -584,6 +591,22 @@ include("wikipedia.php");
 			if(strlen($venue['next'])){ 
 				echo 'vervangen door <a href="plek.php?qid=' . str_replace("http://www.wikidata.org/entity/","",$venue['next']) . '">' . $venue['nextLabel'] . '</a><br />';
 			}
+
+			if(count($beschrevenopurl)>0){
+				echo '<br />beschreven op:<br />';
+			}
+
+			foreach ($beschrevenopurl as $k => $v) {
+				if(strlen($v)){ 
+					$showurl = str_replace(array("http://","https://"),"",$v);
+					if(strlen($showurl) > 35){
+						$showurl = substr($showurl,0,35) . "...";
+					}
+					echo '<a target="_blank" href="' . $v . '">' . $showurl . '</a><br />';
+				}
+			}
+
+			
 
 			?>
 
