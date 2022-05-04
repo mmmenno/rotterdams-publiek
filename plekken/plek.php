@@ -66,7 +66,7 @@ SELECT ?item ?itemLabel ?typeLabel ?bouwjaar ?sloopjaar ?iseentypeLabel ?startty
   SERVICE wikibase:label { bd:serviceParam wikibase:language \"nl,en\". }
 }
 ORDER BY ?typeLabel ?itemLabel
-LIMIT 100";
+LIMIT 150";
 
 
 $endpoint = 'https://query.wikidata.org/sparql';
@@ -91,7 +91,6 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	$venue["nextLabel"] = "";
 	$venue["prev"] = "";
 	$venue["prevLabel"] = "";
-	$venue['wikipedia'] = "";
 	$venue['straat'] = "";
 
 	$venue["uri"] = $v['item']['value'];
@@ -519,7 +518,7 @@ include("wikipedia.php");
 	<div class="row">
 		<div class="col-md-4">
 
-			<?php if(strlen($wptext)){ ?>
+			<?php if(strlen($wptext)>0){ ?>
 
 				<h3>Op Wikipedia</h3>
 				<p style="margin-top: 16px;"><?= $wptext ?></p>
@@ -534,10 +533,7 @@ include("wikipedia.php");
 			Wikidata: <a target="_blank" href="<?= $venue['uri'] ?>"><?= $venue['wdid'] ?></a><br />
 
 			<?php 
-			if(strlen($venue['wikipedia'])){ 
-				//echo 'Wikipedia: <a target="_blank" href="' . $venue['wikipedia'] . '">' . str_replace("https://","",$venue['wikipedia']) . '</a><br />';
-			}
-
+			
 			if(count($names)){
 				echo '<br/>bekend als:</br>';
 			}
