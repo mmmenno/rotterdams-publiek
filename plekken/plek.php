@@ -103,28 +103,28 @@ foreach ($data['results']['bindings'] as $k => $v) {
 	if(isset($v['bagid']['value'])){
 		$venue["bagid"] = $v['bagid']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['bouwjaar']['value'])){
 		$venue["bstart"] = $v['bouwjaar']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['sloopjaar']['value'])){
 		$venue["bend"] = $v['sloopjaar']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['next']['value'])){
 		$venue["next"] = $v['next']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['nextLabel']['value'])){
 		$venue["nextLabel"] = $v['nextLabel']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['prev']['value'])){
 		$venue["prev"] = $v['prev']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['prevLabel']['value'])){
 		$venue["prevLabel"] = $v['prevLabel']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['sitelink']['value'])){
 		$venue['wikipedia'] =$v['sitelink']['value'];
 	}
-	if(isset($v['bagid']['value'])){
+	if(isset($v['straatLabel']['value'])){
 		$venue['straat'] =$v['straatLabel']['value'];
 	}
 	if(isset($v['beschrevenopurl']['value'])){
