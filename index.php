@@ -78,6 +78,10 @@
 						De databestanden die we zelf gemaakt of verzameld hebben, zoals de quotes uit krantenbank Delpher, de 'culturele gebeurtenissen' en de koppelingen tussen afbeeldingen uit het archief en locaties, delen we via <a href="https://github.com/mmmenno/rotterdams-publiek-data">onze data-repository op GitHub</a>.
 					</p>
 
+					<p>
+						De <a href="https://github.com/mmmenno/rotterdams-publiek-data/blob/master/filmvoorstellingen.md">filmvoorstellingen in de jaren 80</a> vormen met afstand de grootste dataset die we, met een leger vrijwilligers, als Rotterdams Publiek gemaakt hebben. Meer dan 320.000 voorstellingen!
+					</p>
+
 					<img src="assets/img/walhalla.jpg" />
 
 					<p class="onderschrift">
